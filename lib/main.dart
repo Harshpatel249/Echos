@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'screens/testScreen.dart';
+import 'screens/communityPage.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,15 +13,18 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        backgroundColor: Color(0xFF1D3557),
+        scaffoldBackgroundColor: Color(0xFF1D3557),
         textTheme: TextTheme(
           bodyText2: TextStyle(
             color: Color(0xFFF1FAEE),
           ),
         ),
       ),
-      initialRoute: TestScreen.id,
-      routes: {TestScreen.id: (context) => TestScreen()},
+      initialRoute: CommunityPage.id,
+      routes: {
+        TestScreen.id: (context) => TestScreen(),
+        CommunityPage.id: (context) => CommunityPage(),
+      },
     );
   }
 }
