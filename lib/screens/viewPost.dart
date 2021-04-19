@@ -1,0 +1,68 @@
+import 'package:flutter/material.dart';
+import '../rewidgets/postWrapper.dart';
+import 'addComment.dart';
+
+class ViewPost extends StatelessWidget {
+  static String id = 'view_post';
+
+  final PostWrapper p = PostWrapper(
+      'Laura Hugh',
+      'Lorem lodum',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      true);
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.lightBlueAccent,
+          child: Icon(Icons.add),
+          onPressed: () {
+            showModalBottomSheet(
+                context: context, builder: (context) => AddComment());
+          },
+        ),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              'Laura Hugh\'s Post',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 18,
+                color: Color(0xFFF1FAEE),
+              ),
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            p,
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Text(
+                'Comments',
+                textAlign: TextAlign.start,
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Color(0xFFF1FAEE),
+                ),
+              ),
+            ),
+            Expanded(
+              child: ListView(
+                scrollDirection: Axis.vertical,
+                children: [
+                  p,
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

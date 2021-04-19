@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screens/testScreen.dart';
 import 'screens/communityPage.dart';
+import 'screens/viewPost.dart';
 
 void main() {
   runApp(MyApp());
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
       routes: {
         TestScreen.id: (context) => TestScreen(),
         CommunityPage.id: (context) => CommunityPage(),
+        ViewPost.id: (context) => ViewPost(),
       },
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../services/getCommunityPosts.dart';
+import 'addPost.dart';
 
 class CommunityPage extends StatelessWidget {
   static String id = 'community_page';
@@ -12,6 +13,10 @@ class CommunityPage extends StatelessWidget {
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.lightBlueAccent,
           child: Icon(Icons.add),
+          onPressed: () {
+            showModalBottomSheet(
+                context: context, builder: (context) => AddPost());
+          },
         ),
         body: Column(
           children: [
@@ -24,6 +29,9 @@ class CommunityPage extends StatelessWidget {
                 fontSize: 18,
                 color: Color(0xFFF1FAEE),
               ),
+            ),
+            SizedBox(
+              height: 5,
             ),
             Expanded(
               child: ListView(
