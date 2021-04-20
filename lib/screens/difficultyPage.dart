@@ -9,15 +9,27 @@ class DifficultyPage extends StatelessWidget {
       child: Scaffold(
         body: Column(
           children: [
+            Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Text(
+                'Choose Lesson difficulty',
+                style: TextStyle(fontSize: 20),
+              ),
+            ),
             Expanded(
               child: GestureDetector(
                 onTap: () {
                   print('Easy difficulty');
                 },
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.red,
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      image: DecorationImage(
+                          image: AssetImage('images/easy.gif'),
+                          fit: BoxFit.fill),
+                    ),
                   ),
                 ),
               ),
@@ -30,10 +42,15 @@ class DifficultyPage extends StatelessWidget {
                 onTap: () {
                   print('Intermediate difficulty');
                 },
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.green,
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      image: DecorationImage(
+                          image: AssetImage('images/easy.png'),
+                          fit: BoxFit.fill),
+                    ),
                   ),
                 ),
               ),
@@ -46,10 +63,15 @@ class DifficultyPage extends StatelessWidget {
                 onTap: () {
                   print('Expert difficulty');
                 },
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.blue,
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      image: DecorationImage(
+                          image: AssetImage('images/easy.png'),
+                          fit: BoxFit.fill),
+                    ),
                   ),
                 ),
               ),
