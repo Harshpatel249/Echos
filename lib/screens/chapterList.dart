@@ -10,9 +10,8 @@ class ChapterList extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Center(
-            child: Text('Ashvat'),
-          ),
+          title: Text('Ashvat'),
+          centerTitle: true,
         ),
         bottomNavigationBar: BottomAppBar(
           color: Colors.white,
