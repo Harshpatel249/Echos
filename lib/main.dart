@@ -4,6 +4,7 @@ import 'screens/testScreen.dart';
 import 'screens/communityPage.dart';
 import 'screens/viewPost.dart';
 import 'screens/difficultyPage.dart';
+import 'screens/chapterList.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,12 +24,13 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      initialRoute: DifficultyPage.id,
+      initialRoute: ChapterList.id,
       routes: {
         TestScreen.id: (context) => TestScreen(),
         CommunityPage.id: (context) => CommunityPage(),
         ViewPost.id: (context) => ViewPost(),
         DifficultyPage.id: (context) => DifficultyPage(),
+        ChapterList.id: (context) => ChapterList(),
       },
     );
   }
