@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      initialRoute: ChapterList.id,
+      initialRoute: CommunityPage.id,
       routes: {
         TestScreen.id: (context) => TestScreen(),
         CommunityPage.id: (context) => CommunityPage(),

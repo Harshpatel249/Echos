@@ -4,12 +4,24 @@ import 'package:expandable/expandable.dart';
 
 class ChapterList extends StatelessWidget {
   static String id = 'chapter_list';
-  EventPhotos e = EventPhotos();
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          title: Center(
+            child: Text('Ashvat'),
+          ),
+        ),
+        bottomNavigationBar: BottomAppBar(
+          color: Colors.white,
+          child: Row(
+            children: [
+              Icon(Icons.menu),
+            ],
+          ),
+        ),
         body: ListView(
           children: [
             ExpandableTheme(
@@ -31,33 +43,6 @@ class ChapterList extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class EventPhotos extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return ExpandableNotifier(
-      // <-- Provides ExpandableController to its children
-      child: Column(
-        children: [
-          Expandable(
-            // <-- Driven by ExpandableController from ExpandableNotifier
-            collapsed: ExpandableButton(
-              // <-- Expands when tapped on the cover photo
-              child: Text('hehe'),
-            ),
-            expanded: Column(children: [
-              Text('hehe'),
-              ExpandableButton(
-                // <-- Collapses when tapped on
-                child: Text("Back"),
-              ),
-            ]),
-          ),
-        ],
       ),
     );
   }
