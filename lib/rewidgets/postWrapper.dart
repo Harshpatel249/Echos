@@ -3,12 +3,14 @@ import 'package:like_button/like_button.dart';
 import '../screens/viewPost.dart';
 
 class PostWrapper extends StatelessWidget {
-  PostWrapper(this.postUser, this.postTitle, this.postText, this.isViewPost);
+  PostWrapper(this.postUser, this.postTitle, this.postText, this.isViewPost,
+      this.isComment);
 
   final String postUser;
   final String postText;
   final String postTitle;
   final bool isViewPost;
+  final bool isComment;
 
   Future<bool> onLikeButtonTapped(bool isLiked) async {
     /// send your request here
@@ -78,10 +80,12 @@ class PostWrapper extends StatelessWidget {
                 width: 5,
                 height: 0,
               ),
-              LikeButton(
-                onTap: onLikeButtonTapped,
-                likeCount: 69,
-              ),
+              isComment
+                  ? Text('')
+                  : LikeButton(
+                      onTap: onLikeButtonTapped,
+                      likeCount: 69,
+                    ),
               SizedBox(
                 width: 100,
               ),
