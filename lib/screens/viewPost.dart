@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../rewidgets/postWrapper.dart';
 import 'addComment.dart';
-
+import '../rewidgets/navBar.dart';
 class ViewPost extends StatelessWidget {
   static String id = 'view_post';
 
@@ -15,6 +15,7 @@ class ViewPost extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        bottomNavigationBar: NavBar(),
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.lightBlueAccent,
           child: Icon(Icons.add),
@@ -23,6 +24,7 @@ class ViewPost extends StatelessWidget {
                 context: context, builder: (context) => AddComment());
           },
         ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
