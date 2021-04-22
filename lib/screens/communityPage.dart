@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../services/getCommunityPosts.dart';
 import 'addPost.dart';
+import '../rewidgets/navBar.dart';
 
 class CommunityPage extends StatelessWidget {
   static String id = 'community_page';
@@ -15,14 +16,7 @@ class CommunityPage extends StatelessWidget {
             child: Text('Ashvat'),
           ),
         ),
-        bottomNavigationBar: BottomAppBar(
-          color: Colors.white,
-          child: Row(
-            children: [
-              Icon(Icons.menu),
-            ],
-          ),
-        ),
+        bottomNavigationBar: NavBar(),
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.lightBlueAccent,
           child: Icon(Icons.add),
@@ -31,6 +25,7 @@ class CommunityPage extends StatelessWidget {
                 context: context, builder: (context) => AddPost());
           },
         ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         body: Column(
           children: [
             SizedBox(
@@ -58,3 +53,4 @@ class CommunityPage extends StatelessWidget {
     );
   }
 }
+
