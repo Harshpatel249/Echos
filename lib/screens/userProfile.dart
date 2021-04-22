@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:sign_language_tutor/rewidgets/navBar.dart';
 import '../rewidgets/longCard.dart';
 import '../screens/userStatistics.dart';
+import '../screens/editProfile.dart';
+import '../screens/accountSettings.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 class UserProfile extends StatelessWidget {
   final username = 'Zank100';
   final name = 'Sanket Shah';
@@ -10,7 +14,24 @@ class UserProfile extends StatelessWidget {
   final joined = 'xx/xx/xx';
   @override
   Widget build(BuildContext context) {
+    final AlertDialog logout = AlertDialog(
+      title: Text('Log Out'),
+      content:
+      Text('You will be logged out of your account.'
+          ' Are you sure you want to continue?'),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.pop(context),
+          child: Text('CANCEL'),
+        ),
+        TextButton(
+          onPressed: () => Navigator.pop(context),
+          child: Text('CONTINUE'),
+        ),
+      ],
+    );
     return Scaffold(
+
       appBar: AppBar(
         title: Text('Profile'),
         centerTitle: true,
@@ -47,9 +68,7 @@ class UserProfile extends StatelessWidget {
             iconn: Icons.trending_up,
             press: (){
               Navigator.push(context, MaterialPageRoute(
-                  builder: (BuildContext context) {
-                    return UserStatistics();
-                  }
+                  builder: (BuildContext context) => UserStatistics()
               ));
             },
           ),
@@ -60,7 +79,15 @@ class UserProfile extends StatelessWidget {
             colour: Colors.black45,
             title: 'Edit Profile',
             iconn: Icons.edit,
-            press: (){},
+            press: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute<void>(
+                  builder: (BuildContext context) => EditProfile(),
+                  fullscreenDialog: true,
+                ),
+              );
+            },
           ),
           SizedBox(
             height: 20,
@@ -68,8 +95,12 @@ class UserProfile extends StatelessWidget {
           LongCard(
             colour: Colors.black45,
             title: 'Account Settings',
-            iconn: Icons.settings,
-            press: (){},
+            iconn: FontAwesomeIcons.userCog,
+            press: (){
+              Navigator.push(context, MaterialPageRoute(
+                  builder: (BuildContext context) => AccountSettings()
+              ));
+            },
           ),
           SizedBox(
             height: 20,
@@ -77,8 +108,10 @@ class UserProfile extends StatelessWidget {
           LongCard(
             colour: Colors.black45,
             title: 'Log Out',
-            iconn: Icons.exit_to_app,
-            press: (){},
+            iconn: FontAwesomeIcons.doorOpen,
+            press: (){
+              showDialog<void>(context: context, builder: (context) => logout);
+            },
           ),
         ],
       ),
