@@ -9,7 +9,14 @@ class ViewPost extends StatelessWidget {
       'Laura Hugh',
       'Lorem lodum',
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      true,
       true);
+  final PostWrapper p1 = PostWrapper(
+      'Laura Hugh',
+      'Lorem lodum',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      true,
+      false);
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +59,7 @@ class ViewPost extends StatelessWidget {
             SizedBox(
               height: 5,
             ),
-            p,
+            p1,
             Padding(
               padding: const EdgeInsets.only(left: 10),
               child: Text(
