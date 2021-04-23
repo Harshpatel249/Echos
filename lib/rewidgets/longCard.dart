@@ -26,7 +26,7 @@ class LongCard extends StatelessWidget {
           children: <Widget>[
             Icon(
               iconn,
-              size: 40,
+              size: 35,
               color: Colors.white,
             ),
             SizedBox(
