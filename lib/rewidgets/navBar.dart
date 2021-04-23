@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import '../screens/userProfile.dart';
+<<<<<<< SanketPC
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+=======
+
+>>>>>>> master
 class NavBar extends StatelessWidget {
   NavBar({this.colour});
   Color colour;
@@ -48,6 +52,7 @@ class NavBar extends StatelessWidget {
                 size: 35,
               ),
               onPressed: () {
+<<<<<<< SanketPC
                 Navigator.push(context, MaterialPageRoute(
                     builder: (BuildContext context) {
                       return UserProfile();
@@ -56,6 +61,14 @@ class NavBar extends StatelessWidget {
               }
             ),
           ),
+=======
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (BuildContext context) {
+                  return UserProfile();
+                }));
+              }),
+          IconButton(icon: Icon(Icons.more_vert), onPressed: () {}),
+>>>>>>> master
         ],
       ),
     );
