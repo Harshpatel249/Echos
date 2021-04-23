@@ -11,6 +11,11 @@ class CommunityPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          title: Center(
+            child: Text('Ashvat'),
+          ),
+        ),
         bottomNavigationBar: NavBar(),
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.lightBlueAccent,

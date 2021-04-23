@@ -23,6 +23,11 @@ class ViewPost extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+
+        appBar: AppBar(
+          title: Text('Ashvat'),
+          centerTitle: true,
+        ),
         bottomNavigationBar: NavBar(),
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.lightBlueAccent,
