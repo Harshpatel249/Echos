@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../rewidgets/postWrapper.dart';
 import 'addComment.dart';
 import '../rewidgets/navBar.dart';
+
 class ViewPost extends StatelessWidget {
   static String id = 'view_post';
 
