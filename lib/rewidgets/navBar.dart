@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../screens/userProfile.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../screens/communityPage.dart';
 
 class NavBar extends StatelessWidget {
   NavBar({this.colour});
@@ -37,7 +38,9 @@ class NavBar extends StatelessWidget {
                   FontAwesomeIcons.cameraRetro,
                   size: 35,
                 ),
-                onPressed: () {}),
+                onPressed: () {
+                  Navigator.pushNamed(context, CommunityPage.id);
+                }),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
