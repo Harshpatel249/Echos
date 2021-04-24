@@ -23,9 +23,8 @@ class ViewPost extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-
         appBar: AppBar(
-          title: Text('Ashvat'),
+          title: Text('Echoes'),
           centerTitle: true,
         ),
         bottomNavigationBar: NavBar(),

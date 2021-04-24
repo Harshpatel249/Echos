@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:expandable/expandable.dart';
+import '../rewidgets/chapterContainer.dart';
+import '../rewidgets/navBar.dart';
 
 class ChapterList extends StatelessWidget {
   static String id = 'chapter_list';
@@ -8,39 +9,27 @@ class ChapterList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('Ashvat'),
-          centerTitle: true,
+      child: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.bottomLeft,
+              end: Alignment.topRight,
+              colors: [Colors.black, Colors.blue]),
         ),
-        bottomNavigationBar: BottomAppBar(
-          color: Colors.white,
-          child: Row(
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text('Echoes'),
+            centerTitle: true,
+          ),
+          bottomNavigationBar: NavBar(),
+          body: ListView(
             children: [
-              Icon(Icons.menu),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ChapterContainer(),
+              ),
             ],
           ),
-        ),
-        body: ListView(
-          children: [
-            ExpandableTheme(
-              data: ExpandableThemeData(
-                iconColor: Colors.white,
-                iconPadding: EdgeInsets.only(top: 10, right: 20),
-              ),
-              child: ExpandablePanel(
-                header: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Text(
-                    'Chapter 1',
-                    style: TextStyle(fontSize: 18),
-                  ),
-                ),
-                collapsed: null,
-                expanded: Text('Expanded'),
-              ),
-            ),
-          ],
         ),
       ),
     );

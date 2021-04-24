@@ -19,14 +19,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: Color(0xFF1D3557),
+        scaffoldBackgroundColor: Colors.transparent,
         textTheme: TextTheme(
           bodyText2: TextStyle(
             color: Color(0xFFF1FAEE),
           ),
         ),
       ),
-      initialRoute: SignupPage.id,
+      initialRoute: ChapterList.id,
       routes: {
         TestScreen.id: (context) => TestScreen(),
         CommunityPage.id: (context) => CommunityPage(),

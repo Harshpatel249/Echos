@@ -8,6 +8,7 @@ class NavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
+      color: Colors.black45,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -18,8 +19,7 @@ class NavBar extends StatelessWidget {
                   FontAwesomeIcons.home,
                   size: 36,
                 ),
-                onPressed: () {}
-            ),
+                onPressed: () {}),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -28,8 +28,7 @@ class NavBar extends StatelessWidget {
                   FontAwesomeIcons.americanSignLanguageInterpreting,
                   size: 35,
                 ),
-                onPressed: () {}
-            ),
+                onPressed: () {}),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -38,24 +37,21 @@ class NavBar extends StatelessWidget {
                   FontAwesomeIcons.cameraRetro,
                   size: 35,
                 ),
-                onPressed: () {}
-            ),
+                onPressed: () {}),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: IconButton(
-              icon: Icon(
-                FontAwesomeIcons.solidUserCircle,
-                size: 35,
-              ),
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(
-                    builder: (BuildContext context) {
-                      return UserProfile();
-                    }
-                ));
-              }
-            ),
+                icon: Icon(
+                  FontAwesomeIcons.solidUserCircle,
+                  size: 35,
+                ),
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (BuildContext context) {
+                    return UserProfile();
+                  }));
+                }),
           ),
         ],
       ),
