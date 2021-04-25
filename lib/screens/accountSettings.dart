@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:sign_language_tutor/rewidgets/navBar.dart';
 import '../screens/changePassword.dart';
 import '../services/personalInformation.dart';
-class AccountSettings extends StatelessWidget {
 
+class AccountSettings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AlertDialog dialog = AlertDialog(
       title: Text('Reset settings?'),
       content:
-      Text('This will reset your account to its default factory settings. '
-          ' All of your progress including your quiz scores will be lost. '
-          ' Are you sure you want to continue?'),
+          Text('This will reset your account to its default factory settings. '
+              ' All of your progress including your quiz scores will be lost. '
+              ' Are you sure you want to continue?'),
       actions: [
         TextButton(
           onPressed: () => Navigator.pop(context),
@@ -28,61 +28,69 @@ class AccountSettings extends StatelessWidget {
       children: [ChangePassword()],
     );
     final SimpleDialog PersonalInfo = SimpleDialog(
-      title: Center(child: Text('Personal Information')),
-      children:[PersonalInformation(),]
-    );
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Account Settings'),
-        centerTitle: true,
-      ),
-      bottomNavigationBar: NavBar(),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          LongCard2(
-            colour: Colors.black45,
-            title: 'Personal Information',
-            iconn: Icons.person,
-            press: (){
-              showDialog<void>(context: context, builder: (context) => PersonalInfo);
-            },
+        title: Center(child: Text('Personal Information')),
+        children: [
+          PersonalInformation(),
+        ]);
+    return SafeArea(
+      child: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.bottomLeft,
+              end: Alignment.topRight,
+              colors: [Colors.black, Colors.blue]),
+        ),
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text('Account Settings'),
+            centerTitle: true,
           ),
-          SizedBox(
-            height: 20,
+          bottomNavigationBar: NavBar(),
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              LongCard2(
+                colour: Colors.black45,
+                title: 'Personal Information',
+                iconn: Icons.person,
+                press: () {
+                  showDialog<void>(
+                      context: context, builder: (context) => PersonalInfo);
+                },
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              LongCard2(
+                colour: Colors.black45,
+                title: 'Change Password',
+                iconn: Icons.lock,
+                press: () {
+                  showDialog<void>(
+                      context: context, builder: (context) => ChangePass);
+                },
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              LongCard2(
+                  colour: Colors.black45,
+                  title: 'Reset All Progress',
+                  iconn: Icons.restore,
+                  press: () {
+                    showDialog<void>(
+                        context: context, builder: (context) => dialog);
+                  }),
+            ],
           ),
-          LongCard2(
-            colour: Colors.black45,
-            title: 'Change Password',
-            iconn: Icons.lock,
-            press: (){
-              showDialog<void>(context: context, builder: (context) => ChangePass);
-            },
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          LongCard2(
-            colour: Colors.black45,
-            title: 'Reset All Progress',
-            iconn: Icons.restore,
-            press: (){
-              showDialog<void>(context: context, builder: (context) => dialog);
-            }
-          ),
-        ],
+        ),
       ),
     );
   }
 }
 
 class LongCard2 extends StatelessWidget {
-  LongCard2({
-    this.colour,
-    this.iconn,
-    this.title,
-    this.press
-  });
+  LongCard2({this.colour, this.iconn, this.title, this.press});
 
   Color colour;
   IconData iconn;
@@ -96,7 +104,6 @@ class LongCard2 extends StatelessWidget {
       child: TextButton(
         style: TextButton.styleFrom(
           backgroundColor: colour,
-
         ),
         child: Row(
           children: <Widget>[

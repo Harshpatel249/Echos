@@ -10,6 +10,7 @@ class NavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
+      color: Colors.black45,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -36,8 +37,7 @@ class NavBar extends StatelessWidget {
                   FontAwesomeIcons.americanSignLanguageInterpreting,
                   size: 35,
                 ),
-                onPressed: () {}
-            ),
+                onPressed: () {}),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -46,8 +46,9 @@ class NavBar extends StatelessWidget {
                   FontAwesomeIcons.cameraRetro,
                   size: 35,
                 ),
-                onPressed: () {}
-            ),
+                onPressed: () {
+                  Navigator.pushNamed(context, CommunityPage.id);
+                }),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
