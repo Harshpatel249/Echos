@@ -33,7 +33,6 @@ class PostWrapper extends StatelessWidget {
             postUser,
             style: TextStyle(
               fontSize: 12,
-              color: Color(0xFFF1FAEE),
             ),
           ),
           SizedBox(
@@ -102,7 +101,6 @@ class PostWrapper extends StatelessWidget {
                           'Comments',
                           style: TextStyle(
                             fontSize: 14,
-                            color: Color(0xFFF1FAEE),
                           ),
                         ),
                       ),

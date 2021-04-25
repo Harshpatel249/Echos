@@ -29,6 +29,7 @@ class ViewPost extends StatelessWidget {
               end: Alignment.topRight,
               colors: [Colors.black, Colors.blue]),
         ),
+
         child: Scaffold(
           appBar: AppBar(
             title: Text('Echoes'),
@@ -55,6 +56,7 @@ class ViewPost extends StatelessWidget {
                 'Laura Hugh\'s Post',
                 textAlign: TextAlign.center,
                 style: TextStyle(
+
                   fontSize: 18,
                   color: Color(0xFFF1FAEE),
                 ),
