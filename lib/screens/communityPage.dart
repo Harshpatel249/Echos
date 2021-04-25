@@ -30,7 +30,6 @@ class CommunityPage extends StatelessWidget {
               'Community Posts',
               style: TextStyle(
                 fontSize: 18,
-                color: Color(0xFFF1FAEE),
               ),
             ),
             SizedBox(

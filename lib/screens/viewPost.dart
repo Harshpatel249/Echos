@@ -44,7 +44,6 @@ class ViewPost extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 18,
-                color: Color(0xFFF1FAEE),
               ),
             ),
             SizedBox(
@@ -58,7 +57,6 @@ class ViewPost extends StatelessWidget {
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontSize: 16,
-                  color: Color(0xFFF1FAEE),
                 ),
               ),
             ),

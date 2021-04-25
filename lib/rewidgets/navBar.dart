@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../screens/userProfile.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../screens/homeScreen.dart';
+import '../screens/communityPage.dart';
 
 class NavBar extends StatelessWidget {
   NavBar({this.colour});
@@ -18,7 +20,13 @@ class NavBar extends StatelessWidget {
                   FontAwesomeIcons.home,
                   size: 36,
                 ),
-                onPressed: () {}
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (BuildContext context) {
+                        return HomeScreen();
+                      }
+                  ));
+                }
             ),
           ),
           Padding(
@@ -39,6 +47,22 @@ class NavBar extends StatelessWidget {
                   size: 35,
                 ),
                 onPressed: () {}
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: IconButton(
+                icon: Icon(
+                  FontAwesomeIcons.users,
+                  size: 35,
+                ),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (BuildContext context) {
+                        return CommunityPage();
+                      }
+                  ));
+                }
             ),
           ),
           Padding(
