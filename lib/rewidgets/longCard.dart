@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 
 class LongCard extends StatelessWidget {
-  LongCard({
-    this.colour,
-    this.iconn,
-    this.title,
-    this.press
-  });
+  LongCard({this.colour, this.iconn, this.title, this.press});
 
   Color colour;
   IconData iconn;
@@ -20,7 +15,7 @@ class LongCard extends StatelessWidget {
       child: TextButton(
         style: TextButton.styleFrom(
           backgroundColor: colour,
-
+          elevation: 5,
         ),
         child: Row(
           children: <Widget>[

@@ -30,97 +30,92 @@ class UserProfile extends StatelessWidget {
       ],
     );
     return SafeArea(
-      child: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.bottomLeft,
-              end: Alignment.topRight,
-              colors: [Colors.black, Colors.blue]),
+      // child: Container(
+      //   decoration: BoxDecoration(
+      //     gradient: LinearGradient(
+      //         begin: Alignment.bottomLeft,
+      //         end: Alignment.topRight,
+      //         colors: [Colors.black, Colors.blue]),
+      //   ),
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Profile'),
+          centerTitle: true,
         ),
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text('Profile'),
-            centerTitle: true,
-          ),
-          bottomNavigationBar: NavBar(),
-          body: Column(
-            children: <Widget>[
-              Text(
-                username,
-                style: TextStyle(fontSize: 40.0),
-              ),
-              Text(
-                name,
-                style: TextStyle(fontSize: 20.0),
-              ),
-              SizedBox(
-                height: 20,
-                width: 400,
-                child: Divider(
-                  thickness: 2,
-                  color: Colors.black45,
-                ),
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              LongCard(
-                colour: Colors.black45,
-                title: 'Statistics',
-                iconn: Icons.trending_up,
-                press: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (BuildContext context) => UserStatistics()));
-                },
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              LongCard(
-                colour: Colors.black45,
-                title: 'Edit Profile',
-                iconn: Icons.edit,
-                press: () {
-                  Navigator.push(
+        bottomNavigationBar: NavBar(),
+        body: Column(
+          children: <Widget>[
+            Text(
+              username,
+              style: TextStyle(fontSize: 40.0),
+            ),
+            Text(
+              name,
+              style: TextStyle(fontSize: 20.0),
+            ),
+            SizedBox(
+              height: 22,
+              width: 400,
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            LongCard(
+              colour: Color(0xfff05945),
+              title: 'Statistics',
+              iconn: Icons.trending_up,
+              press: () {
+                Navigator.push(
                     context,
-                    MaterialPageRoute<void>(
-                      builder: (BuildContext context) => EditProfile(),
-                      fullscreenDialog: true,
-                    ),
-                  );
-                },
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              LongCard(
-                colour: Colors.black45,
-                title: 'Account Settings',
-                iconn: FontAwesomeIcons.userCog,
-                press: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (BuildContext context) =>
-                              AccountSettings()));
-                },
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              LongCard(
-                colour: Colors.black45,
-                title: 'Log Out',
-                iconn: FontAwesomeIcons.doorOpen,
-                press: () {
-                  showDialog<void>(
-                      context: context, builder: (context) => logout);
-                },
-              ),
-            ],
-          ),
+                    MaterialPageRoute(
+                        builder: (BuildContext context) => UserStatistics()));
+              },
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            LongCard(
+              colour: Color(0xfff05945),
+              title: 'Edit Profile',
+              iconn: Icons.edit,
+              press: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (BuildContext context) => EditProfile(),
+                    fullscreenDialog: true,
+                  ),
+                );
+              },
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            LongCard(
+              colour: Color(0xfff05945),
+              title: 'Account Settings',
+              iconn: FontAwesomeIcons.userCog,
+              press: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) => AccountSettings()));
+              },
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            LongCard(
+              colour: Color(0xfff05945),
+              title: 'Log Out',
+              iconn: FontAwesomeIcons.doorOpen,
+              press: () {
+                showDialog<void>(
+                    context: context, builder: (context) => logout);
+              },
+            ),
+          ],
+          // ),
         ),
       ),
     );

@@ -22,217 +22,217 @@ class _UserStatistics extends State<UserStatistics> {
   _UserStatistics createState() => _UserStatistics();
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.bottomLeft,
-              end: Alignment.topRight,
-              colors: [Colors.black, Colors.blue]),
+      // child: Container(
+      //   decoration: BoxDecoration(
+      //     gradient: LinearGradient(
+      //         begin: Alignment.bottomLeft,
+      //         end: Alignment.topRight,
+      //         colors: [Colors.black, Colors.blue]),
+      //   ),
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Statistics'),
+          centerTitle: true,
         ),
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text('Statistics'),
-            centerTitle: true,
-          ),
-          bottomNavigationBar: NavBar(),
-          body: Column(
-            children: <Widget>[
-              Expanded(
-                child: Row(
-                  children: <Widget>[
-                    Expanded(
-                      child: ReusableCard(
-                        colour: activeCardColour,
-                        cardChild: Column(
-                          children: <Widget>[
-                            SizedBox(
-                              height: 10,
+        bottomNavigationBar: NavBar(),
+        body: Column(
+          children: <Widget>[
+            Expanded(
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: ReusableCard(
+                      colour: activeCardColour,
+                      cardChild: Column(
+                        children: <Widget>[
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            'JOINED ON:',
+                            style: TextStyle(
+                              fontSize: 15.0,
                             ),
-                            Text(
-                              'JOINED ON:',
-                              style: TextStyle(
-                                fontSize: 15.0,
-                              ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                            width: 150,
+                            child: Divider(
+                              thickness: 1,
+                              color: Colors.white,
                             ),
-                            SizedBox(
-                              height: 10,
-                              width: 150,
-                              child: Divider(
-                                thickness: 1,
-                                color: Colors.white,
-                              ),
+                          ),
+                          SizedBox(
+                            height: 30,
+                          ),
+                          Text(
+                            joined,
+                            style: TextStyle(
+                              fontSize: 25.0,
                             ),
-                            SizedBox(
-                              height: 30,
-                            ),
-                            Text(
-                              joined,
-                              style: TextStyle(
-                                fontSize: 25.0,
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
-                    Expanded(
-                      child: ReusableCard(
-                        colour: activeCardColour,
-                        cardChild: Column(
-                          children: <Widget>[
-                            SizedBox(
-                              height: 10,
+                  ),
+                  Expanded(
+                    child: ReusableCard(
+                      colour: activeCardColour,
+                      cardChild: Column(
+                        children: <Widget>[
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            'QUIZZES CLEARED:',
+                            style: TextStyle(
+                              fontSize: 15.0,
                             ),
-                            Text(
-                              'QUIZZES CLEARED:',
-                              style: TextStyle(
-                                fontSize: 15.0,
-                              ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                            width: 150,
+                            child: Divider(
+                              thickness: 1,
+                              color: Colors.white,
                             ),
-                            SizedBox(
-                              height: 10,
-                              width: 150,
-                              child: Divider(
-                                thickness: 1,
-                                color: Colors.white,
-                              ),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Text(
+                            quizNum.toString(),
+                            style: TextStyle(
+                              fontSize: 50.0,
                             ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            Text(
-                              quizNum.toString(),
-                              style: TextStyle(
-                                fontSize: 50.0,
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-              Expanded(
-                child: Row(
-                  children: <Widget>[
-                    Expanded(
-                      child: ReusableCard(
-                        colour: activeCardColour,
-                        cardChild: Column(
-                          children: <Widget>[
-                            SizedBox(
-                              height: 10,
+            ),
+            Expanded(
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: ReusableCard(
+                      colour: activeCardColour,
+                      cardChild: Column(
+                        children: <Widget>[
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            'LAST COMPLETED CHAPTER:',
+                            style: TextStyle(
+                              fontSize: 15.0,
                             ),
-                            Text(
-                              'LAST COMPLETED CHAPTER:',
-                              style: TextStyle(
-                                fontSize: 15.0,
-                              ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                            width: 300,
+                            child: Divider(
+                              thickness: 1,
+                              color: Colors.white,
                             ),
-                            SizedBox(
-                              height: 10,
-                              width: 300,
-                              child: Divider(
-                                thickness: 1,
-                                color: Colors.white,
-                              ),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Text(
+                            'Chapter $lastChapter($difficulty)',
+                            style: TextStyle(
+                              fontSize: 40.0,
                             ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            Text(
-                              'Chapter $lastChapter($difficulty)',
-                              style: TextStyle(
-                                fontSize: 40.0,
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-              Expanded(
-                child: Row(
-                  children: <Widget>[
-                    Expanded(
-                      child: ReusableCard(
-                        colour: activeCardColour,
-                        cardChild: Column(
-                          children: <Widget>[
-                            SizedBox(
-                              height: 10,
+            ),
+            Expanded(
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: ReusableCard(
+                      colour: activeCardColour,
+                      cardChild: Column(
+                        children: <Widget>[
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            'AVERAGE SCORE:',
+                            style: TextStyle(
+                              fontSize: 15.0,
                             ),
-                            Text(
-                              'AVERAGE SCORE:',
-                              style: TextStyle(
-                                fontSize: 15.0,
-                              ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                            width: 150,
+                            child: Divider(
+                              thickness: 1,
+                              color: Colors.white,
                             ),
-                            SizedBox(
-                              height: 10,
-                              width: 150,
-                              child: Divider(
-                                thickness: 1,
-                                color: Colors.white,
-                              ),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Text(
+                            '$quizAvg',
+                            style: TextStyle(
+                              fontSize: 50.0,
                             ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            Text(
-                              '$quizAvg',
-                              style: TextStyle(
-                                fontSize: 50.0,
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
-                    Expanded(
-                      child: ReusableCard(
-                        colour: activeCardColour,
-                        cardChild: Column(
-                          children: <Widget>[
-                            SizedBox(
-                              height: 10,
+                  ),
+                  Expanded(
+                    child: ReusableCard(
+                      colour: activeCardColour,
+                      cardChild: Column(
+                        children: <Widget>[
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            'HIGHEST SCORE:',
+                            style: TextStyle(
+                              fontSize: 15.0,
                             ),
-                            Text(
-                              'HIGHEST SCORE:',
-                              style: TextStyle(
-                                fontSize: 15.0,
-                              ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                            width: 150,
+                            child: Divider(
+                              thickness: 1,
+                              color: Colors.white,
                             ),
-                            SizedBox(
-                              height: 10,
-                              width: 150,
-                              child: Divider(
-                                thickness: 1,
-                                color: Colors.white,
-                              ),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Text(
+                            '$quizMax',
+                            style: TextStyle(
+                              fontSize: 50.0,
                             ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            Text(
-                              '$quizMax',
-                              style: TextStyle(
-                                fontSize: 50.0,
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
+        // ),
       ),
     );
   }

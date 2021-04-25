@@ -3,6 +3,7 @@ import '../screens/userProfile.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../screens/homeScreen.dart';
 import '../screens/communityPage.dart';
+import '../screens/difficultyPage.dart';
 
 class NavBar extends StatelessWidget {
   NavBar({this.colour});
@@ -10,7 +11,6 @@ class NavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
-      color: Colors.black45,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -18,17 +18,15 @@ class NavBar extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: IconButton(
                 icon: Icon(
-                  FontAwesomeIcons.home,
+                  Icons.home,
                   size: 36,
                 ),
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(
-                      builder: (BuildContext context) {
-                        return HomeScreen();
-                      }
-                  ));
-                }
-            ),
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (BuildContext context) {
+                    return HomeScreen();
+                  }));
+                }),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -37,13 +35,15 @@ class NavBar extends StatelessWidget {
                   FontAwesomeIcons.americanSignLanguageInterpreting,
                   size: 35,
                 ),
-                onPressed: () {}),
+                onPressed: () {
+                  Navigator.pushNamed(context, DifficultyPage.id);
+                }),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: IconButton(
                 icon: Icon(
-                  FontAwesomeIcons.cameraRetro,
+                  FontAwesomeIcons.camera,
                   size: 35,
                 ),
                 onPressed: () {
@@ -58,29 +58,25 @@ class NavBar extends StatelessWidget {
                   size: 35,
                 ),
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(
-                      builder: (BuildContext context) {
-                        return CommunityPage();
-                      }
-                  ));
-                }
-            ),
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (BuildContext context) {
+                    return CommunityPage();
+                  }));
+                }),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: IconButton(
-              icon: Icon(
-                FontAwesomeIcons.solidUserCircle,
-                size: 35,
-              ),
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(
-                    builder: (BuildContext context) {
-                      return UserProfile();
-                    }
-                ));
-              }
-            ),
+                icon: Icon(
+                  FontAwesomeIcons.solidUserCircle,
+                  size: 35,
+                ),
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (BuildContext context) {
+                    return UserProfile();
+                  }));
+                }),
           ),
         ],
       ),

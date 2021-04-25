@@ -9,7 +9,6 @@ import 'screens/chapterList.dart';
 import 'screens/loginPage.dart';
 import 'screens/signupPage.dart';
 
-
 void main() {
   runApp(MyApp());
 }
@@ -21,19 +20,21 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData.dark().copyWith(
-        bottomAppBarColor: Color(0xFFf05945),
-        scaffoldBackgroundColor: Colors.transparent,
-
+        appBarTheme: AppBarTheme(
+          color: Color(0xFF5eaaa8),
+        ),
+        bottomAppBarColor: Color(0xFF5eaaa8),
+        scaffoldBackgroundColor: Color(0xFFf7f3e9),
         textTheme: TextTheme(
+          bodyText1: TextStyle(
+            color: Colors.black,
+          ),
           bodyText2: TextStyle(
-            color: Color(0xFF5eaaa8),
+            color: Colors.black,
           ),
         ),
       ),
-
       initialRoute: HomeScreen.id,
-
-
       routes: {
         TestScreen.id: (context) => TestScreen(),
         CommunityPage.id: (context) => CommunityPage(),

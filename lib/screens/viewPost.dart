@@ -22,71 +22,70 @@ class ViewPost extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.bottomLeft,
-              end: Alignment.topRight,
-              colors: [Colors.black, Colors.blue]),
+      // child: Container(
+      //   decoration: BoxDecoration(
+      //     gradient: LinearGradient(
+      //         begin: Alignment.bottomLeft,
+      //         end: Alignment.topRight,
+      //         colors: [Colors.black, Colors.blue]),
+      //   ),
+
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Echoes'),
+          centerTitle: true,
         ),
-
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text('Echoes'),
-            centerTitle: true,
-          ),
-          bottomNavigationBar: NavBar(),
-          floatingActionButton: FloatingActionButton(
-            backgroundColor: Colors.lightBlueAccent,
-            child: Icon(Icons.add),
-            onPressed: () {
-              showModalBottomSheet(
-                  context: context, builder: (context) => AddComment());
-            },
-          ),
-          // floatingActionButtonLocation:
-          //     FloatingActionButtonLocation.centerDocked,
-          body: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              SizedBox(
-                height: 10,
+        bottomNavigationBar: NavBar(),
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.lightBlueAccent,
+          child: Icon(Icons.add),
+          onPressed: () {
+            showModalBottomSheet(
+                context: context, builder: (context) => AddComment());
+          },
+        ),
+        // floatingActionButtonLocation:
+        //     FloatingActionButtonLocation.centerDocked,
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              'Laura Hugh\'s Post',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 18,
+                color: Color(0xFFF1FAEE),
               ),
-              Text(
-                'Laura Hugh\'s Post',
-                textAlign: TextAlign.center,
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            p1,
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Text(
+                'Comments',
+                textAlign: TextAlign.start,
                 style: TextStyle(
-
-                  fontSize: 18,
+                  fontSize: 16,
                   color: Color(0xFFF1FAEE),
                 ),
               ),
-              SizedBox(
-                height: 5,
+            ),
+            Expanded(
+              child: ListView(
+                scrollDirection: Axis.vertical,
+                children: [
+                  p,
+                ],
               ),
-              p1,
-              Padding(
-                padding: const EdgeInsets.only(left: 10),
-                child: Text(
-                  'Comments',
-                  textAlign: TextAlign.start,
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Color(0xFFF1FAEE),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: ListView(
-                  scrollDirection: Axis.vertical,
-                  children: [
-                    p,
-                  ],
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
+        // ),
       ),
     );
   }

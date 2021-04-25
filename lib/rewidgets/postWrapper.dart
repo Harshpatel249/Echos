@@ -41,7 +41,7 @@ class PostWrapper extends StatelessWidget {
           Material(
             borderRadius: BorderRadius.circular(10.0),
             elevation: 5.00,
-            color: Color(0xFFA8DADC),
+            color: Color(0xfff05945),
             child: Padding(
               padding: EdgeInsets.symmetric(
                 vertical: 10,
@@ -53,16 +53,24 @@ class PostWrapper extends StatelessWidget {
                   Text(
                     postTitle,
                     style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.black,
+                      fontSize: 24,
+                      color: Colors.white,
                       fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                    width: 150,
+                    child: Divider(
+                      thickness: 1,
+                      color: Colors.white,
                     ),
                   ),
                   Text(
                     postText,
                     style: TextStyle(
                       fontSize: 16,
-                      color: Colors.black,
+                      color: Colors.white,
                     ),
                   ),
                 ],

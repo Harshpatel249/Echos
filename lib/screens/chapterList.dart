@@ -9,29 +9,29 @@ class ChapterList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.bottomLeft,
-              end: Alignment.topRight,
-              colors: [Colors.black, Colors.blue]),
+      // child: Container(
+      //   decoration: BoxDecoration(
+      //     gradient: LinearGradient(
+      //         begin: Alignment.bottomLeft,
+      //         end: Alignment.topRight,
+      //         colors: [Colors.black, Colors.blue]),
+      //   ),
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Echoes'),
+          centerTitle: true,
         ),
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text('Echoes'),
-            centerTitle: true,
-          ),
-          bottomNavigationBar: NavBar(),
-          body: ListView(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ChapterContainer(),
-              ),
-            ],
-          ),
+        bottomNavigationBar: NavBar(),
+        body: ListView(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ChapterContainer(),
+            ),
+          ],
         ),
       ),
+      // ),
     );
   }
 }
