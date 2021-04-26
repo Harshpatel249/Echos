@@ -39,7 +39,7 @@ class PostWrapper extends StatelessWidget {
             height: 5,
           ),
           Material(
-            borderRadius: BorderRadius.circular(10.0),
+            borderRadius: BorderRadius.circular(6.0),
             elevation: 5.00,
             color: Color(0xFF3B97FE),
             child: Padding(
