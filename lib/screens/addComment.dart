@@ -8,7 +8,7 @@ class AddComment extends StatelessWidget {
       child: ListView(
         children: [
           Container(
-            color: Color(0xFF001427),
+            color: Color(0xFF757575),
             child: Container(
               padding: EdgeInsets.all(10),
               decoration: BoxDecoration(

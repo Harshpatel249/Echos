@@ -41,7 +41,7 @@ class PostWrapper extends StatelessWidget {
           Material(
             borderRadius: BorderRadius.circular(10.0),
             elevation: 5.00,
-            color: Colors.white,
+            color: Color(0xFF3B97FE),
             child: Padding(
               padding: EdgeInsets.symmetric(
                 vertical: 10,
@@ -54,7 +54,7 @@ class PostWrapper extends StatelessWidget {
                     postTitle,
                     style: TextStyle(
                       fontSize: 24,
-                      color: Colors.black,
+                      color: Colors.white,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
@@ -98,7 +98,7 @@ class PostWrapper extends StatelessWidget {
               ),
               Spacer(flex: 1),
               Padding(
-                padding: const EdgeInsets.only(top: 8, right: 7),
+                padding: const EdgeInsets.only(top: 4, right: 7),
                 child: isViewPost
                     ? null
                     : GestureDetector(
@@ -109,6 +109,7 @@ class PostWrapper extends StatelessWidget {
                           'Comments',
                           style: TextStyle(
                             fontSize: 14,
+                            fontWeight: FontWeight.w700,
                           ),
                         ),
                       ),

@@ -26,9 +26,9 @@ class CommunityPage extends StatelessWidget {
           ),
           centerTitle: true,
         ),
-        bottomNavigationBar: NavBar(),
+        bottomNavigationBar: NavBar(id: CommunityPage.id),
         floatingActionButton: FloatingActionButton(
-          backgroundColor: Color(0xFF5eaaa8),
+          backgroundColor: Color(0xFF000000),
           child: Icon(Icons.add, color: Colors.white),
           onPressed: () {
             showModalBottomSheet(

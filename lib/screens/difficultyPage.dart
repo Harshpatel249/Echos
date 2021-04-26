@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../rewidgets/navBar.dart';
+import 'chapterList.dart';
 
 class DifficultyPage extends StatelessWidget {
   static String id = 'difficulty_page';
@@ -14,6 +16,14 @@ class DifficultyPage extends StatelessWidget {
       //         colors: [Colors.black, Colors.blue]),
       //   ),
       child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            'ASL Lessons',
+            style: TextStyle(color: Colors.black),
+          ),
+          centerTitle: true,
+        ),
+        bottomNavigationBar: NavBar(id: DifficultyPage.id),
         body: Column(
           children: [
             Padding(
@@ -27,6 +37,7 @@ class DifficultyPage extends StatelessWidget {
               child: GestureDetector(
                 onTap: () {
                   print('Easy difficulty');
+                  Navigator.pushNamed(context, ChapterList.id);
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
@@ -48,6 +59,7 @@ class DifficultyPage extends StatelessWidget {
               child: GestureDetector(
                 onTap: () {
                   print('Intermediate difficulty');
+                  Navigator.pushNamed(context, ChapterList.id);
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
@@ -69,6 +81,7 @@ class DifficultyPage extends StatelessWidget {
               child: GestureDetector(
                 onTap: () {
                   print('Expert difficulty');
+                  Navigator.pushNamed(context, ChapterList.id);
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),

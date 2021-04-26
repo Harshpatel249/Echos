@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../rewidgets/chapterContainer.dart';
 import '../rewidgets/navBar.dart';
+import 'difficultyPage.dart';
 
 class ChapterList extends StatelessWidget {
   static String id = 'chapter_list';
@@ -18,10 +19,13 @@ class ChapterList extends StatelessWidget {
       //   ),
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Echoes'),
+          title: Text(
+            'Echoes',
+            style: TextStyle(color: Colors.black),
+          ),
           centerTitle: true,
         ),
-        bottomNavigationBar: NavBar(),
+        bottomNavigationBar: NavBar(id: DifficultyPage.id),
         body: ListView(
           children: [
             Padding(

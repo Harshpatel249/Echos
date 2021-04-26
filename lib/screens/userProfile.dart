@@ -8,6 +8,7 @@ import '../screens/accountSettings.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class UserProfile extends StatelessWidget {
+  static String id = 'user_profile';
   final username = 'Zank100';
   final name = 'Sanket Shah';
   final email = 'sanket.s2@ahduin.edu.in';
@@ -42,7 +43,9 @@ class UserProfile extends StatelessWidget {
           title: Text('Profile'),
           centerTitle: true,
         ),
-        bottomNavigationBar: NavBar(),
+        bottomNavigationBar: NavBar(
+          id: UserProfile.id,
+        ),
         body: Column(
           children: <Widget>[
             Text(

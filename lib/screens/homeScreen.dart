@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../rewidgets/navBar.dart';
-import 'chapterList.dart';
+import 'loginPage.dart';
 
 class HomeScreen extends StatelessWidget {
   static String id = 'home_page';
@@ -22,7 +22,9 @@ class HomeScreen extends StatelessWidget {
           ),
           centerTitle: true,
         ),
-        bottomNavigationBar: NavBar(),
+        bottomNavigationBar: NavBar(
+          id: HomeScreen.id,
+        ),
         body: Column(
           children: <Widget>[
             Text(
@@ -34,7 +36,7 @@ class HomeScreen extends StatelessWidget {
             Expanded(
               child: TextButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, ChapterList.id);
+                  Navigator.pushNamed(context, LoginPage.id);
                 },
                 child: Image.asset('images/Tutorial.png'),
               ),
