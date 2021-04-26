@@ -6,8 +6,9 @@ import '../screens/communityPage.dart';
 import '../screens/difficultyPage.dart';
 
 class NavBar extends StatelessWidget {
-  NavBar({this.colour});
-  Color colour;
+  NavBar({@required this.id});
+  String id;
+
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
@@ -20,12 +21,13 @@ class NavBar extends StatelessWidget {
                 icon: Icon(
                   Icons.home,
                   size: 36,
+                  color: this.id == HomeScreen.id
+                      ? Colors.white
+                      : Color(0xFFC3C2C3),
                 ),
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (BuildContext context) {
-                    return HomeScreen();
-                  }));
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, HomeScreen.id, (route) => false);
                 }),
           ),
           Padding(
@@ -34,6 +36,9 @@ class NavBar extends StatelessWidget {
                 icon: Icon(
                   FontAwesomeIcons.americanSignLanguageInterpreting,
                   size: 35,
+                  color: this.id == DifficultyPage.id
+                      ? Colors.white
+                      : Color(0xFFC3C2C3),
                 ),
                 onPressed: () {
                   Navigator.pushNamed(context, DifficultyPage.id);
@@ -45,6 +50,9 @@ class NavBar extends StatelessWidget {
                 icon: Icon(
                   FontAwesomeIcons.camera,
                   size: 35,
+                  color: this.id == CommunityPage.id
+                      ? Colors.white
+                      : Color(0xFFC3C2C3),
                 ),
                 onPressed: () {
                   Navigator.pushNamed(context, CommunityPage.id);
@@ -56,6 +64,9 @@ class NavBar extends StatelessWidget {
                 icon: Icon(
                   FontAwesomeIcons.users,
                   size: 35,
+                  color: this.id == CommunityPage.id
+                      ? Colors.white
+                      : Color(0xFFC3C2C3),
                 ),
                 onPressed: () {
                   Navigator.push(context,
@@ -70,6 +81,9 @@ class NavBar extends StatelessWidget {
                 icon: Icon(
                   FontAwesomeIcons.solidUserCircle,
                   size: 35,
+                  color: this.id == UserProfile.id
+                      ? Colors.white
+                      : Color(0xFFC3C2C3),
                 ),
                 onPressed: () {
                   Navigator.push(context,

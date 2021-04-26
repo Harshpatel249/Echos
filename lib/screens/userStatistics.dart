@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sign_language_tutor/rewidgets/navBar.dart';
 import '../rewidgets/reusableCard.dart';
+import 'userProfile.dart';
 
 const activeCardColour = Colors.black45;
 const inactiveCardColour = Color(0xFF111328);
@@ -34,7 +35,9 @@ class _UserStatistics extends State<UserStatistics> {
           title: Text('Statistics'),
           centerTitle: true,
         ),
-        bottomNavigationBar: NavBar(),
+        bottomNavigationBar: NavBar(
+          id: UserProfile.id,
+        ),
         body: Column(
           children: <Widget>[
             Expanded(

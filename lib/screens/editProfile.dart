@@ -13,7 +13,10 @@ class EditProfile extends StatelessWidget {
       //   ),
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Edit Profile'),
+          title: Text(
+            'Edit Profile',
+            style: TextStyle(color: Colors.black),
+          ),
           centerTitle: true,
           actions: <Widget>[
             Padding(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../rewidgets/postWrapper.dart';
 import 'addComment.dart';
 import '../rewidgets/navBar.dart';
+import 'communityPage.dart';
 
 class ViewPost extends StatelessWidget {
   static String id = 'view_post';
@@ -32,13 +33,21 @@ class ViewPost extends StatelessWidget {
 
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Echoes'),
+          title: Text(
+            'Community Posts',
+            style: TextStyle(color: Colors.black),
+          ),
           centerTitle: true,
         ),
-        bottomNavigationBar: NavBar(),
+        bottomNavigationBar: NavBar(
+          id: CommunityPage.id,
+        ),
         floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.lightBlueAccent,
-          child: Icon(Icons.add),
+          backgroundColor: Colors.black,
+          child: Icon(
+            Icons.add,
+            color: Colors.white,
+          ),
           onPressed: () {
             showModalBottomSheet(
                 context: context, builder: (context) => AddComment());
@@ -57,7 +66,6 @@ class ViewPost extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 18,
-                color: Color(0xFFF1FAEE),
               ),
             ),
             SizedBox(
@@ -71,7 +79,6 @@ class ViewPost extends StatelessWidget {
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontSize: 16,
-                  color: Color(0xFFF1FAEE),
                 ),
               ),
             ),

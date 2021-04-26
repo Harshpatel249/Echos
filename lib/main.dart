@@ -21,10 +21,14 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData.dark().copyWith(
         appBarTheme: AppBarTheme(
-          color: Color(0xFF5eaaa8),
+          color: Color(0xf006CE8),
+          elevation: 0,
+          iconTheme: IconThemeData(
+            color: Colors.black, //change your color here
+          ),
         ),
-        bottomAppBarColor: Color(0xFF5eaaa8),
-        scaffoldBackgroundColor: Color(0xFFf7f3e9),
+        bottomAppBarColor: Color(0xFF006CE8),
+        scaffoldBackgroundColor: Color(0xFFFFFFFF),
         textTheme: TextTheme(
           bodyText1: TextStyle(
             color: Colors.black,

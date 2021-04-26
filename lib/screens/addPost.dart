@@ -9,7 +9,9 @@ class AddPost extends StatelessWidget {
       child: ListView(
         children: [
           Container(
-            color: Color(0xFF001427),
+            decoration: BoxDecoration(
+              color: Color(0xFF757575),
+            ),
             child: Container(
               padding: EdgeInsets.all(10),
               decoration: BoxDecoration(

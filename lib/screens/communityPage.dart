@@ -20,12 +20,15 @@ class CommunityPage extends StatelessWidget {
       //   ),
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Community Posts'),
+          title: Text(
+            'Community Posts',
+            style: TextStyle(color: Colors.black),
+          ),
           centerTitle: true,
         ),
-        bottomNavigationBar: NavBar(),
+        bottomNavigationBar: NavBar(id: CommunityPage.id),
         floatingActionButton: FloatingActionButton(
-          backgroundColor: Color(0xFF5eaaa8),
+          backgroundColor: Color(0xFF000000),
           child: Icon(Icons.add, color: Colors.white),
           onPressed: () {
             showModalBottomSheet(
