@@ -63,7 +63,7 @@ class PostWrapper extends StatelessWidget {
                     width: 150,
                     child: Divider(
                       thickness: 1,
-                      color: Colors.black,
+                      color: Colors.white,
                     ),
                   ),
                   Text(

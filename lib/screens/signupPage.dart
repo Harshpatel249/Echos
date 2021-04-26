@@ -64,7 +64,8 @@ class _SignupPageState extends State<SignupPage> {
                   children: [
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.all(16.0),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 16, horizontal: 8),
                         child: TextField(
                           controller: fnameCon,
                           style: TextStyle(color: Colors.black),
@@ -86,7 +87,8 @@ class _SignupPageState extends State<SignupPage> {
                     ),
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.all(16.0),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 16, horizontal: 8),
                         child: TextField(
                           controller: lnameCon,
                           style: TextStyle(color: Colors.black),
@@ -109,7 +111,8 @@ class _SignupPageState extends State<SignupPage> {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
                   child: TextField(
                     controller: emailCon,
                     style: TextStyle(color: Colors.black),
@@ -128,7 +131,8 @@ class _SignupPageState extends State<SignupPage> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
                   child: TextFormField(
                     obscureText: true,
                     controller: PasswordCon,
@@ -155,7 +159,8 @@ class _SignupPageState extends State<SignupPage> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
                   child: TextFormField(
                     obscureText: true,
                     controller: confirmPasswordCon,

@@ -61,7 +61,8 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
                 child: TextField(
                   controller: emailCon,
                   style: TextStyle(color: Colors.black),
@@ -80,7 +81,8 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
                 child: TextField(
                   obscureText: true,
                   controller: passCon,
