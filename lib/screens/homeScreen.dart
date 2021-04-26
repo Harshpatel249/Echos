@@ -16,7 +16,10 @@ class HomeScreen extends StatelessWidget {
       //   ),
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Home'),
+          title: Text(
+            'Home',
+            style: TextStyle(color: Colors.black),
+          ),
           centerTitle: true,
         ),
         bottomNavigationBar: NavBar(),

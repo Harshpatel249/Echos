@@ -20,7 +20,10 @@ class CommunityPage extends StatelessWidget {
       //   ),
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Community Posts'),
+          title: Text(
+            'Community Posts',
+            style: TextStyle(color: Colors.black),
+          ),
           centerTitle: true,
         ),
         bottomNavigationBar: NavBar(),
