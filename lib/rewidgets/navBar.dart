@@ -18,17 +18,17 @@ class NavBar extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: IconButton(
-                icon: Icon(
-                  Icons.home,
-                  size: 36,
-                  color: this.id == HomeScreen.id
-                      ? Colors.white
-                      : Color(0xFFC3C2C3),
-                ),
-                onPressed: () {
-                  Navigator.pushNamedAndRemoveUntil(
-                      context, HomeScreen.id, (route) => false);
-                }),
+              icon: Icon(
+                Icons.home,
+                size: 36,
+                color:
+                    this.id == HomeScreen.id ? Colors.white : Color(0xFFC3C2C3),
+              ),
+              onPressed: () {
+                Navigator.pushNamedAndRemoveUntil(
+                    context, HomeScreen.id, (route) => false);
+              },
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -41,7 +41,8 @@ class NavBar extends StatelessWidget {
                       : Color(0xFFC3C2C3),
                 ),
                 onPressed: () {
-                  Navigator.pushNamed(context, DifficultyPage.id);
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, DifficultyPage.id, (route) => false);
                 }),
           ),
           Padding(
@@ -55,7 +56,8 @@ class NavBar extends StatelessWidget {
                       : Color(0xFFC3C2C3),
                 ),
                 onPressed: () {
-                  Navigator.pushNamed(context, CommunityPage.id);
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, CommunityPage.id, (route) => false);
                 }),
           ),
           Padding(
@@ -69,10 +71,8 @@ class NavBar extends StatelessWidget {
                       : Color(0xFFC3C2C3),
                 ),
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (BuildContext context) {
-                    return CommunityPage();
-                  }));
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, CommunityPage.id, (route) => false);
                 }),
           ),
           Padding(
@@ -86,10 +86,8 @@ class NavBar extends StatelessWidget {
                       : Color(0xFFC3C2C3),
                 ),
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (BuildContext context) {
-                    return UserProfile();
-                  }));
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, UserProfile.id, (route) => false);
                 }),
           ),
         ],

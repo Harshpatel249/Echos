@@ -8,6 +8,7 @@ import 'screens/difficultyPage.dart';
 import 'screens/chapterList.dart';
 import 'screens/loginPage.dart';
 import 'screens/signupPage.dart';
+import 'screens/userProfile.dart';
 
 void main() {
   runApp(MyApp());
@@ -48,6 +49,7 @@ class MyApp extends StatelessWidget {
         ChapterList.id: (context) => ChapterList(),
         LoginPage.id: (context) => LoginPage(),
         SignupPage.id: (context) => SignupPage(),
+        UserProfile.id: (context) => UserProfile(),
       },
     );
   }

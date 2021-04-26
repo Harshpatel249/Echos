@@ -207,7 +207,7 @@ class _SignupPageState extends State<SignupPage> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(context, LoginPage.id);
+                    Navigator.pop(context);
                   },
                   child: Text(
                     'Already have an account? Log In',
