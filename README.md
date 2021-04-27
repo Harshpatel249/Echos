@@ -1,4 +1,4 @@
-# sign_language_tutor
+# Sign Language Tutor
 
 An application for teaching ASL using interactive tutorials.
 
