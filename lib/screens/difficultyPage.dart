@@ -4,29 +4,15 @@ import 'package:flutter/material.dart';
 import '../rewidgets/navBar.dart';
 import 'chapterList.dart';
 
-class DifficultyPage extends StatelessWidget {
+class DifficultyPage extends StatefulWidget {
   static String id = 'difficulty_page';
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  bool isLoggedIn = false;
-  User user;
+  @override
+  _DifficultyPageState createState() => _DifficultyPageState();
+}
+
+class _DifficultyPageState extends State<DifficultyPage> {
   @override
   Widget build(BuildContext context) {
-    getUser() async {
-      User firebseUser = _auth.currentUser;
-      await firebseUser?.reload(); //  reloading the user which we just grabbed
-      firebseUser = _auth.currentUser;
-      //after reloading we have to again grab the user
-      if (firebseUser != null) {
-        setState(() {
-          print('user is not null');
-          this.user = firebseUser;
-          this.isLoggedIn = true;
-        });
-      } else {
-        print('user is null');
-      }
-    }
-
     return SafeArea(
       // child: Container(
       //   decoration: BoxDecoration(
