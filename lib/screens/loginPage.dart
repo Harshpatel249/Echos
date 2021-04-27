@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import 'difficultyPage.dart';
 import 'signupPage.dart';
 
 class LoginPage extends StatefulWidget {
@@ -28,10 +30,39 @@ class _LoginPageState extends State<LoginPage> {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => Homepage(),
+              builder: (context) => DifficultyPage(),
             ));
       }
     });
+  }
+
+  login() async {
+    _formKey.currentState.save();
+    try {
+      await _auth.signInWithEmailAndPassword(
+          email: this.email, password: this.Password);
+      print('log in successful');
+    } catch (e) {
+      print('shit went sideways');
+      showError(e.errormessage);
+    }
+  }
+
+  showError(String errormessage) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+              title: Text('Error'),
+              content: Text(errormessage),
+              actions: <Widget>[
+                FlatButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Text('Ok'))
+              ]);
+        });
   }
 
   String email;
@@ -148,7 +179,7 @@ class _LoginPageState extends State<LoginPage> {
                       if (_formKey.currentState.validate()) {
                         email = emailCon.text;
                         Password = PasswordCon.text;
-
+                        login();
                         print('$email, $Password');
                       }
                     });
