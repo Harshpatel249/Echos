@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sign_language_tutor/rewidgets/navBar.dart';
 import '../screens/changePassword.dart';
 import '../services/personalInformation.dart';
+import '../screens/userProfile.dart';
 
 class AccountSettings extends StatelessWidget {
   @override
@@ -33,56 +34,69 @@ class AccountSettings extends StatelessWidget {
           PersonalInformation(),
         ]);
     return SafeArea(
-      child: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.bottomLeft,
-              end: Alignment.topRight,
-              colors: [Colors.black, Colors.blue]),
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            'Account Settings',
+            style: TextStyle(color: Colors.black),
+          ),
+          centerTitle: true,
         ),
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text('Account Settings'),
-            centerTitle: true,
-          ),
-          bottomNavigationBar: NavBar(),
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              LongCard2(
-                colour: Colors.black45,
-                title: 'Personal Information',
-                iconn: Icons.person,
+        bottomNavigationBar: NavBar(id: UserProfile.id,),
+        body: Column(
+          children: <Widget>[
+            SizedBox(
+              height: 40.0,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Hero(
+                tag: 'logo',
+                child: CircleAvatar(
+                  radius: 50,
+                  backgroundImage: AssetImage(
+                    'images/ECHOS2.png',
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 40.0,
+            ),
+            LongCard2(
+              colour: Color(0xFF075FF3),
+              title: 'Personal Information',
+              iconn: Icons.person,
+              press: () {
+                showDialog<void>(
+                    context: context, builder: (context) => PersonalInfo);
+              },
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            LongCard2(
+              colour: Color(0xFF075FF3),
+              title: 'Change Password',
+              iconn: Icons.lock,
+              press: () {
+                showDialog<void>(
+                    context: context, builder: (context) => ChangePass);
+              },
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            LongCard2(
+                colour: Color(0xFF075FF3),
+                title: 'Reset All Progress',
+                iconn: Icons.restore,
                 press: () {
                   showDialog<void>(
-                      context: context, builder: (context) => PersonalInfo);
+                      context: context, builder: (context) => dialog);
                 },
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              LongCard2(
-                colour: Colors.black45,
-                title: 'Change Password',
-                iconn: Icons.lock,
-                press: () {
-                  showDialog<void>(
-                      context: context, builder: (context) => ChangePass);
-                },
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              LongCard2(
-                  colour: Colors.black45,
-                  title: 'Reset All Progress',
-                  iconn: Icons.restore,
-                  press: () {
-                    showDialog<void>(
-                        context: context, builder: (context) => dialog);
-                  }),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -101,33 +115,45 @@ class LongCard2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: TextButton(
-        style: TextButton.styleFrom(
-          backgroundColor: colour,
-        ),
-        child: Row(
-          children: <Widget>[
-            SizedBox(
-              width: 60.0,
-            ),
-            Icon(
-              iconn,
-              size: 40,
-              color: Colors.white,
-            ),
-            SizedBox(
-              width: 20.0,
-            ),
-            Text(
-              title,
-              style: TextStyle(
-                fontSize: 20.0,
-                color: Colors.white,
-              ),
-            ),
+      child: Container(
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.blueGrey,
+              blurRadius: 2.0,
+              spreadRadius: 0.0,
+              offset: Offset(2.0, 2.0), // shadow direction: bottom right
+            )
           ],
         ),
-        onPressed: press,
+        child: TextButton(
+          style: TextButton.styleFrom(
+            backgroundColor: colour,
+          ),
+          child: Row(
+            children: <Widget>[
+              SizedBox(
+                width: 60.0,
+              ),
+              Icon(
+                iconn,
+                size: 40,
+                color: Colors.white,
+              ),
+              SizedBox(
+                width: 20.0,
+              ),
+              Text(
+                title,
+                style: TextStyle(
+                  fontSize: 20.0,
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          ),
+          onPressed: press,
+        ),
       ),
     );
   }

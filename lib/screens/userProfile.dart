@@ -30,96 +30,118 @@ class UserProfile extends StatelessWidget {
         ),
       ],
     );
-    return SafeArea(
-      // child: Container(
-      //   decoration: BoxDecoration(
-      //     gradient: LinearGradient(
-      //         begin: Alignment.bottomLeft,
-      //         end: Alignment.topRight,
-      //         colors: [Colors.black, Colors.blue]),
-      //   ),
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('Profile'),
-          centerTitle: true,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Zank100',
+          style: TextStyle(color: Colors.black),
         ),
-        bottomNavigationBar: NavBar(
-          id: UserProfile.id,
-        ),
-        body: Column(
-          children: <Widget>[
-            Text(
-              username,
-              style: TextStyle(fontSize: 40.0),
+        centerTitle: true,
+      ),
+      bottomNavigationBar: NavBar(
+        id: UserProfile.id,
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8),
+            child: Text(
+              'Sanket Shah',
+              style: TextStyle(
+                fontSize: 30,
+              ),
             ),
-            Text(
-              name,
-              style: TextStyle(fontSize: 20.0),
-            ),
-            SizedBox(
-              height: 22,
-              width: 400,
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            LongCard(
-              colour: Color(0xfff05945),
-              title: 'Statistics',
-              iconn: Icons.trending_up,
-              press: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (BuildContext context) => UserStatistics()));
-              },
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            LongCard(
-              colour: Color(0xfff05945),
-              title: 'Edit Profile',
-              iconn: Icons.edit,
-              press: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute<void>(
-                    builder: (BuildContext context) => EditProfile(),
-                    fullscreenDialog: true,
+          ),
+          Expanded(
+            child: Row(
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top:18.0, right:12.0, left:8.0, bottom: 12.0),
+                    child: LongCard(
+                      colour1: Color(0xFF075FF3),
+                      colour2: Color(0xFF3B97FE),
+                      title: 'Statistics',
+                      iconn: Icons.trending_up,
+                      press: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) => UserStatistics()));
+                      },
+                    ),
                   ),
-                );
-              },
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top:18.0, right:8.0, left:12.0, bottom: 12.0),
+                    child: LongCard(
+                      colour1: Color(0xFF3B97FE),
+                      colour2: Color(0xFF13DFEF),
+                      title: 'Edit Profile',
+                      iconn: Icons.edit,
+                      press: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute<void>(
+                            builder: (BuildContext context) => EditProfile(),
+                            fullscreenDialog: true,
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ),
+              ],
             ),
-            SizedBox(
-              height: 20,
+          ),
+          Expanded(
+            child: Row(
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top:12.0, right:12.0, left:8.0, bottom: 18.0),
+                    child: LongCard(
+                      colour1: Color(0xFF075FF3),
+                      colour2: Color(0xFF3B97FE),
+                      title: 'Account',
+                      iconn: FontAwesomeIcons.userCog,
+                      press: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) => AccountSettings()));
+                      },
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top:12.0, right:8.0, left:12.0, bottom: 18.0),
+                    child: LongCard(
+                      colour1: Color(0xFF3B97FE),
+                      colour2: Color(0xFF13DFEF),
+                      title: 'Log Out',
+                      iconn: FontAwesomeIcons.doorOpen,
+                      press: () {
+                        showDialog<void>(
+                            context: context, builder: (context) => logout);
+                      },
+                    ),
+                  ),
+                ),
+              ],
             ),
-            LongCard(
-              colour: Color(0xfff05945),
-              title: 'Account Settings',
-              iconn: FontAwesomeIcons.userCog,
-              press: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (BuildContext context) => AccountSettings()));
-              },
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            LongCard(
-              colour: Color(0xfff05945),
-              title: 'Log Out',
-              iconn: FontAwesomeIcons.doorOpen,
-              press: () {
-                showDialog<void>(
-                    context: context, builder: (context) => logout);
-              },
-            ),
-          ],
-          // ),
-        ),
+          ),
+        ],
+        // ),
       ),
     );
   }

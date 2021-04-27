@@ -43,7 +43,7 @@ class EditProfile extends StatelessWidget {
                   hintText: "Full-Name",
                   labelText: "Name",
                   border: OutlineInputBorder(),
-                  fillColor: Colors.white,
+                  fillColor: Colors.blueGrey,
                 ),
               ),
             ),
