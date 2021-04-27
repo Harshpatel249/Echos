@@ -1,10 +1,56 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
 import '../rewidgets/navBar.dart';
 import 'chapterList.dart';
+import 'loginPage.dart';
 
-class DifficultyPage extends StatelessWidget {
+class DifficultyPage extends StatefulWidget {
   static String id = 'difficulty_page';
+  @override
+  _DifficultyPageState createState() => _DifficultyPageState();
+}
 
+class _DifficultyPageState extends State<DifficultyPage> {
+  ////////////////////////////////////////////////////////////////
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  User user;
+  bool isLoggedIn = false;
+  checkAuthentication() async {
+    _auth.authStateChanges().listen((user) {
+      if (user == null) {
+        print('user is null');
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => LoginPage()));
+      }
+    });
+  }
+
+  getUser() async {
+    User firebseUser = _auth.currentUser;
+    await firebseUser?.reload(); //  reloading the user which we just grabbed
+    firebseUser = _auth.currentUser;
+    //after reloading we have to again grab the user
+    if (firebseUser != null) {
+      setState(() {
+        print('user is not null');
+        this.user = firebseUser;
+        this.isLoggedIn = true;
+      });
+    } else {
+      print('user is null');
+    }
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    this.checkAuthentication();
+    this.getUser();
+  }
+
+  ////////////////////////////////////////////////////////////////
   @override
   Widget build(BuildContext context) {
     return SafeArea(

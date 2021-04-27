@@ -23,6 +23,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  firebase_core: "^0.7.0"
+  firebase_auth: "^0.20.1"
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -34,8 +36,10 @@ dependencies:
 
 
 dev_dependencies:
+  change_app_package_name: ^1.0.0
   flutter_test:
     sdk: flutter
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "243530617841",
+    "project_id": "echoes-1b03b",
+    "storage_bucket": "echoes-1b03b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:243530617841:android:ae504141738de717846a50",
+        "android_client_info": {
+          "package_name": "com.ethicalbrewery.echos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "243530617841-rrusqcik3jrdur67gs0hi991vjjuieg6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ethicalbrewery.echos",
+            "certificate_hash": "922e1b9c13cd3b81f7ad83d642d22563cd4b4be0"
+          }
+        },
+        {
+          "client_id": "243530617841-m9uuoqch1t1kh117lu3s67tvuppbjtqa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6xT4UrZ7S6aYi-9tIADBW2tcOhJ5WyhM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "243530617841-m9uuoqch1t1kh117lu3s67tvuppbjtqa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

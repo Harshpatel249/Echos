@@ -1,11 +1,15 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sign_language_tutor/rewidgets/navBar.dart';
-import '../rewidgets/longCard.dart';
-import '../screens/userStatistics.dart';
-import '../screens/editProfile.dart';
-import '../screens/accountSettings.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:sign_language_tutor/rewidgets/navBar.dart';
+
+import '../rewidgets/longCard.dart';
+import '../screens/accountSettings.dart';
+import '../screens/editProfile.dart';
+import '../screens/homeScreen.dart';
+import '../screens/userStatistics.dart';
+import 'homeScreen.dart';
 
 class UserProfile extends StatelessWidget {
   static String id = 'user_profile';
@@ -25,7 +29,12 @@ class UserProfile extends StatelessWidget {
           child: Text('CANCEL'),
         ),
         TextButton(
-          onPressed: () => Navigator.pop(context),
+          onPressed: () {
+            FirebaseAuth.instance.signOut();
+            print('logout called');
+            Navigator.pushNamed(context, HomeScreen.id);
+            print('continue pressed');
+          },
           child: Text('CONTINUE'),
         ),
       ],
@@ -58,7 +67,8 @@ class UserProfile extends StatelessWidget {
               children: [
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.only(top:18.0, right:12.0, left:8.0, bottom: 12.0),
+                    padding: const EdgeInsets.only(
+                        top: 18.0, right: 12.0, left: 8.0, bottom: 12.0),
                     child: LongCard(
                       colour1: Color(0xFF075FF3),
                       colour2: Color(0xFF3B97FE),
@@ -68,7 +78,8 @@ class UserProfile extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (BuildContext context) => UserStatistics()));
+                                builder: (BuildContext context) =>
+                                    UserStatistics()));
                       },
                     ),
                   ),
@@ -78,7 +89,8 @@ class UserProfile extends StatelessWidget {
                 ),
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.only(top:18.0, right:8.0, left:12.0, bottom: 12.0),
+                    padding: const EdgeInsets.only(
+                        top: 18.0, right: 8.0, left: 12.0, bottom: 12.0),
                     child: LongCard(
                       colour1: Color(0xFF3B97FE),
                       colour2: Color(0xFF13DFEF),
@@ -104,7 +116,8 @@ class UserProfile extends StatelessWidget {
               children: [
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.only(top:12.0, right:12.0, left:8.0, bottom: 18.0),
+                    padding: const EdgeInsets.only(
+                        top: 12.0, right: 12.0, left: 8.0, bottom: 18.0),
                     child: LongCard(
                       colour1: Color(0xFF075FF3),
                       colour2: Color(0xFF3B97FE),
@@ -114,7 +127,8 @@ class UserProfile extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (BuildContext context) => AccountSettings()));
+                                builder: (BuildContext context) =>
+                                    AccountSettings()));
                       },
                     ),
                   ),
@@ -124,7 +138,8 @@ class UserProfile extends StatelessWidget {
                 ),
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.only(top:12.0, right:8.0, left:12.0, bottom: 18.0),
+                    padding: const EdgeInsets.only(
+                        top: 12.0, right: 8.0, left: 12.0, bottom: 18.0),
                     child: LongCard(
                       colour1: Color(0xFF3B97FE),
                       colour2: Color(0xFF13DFEF),
