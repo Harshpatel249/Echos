@@ -4,8 +4,8 @@ import 'package:sign_language_tutor/rewidgets/navBar.dart';
 import '../rewidgets/reusableCard.dart';
 import 'userProfile.dart';
 
-const activeCardColour = Colors.black45;
-const inactiveCardColour = Color(0xFF111328);
+const starting = Color(0xFF3B97FE);
+const ending = Color(0xFF13DFEF);
 final joined = 'xx/xx/xx';
 final int quizNum = 69;
 final lastChapter = 3;
@@ -23,16 +23,12 @@ class _UserStatistics extends State<UserStatistics> {
   _UserStatistics createState() => _UserStatistics();
   Widget build(BuildContext context) {
     return SafeArea(
-      // child: Container(
-      //   decoration: BoxDecoration(
-      //     gradient: LinearGradient(
-      //         begin: Alignment.bottomLeft,
-      //         end: Alignment.topRight,
-      //         colors: [Colors.black, Colors.blue]),
-      //   ),
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Statistics'),
+          title: Text(
+            'Statistics',
+            style: TextStyle(color: Colors.black),
+          ),
           centerTitle: true,
         ),
         bottomNavigationBar: NavBar(
@@ -45,16 +41,18 @@ class _UserStatistics extends State<UserStatistics> {
                 children: <Widget>[
                   Expanded(
                     child: ReusableCard(
-                      colour: activeCardColour,
+                      colour1: Color(0xFF075FF3),
+                      colour2: Color(0xFF3B97FE),
                       cardChild: Column(
                         children: <Widget>[
                           SizedBox(
                             height: 10,
                           ),
                           Text(
-                            'JOINED ON:',
+                            'Joined On:',
                             style: TextStyle(
-                              fontSize: 15.0,
+                              fontSize: 20.0,
+                              color: Colors.white,
                             ),
                           ),
                           SizedBox(
@@ -66,12 +64,13 @@ class _UserStatistics extends State<UserStatistics> {
                             ),
                           ),
                           SizedBox(
-                            height: 30,
+                            height: 20,
                           ),
                           Text(
                             joined,
                             style: TextStyle(
-                              fontSize: 25.0,
+                              fontSize: 40.0,
+                              color: Colors.white,
                             ),
                           ),
                         ],
@@ -80,16 +79,18 @@ class _UserStatistics extends State<UserStatistics> {
                   ),
                   Expanded(
                     child: ReusableCard(
-                      colour: activeCardColour,
+                      colour1: Color(0xFF3B97FE),
+                      colour2: Color(0xFF13DFEF),
                       cardChild: Column(
                         children: <Widget>[
                           SizedBox(
                             height: 10,
                           ),
                           Text(
-                            'QUIZZES CLEARED:',
+                            'Quizzes:',
                             style: TextStyle(
-                              fontSize: 15.0,
+                              fontSize: 20.0,
+                              color: Colors.white,
                             ),
                           ),
                           SizedBox(
@@ -107,6 +108,7 @@ class _UserStatistics extends State<UserStatistics> {
                             quizNum.toString(),
                             style: TextStyle(
                               fontSize: 50.0,
+                              color: Colors.white,
                             ),
                           ),
                         ],
@@ -121,16 +123,18 @@ class _UserStatistics extends State<UserStatistics> {
                 children: <Widget>[
                   Expanded(
                     child: ReusableCard(
-                      colour: activeCardColour,
+                      colour1: Color(0xFF075FF3),
+                      colour2: Color(0xFF13DFEF),
                       cardChild: Column(
                         children: <Widget>[
                           SizedBox(
                             height: 10,
                           ),
                           Text(
-                            'LAST COMPLETED CHAPTER:',
+                            'Last Completed Chapter:',
                             style: TextStyle(
-                              fontSize: 15.0,
+                              fontSize: 20.0,
+                              color: Colors.white,
                             ),
                           ),
                           SizedBox(
@@ -148,6 +152,7 @@ class _UserStatistics extends State<UserStatistics> {
                             'Chapter $lastChapter($difficulty)',
                             style: TextStyle(
                               fontSize: 40.0,
+                              color: Colors.white,
                             ),
                           ),
                         ],
@@ -162,16 +167,18 @@ class _UserStatistics extends State<UserStatistics> {
                 children: <Widget>[
                   Expanded(
                     child: ReusableCard(
-                      colour: activeCardColour,
+                      colour1: Color(0xFF075FF3),
+                      colour2: Color(0xFF3B97FE),
                       cardChild: Column(
                         children: <Widget>[
                           SizedBox(
                             height: 10,
                           ),
                           Text(
-                            'AVERAGE SCORE:',
+                            'Average Score:',
                             style: TextStyle(
-                              fontSize: 15.0,
+                              fontSize: 20.0,
+                              color: Colors.white,
                             ),
                           ),
                           SizedBox(
@@ -189,6 +196,7 @@ class _UserStatistics extends State<UserStatistics> {
                             '$quizAvg',
                             style: TextStyle(
                               fontSize: 50.0,
+                              color: Colors.white,
                             ),
                           ),
                         ],
@@ -197,16 +205,18 @@ class _UserStatistics extends State<UserStatistics> {
                   ),
                   Expanded(
                     child: ReusableCard(
-                      colour: activeCardColour,
+                      colour1: Color(0xFF3B97FE),
+                      colour2: Color(0xFF13DFEF),
                       cardChild: Column(
                         children: <Widget>[
                           SizedBox(
                             height: 10,
                           ),
                           Text(
-                            'HIGHEST SCORE:',
+                            'Highest Score:',
                             style: TextStyle(
-                              fontSize: 15.0,
+                              fontSize: 20.0,
+                              color: Colors.white,
                             ),
                           ),
                           SizedBox(
@@ -224,6 +234,7 @@ class _UserStatistics extends State<UserStatistics> {
                             '$quizMax',
                             style: TextStyle(
                               fontSize: 50.0,
+                              color: Colors.white,
                             ),
                           ),
                         ],

@@ -9,6 +9,7 @@ import 'screens/chapterList.dart';
 import 'screens/loginPage.dart';
 import 'screens/signupPage.dart';
 import 'screens/userProfile.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,6 +19,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData.dark().copyWith(
@@ -29,7 +35,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
         bottomAppBarColor: Color(0xFF006CE8),
-        scaffoldBackgroundColor: Color(0xFFFFFFFF),
+        scaffoldBackgroundColor: Color(0xFFF2F5F8),
         textTheme: TextTheme(
           bodyText1: TextStyle(
             color: Colors.black,

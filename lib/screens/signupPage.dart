@@ -45,7 +45,7 @@ class _SignupPageState extends State<SignupPage> {
                     child: CircleAvatar(
                       radius: 50,
                       backgroundImage: AssetImage(
-                        'images/LogoEchoes.png',
+                        'images/ECHOS2.png',
                       ),
                     ),
                   ),
@@ -53,7 +53,7 @@ class _SignupPageState extends State<SignupPage> {
                 Hero(
                   tag: 'logo_title',
                   child: Text(
-                    'Echoes',
+                    'Echos',
                     style: TextStyle(
                       fontFamily: 'DancingScript',
                       fontSize: 20,

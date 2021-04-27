@@ -49,7 +49,7 @@ class NavBar extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: IconButton(
                 icon: Icon(
-                  FontAwesomeIcons.camera,
+                  Icons.camera_alt,
                   size: 35,
                   color: this.id == CommunityPage.id
                       ? Colors.white
@@ -64,7 +64,7 @@ class NavBar extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: IconButton(
                 icon: Icon(
-                  FontAwesomeIcons.users,
+                  Icons.group,
                   size: 35,
                   color: this.id == CommunityPage.id
                       ? Colors.white
@@ -79,7 +79,7 @@ class NavBar extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: IconButton(
                 icon: Icon(
-                  FontAwesomeIcons.solidUserCircle,
+                  Icons.account_circle,
                   size: 35,
                   color: this.id == UserProfile.id
                       ? Colors.white

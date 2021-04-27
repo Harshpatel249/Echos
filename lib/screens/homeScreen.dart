@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../rewidgets/navBar.dart';
 import 'loginPage.dart';
@@ -26,25 +27,73 @@ class HomeScreen extends StatelessWidget {
           id: HomeScreen.id,
         ),
         body: Column(
-          children: <Widget>[
-            Text(
-              'Welcome to Echoes',
-              style: TextStyle(
-                fontSize: 40.0,
-              ),
-            ),
+          children: [
             Expanded(
-              child: TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, LoginPage.id);
-                },
-                child: Image.asset('images/Tutorial.png'),
-              ),
-            ),
-            Expanded(
-              child: TextButton(
-                onPressed: () {},
-                child: Image.asset('images/LogoEchoes.png'),
+              child: ListView(
+                scrollDirection: Axis.vertical,
+                children: [
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      'Tutorials',
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                  InkWell(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        height: 200,
+                        width: 200,
+                        child: Card(// with Material
+                          child:
+                          Image.asset(
+                            'images/Tutorial.png',
+                          ),
+                          elevation: 18.0,
+                          clipBehavior: Clip.antiAlias,
+                          color: Color(0xFFd3b4b3),
+                        ),
+                      ),
+                    ),
+                    onTap: (){
+                      Navigator.pushNamed(context, LoginPage.id);
+                    },
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      'Translate',
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                  InkWell(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        height: 200,
+                        width: 200,
+                        child: Card(// with Material
+                          child:
+                          Image.asset(
+                            'images/LogoEchoes.png',
+                          ),
+                          elevation: 18.0,
+                          clipBehavior: Clip.antiAlias,
+                          color: Color(0xFFf7f3e9),
+                        ),
+                      ),
+                    ),
+                    onTap: (){},
+                  ),
+                ],
               ),
             ),
           ],

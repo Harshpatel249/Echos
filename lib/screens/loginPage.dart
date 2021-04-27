@@ -44,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: CircleAvatar(
                     radius: 50,
                     backgroundImage: AssetImage(
-                      'images/LogoEchoes.png',
+                      'images/ECHOS2.png',
                     ),
                   ),
                 ),
@@ -52,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
               Hero(
                 tag: 'logo_title',
                 child: Text(
-                  'Echoes',
+                  'Echos',
                   style: TextStyle(
                     fontFamily: 'DancingScript',
                     fontSize: 20,
