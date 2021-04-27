@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.sign_language_tutor">
+    package="com.ethicalbrewery.echos">
    <application
         android:label="sign_language_tutor"
         android:icon="@mipmap/ic_launcher">

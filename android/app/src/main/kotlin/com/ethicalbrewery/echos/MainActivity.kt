@@ -1,4 +1,4 @@
-package com.example.sign_language_tutor
+package com.ethicalbrewery.echos
 
 import io.flutter.embedding.android.FlutterActivity
 
