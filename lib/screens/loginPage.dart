@@ -13,6 +13,10 @@ class _LoginPageState extends State<LoginPage> {
 
   final emailCon = new TextEditingController();
   final passCon = new TextEditingController();
+
+  bool visi1 = true;
+  IconData i1 = Icons.visibility;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -49,15 +53,12 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-              Hero(
-                tag: 'logo_title',
-                child: Text(
-                  'Echos',
-                  style: TextStyle(
-                    fontFamily: 'DancingScript',
-                    fontSize: 20,
-                    // fontWeight: FontWeight.bold,
-                  ),
+              Text(
+                'Echos',
+                style: TextStyle(
+                  fontFamily: 'DancingScript',
+                  fontSize: 20,
+                  // fontWeight: FontWeight.bold,
                 ),
               ),
               Padding(
@@ -84,7 +85,7 @@ class _LoginPageState extends State<LoginPage> {
                 padding:
                     const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
                 child: TextField(
-                  obscureText: true,
+                  obscureText: visi1,
                   controller: passCon,
                   style: TextStyle(color: Colors.black),
                   decoration: new InputDecoration(
@@ -97,6 +98,21 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     hintText: 'Password',
                     hintStyle: TextStyle(color: Colors.black54),
+                    suffixIcon: InkWell(
+                      onTap: () {
+                        setState(() {
+                          visi1 = !visi1;
+                          if (visi1)
+                            i1 = Icons.visibility;
+                          else
+                            i1 = Icons.visibility_off;
+                        });
+                      },
+                      child: Icon(
+                        i1,
+                        color: Colors.black45,
+                      ),
+                    ),
                   ),
                 ),
               ),
