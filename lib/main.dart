@@ -1,17 +1,21 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:sign_language_tutor/screens/difficultyPage.dart';
-import 'screens/testScreen.dart';
-import 'screens/communityPage.dart';
-import 'screens/viewPost.dart';
-import 'screens/homeScreen.dart';
-import 'screens/difficultyPage.dart';
+
 import 'screens/chapterList.dart';
+import 'screens/communityPage.dart';
+import 'screens/difficultyPage.dart';
+import 'screens/homeScreen.dart';
 import 'screens/loginPage.dart';
 import 'screens/signupPage.dart';
+import 'screens/testScreen.dart';
 import 'screens/userProfile.dart';
-import 'package:flutter/services.dart';
+import 'screens/viewPost.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 

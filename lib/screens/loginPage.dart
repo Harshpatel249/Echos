@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
 import 'signupPage.dart';
 
 class LoginPage extends StatefulWidget {
@@ -8,6 +10,31 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  @override
+  initState() {
+    super.initState();
+    this.checkAuthentication();
+    print('init state called');
+  }
+
+  ///////////////////////////////////////////////////////////////////////////
+  /////////////         Login Methods                      //////
+  ///////////////////////////////////////////////////////////////////////
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  User user;
+  checkAuthentication() async {
+    _auth.authStateChanges().listen((user) {
+      if (user != null) {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Homepage(),
+            ));
+      }
+    });
+  }
+
   String email;
   String pass;
 

@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
 import 'loginPage.dart';
 
 class SignupPage extends StatefulWidget {
@@ -8,11 +10,63 @@ class SignupPage extends StatefulWidget {
 }
 
 class _SignupPageState extends State<SignupPage> {
-  String email, fname, lname, Password, confirmPassword;
+  /////////////////////////////////////////////////////////////////////////////
+  //          Sign up functions
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  checkAuthentication() async {
+    _auth.authStateChanges().listen((user) {
+      if (user != null) {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => LoginPage()));
+      }
+    });
+  }
+
+  signUp() async {
+    _formKey.currentState.save();
+    try {
+      UserCredential user = await _auth.createUserWithEmailAndPassword(
+          email: this.email, password: this.Password);
+      if (user != null) {
+        await _auth.currentUser.updateProfile(displayName: fname);
+      }
+    } catch (e) {
+      showError(e.errormessage);
+    }
+  }
+
+  showError(String errormessage) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+              title: Text('Error'),
+              content: Text(errormessage),
+              actions: <Widget>[
+                FlatButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Text('Ok'))
+              ]);
+        });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    this.checkAuthentication();
+  }
+
+  ////////////////////////////////////////////////////////////////////////////
+
+  String email, fname, userName, Password, confirmPassword;
   final _formKey = GlobalKey<FormState>();
   final emailCon = new TextEditingController();
   final fnameCon = new TextEditingController();
-  final lnameCon = new TextEditingController();
+  final usernameCon = new TextEditingController();
   final PasswordCon = new TextEditingController();
   final confirmPasswordCon = new TextEditingController();
 
@@ -87,7 +141,7 @@ class _SignupPageState extends State<SignupPage> {
                   padding:
                       const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
                   child: TextField(
-                    controller: lnameCon,
+                    controller: usernameCon,
                     style: TextStyle(color: Colors.black),
                     keyboardType: TextInputType.name,
                     decoration: new InputDecoration(
@@ -213,12 +267,13 @@ class _SignupPageState extends State<SignupPage> {
                     setState(() {
                       if (_formKey.currentState.validate()) {
                         fname = fnameCon.text;
-                        lname = lnameCon.text;
+                        userName = usernameCon.text;
                         email = emailCon.text;
                         Password = PasswordCon.text;
                         confirmPassword = confirmPasswordCon.text;
+                        signUp();
                         print(
-                            '$fname, $lname, $email, $Password,$confirmPassword');
+                            '$fname, $userName, $email, $Password,$confirmPassword');
                       }
                     });
                   },
