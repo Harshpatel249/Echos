@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sign_language_tutor/screens/difficultyPage.dart';
 
+import 'screens/aslDetection.dart';
 import 'screens/chapterList.dart';
 import 'screens/communityPage.dart';
 import 'screens/difficultyPage.dart';
@@ -60,6 +61,7 @@ class MyApp extends StatelessWidget {
         LoginPage.id: (context) => LoginPage(),
         SignupPage.id: (context) => SignupPage(),
         UserProfile.id: (context) => UserProfile(),
+        ASLDetection.id: (context) => ASLDetection(),
       },
     );
   }

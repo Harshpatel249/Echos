@@ -91,7 +91,7 @@ class _DifficultyPageState extends State<DifficultyPage> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       image: DecorationImage(
-                          image: AssetImage('images/easy.gif'),
+                          image: AssetImage('assets/images/easy.gif'),
                           fit: BoxFit.fill),
                     ),
                   ),
@@ -113,7 +113,7 @@ class _DifficultyPageState extends State<DifficultyPage> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       image: DecorationImage(
-                          image: AssetImage('images/easy.png'),
+                          image: AssetImage('assets/images/easy.png'),
                           fit: BoxFit.fill),
                     ),
                   ),
@@ -135,7 +135,7 @@ class _DifficultyPageState extends State<DifficultyPage> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       image: DecorationImage(
-                          image: AssetImage('images/easy.png'),
+                          image: AssetImage('assets/images/easy.png'),
                           fit: BoxFit.fill),
                     ),
                   ),
