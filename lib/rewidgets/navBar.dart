@@ -59,7 +59,7 @@ class NavBar extends StatelessWidget {
                 ),
                 onPressed: () {
                   Navigator.pushNamedAndRemoveUntil(
-                      context, CommunityPage.id, (route) => false);
+                      context, ASLDetection.id, (route) => false);
                 }),
           ),
           Padding(
