@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
 class PersonalInformation extends StatelessWidget {
-  final username = 'Zank100';
-  final name = 'Sanket Shah';
-  final email = 'sanket.s2@ahduin.edu.in';
-  final joined = 'xx/xx/xx';
+  static String id = 'user_profile';
+  final username = 'sdfasdf'; //SignupPage.currentUser.id;
+  final name = 'dadf'; //SignupPage.currentUser.name;
+  final email = 'same@gmai.com'; //SignupPage.currentUser.email;
+  final joined = 'xx/xx/xxxx';
+  // final joined =
+  //     '${SignupPage.currentUser.timestamp.day} / ${SignupPage.currentUser.timestamp.month} / ${SignupPage.currentUser.timestamp.year}';
   @override
   Widget build(BuildContext context) {
     return Column(
