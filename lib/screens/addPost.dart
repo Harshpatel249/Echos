@@ -1,7 +1,38 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sign_language_tutor/screens/signupPage.dart';
+import 'package:uuid/uuid.dart';
 
 class AddPost extends StatelessWidget {
+  String _title = 'Can you can a can as a canner can can a can?';
+  String _postContent =
+      'The coldest blood runs through my vein You know my name.';
+  String postId = Uuid().v4();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  addPost() {
+    print('makePost is called');
+    print(SignupPage.currentUser.id);
+//    if (_formKey.currentState.validate()) {
+    //     _formKey.currentState.save();
+    //upload post
+    print(SignupPage.currentUser.id);
+    SignupPage.postsRef
+        .doc(SignupPage.currentUser.id)
+        .collection("userPosts")
+        .doc(postId)
+        .set({
+      "postId": postId,
+      "ownerId": SignupPage.currentUser.id,
+      "username": SignupPage.currentUser.username,
+      "title": _title,
+      "content": _postContent,
+      "timestamp": SignupPage.timestamp,
+      "likes": {},
+    });
+    // }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -72,9 +103,7 @@ class AddPost extends StatelessWidget {
                       'Post',
                       style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
-                    onPressed: () {
-                      //Add function
-                    },
+                    onPressed: addPost,
                     style: TextButton.styleFrom(
                       backgroundColor: Colors.cyan,
                     ),
