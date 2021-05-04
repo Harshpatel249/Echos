@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import '../screens/userProfile.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../screens/homeScreen.dart';
+
+import '../screens/aslDetection.dart';
 import '../screens/communityPage.dart';
 import '../screens/difficultyPage.dart';
+import '../screens/homeScreen.dart';
+import '../screens/userProfile.dart';
 
 class NavBar extends StatelessWidget {
   NavBar({@required this.id});
@@ -51,13 +53,13 @@ class NavBar extends StatelessWidget {
                 icon: Icon(
                   Icons.camera_alt,
                   size: 35,
-                  color: this.id == CommunityPage.id
+                  color: this.id == ASLDetection.id
                       ? Colors.white
                       : Color(0xFFC3C2C3),
                 ),
                 onPressed: () {
                   Navigator.pushNamedAndRemoveUntil(
-                      context, CommunityPage.id, (route) => false);
+                      context, ASLDetection.id, (route) => false);
                 }),
           ),
           Padding(

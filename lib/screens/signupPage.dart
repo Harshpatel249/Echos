@@ -142,7 +142,7 @@ class SignupPageState extends State<SignupPage> {
                     child: CircleAvatar(
                       radius: 50,
                       backgroundImage: AssetImage(
-                        'images/ECHOS2.png',
+                        'assets/images/ECHOS2.png',
                       ),
                     ),
                   ),

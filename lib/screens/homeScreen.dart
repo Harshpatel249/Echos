@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import '../rewidgets/navBar.dart';
 import 'loginPage.dart';
 
@@ -50,10 +51,10 @@ class HomeScreen extends StatelessWidget {
                       child: Container(
                         height: 200,
                         width: 200,
-                        child: Card(// with Material
-                          child:
-                          Image.asset(
-                            'images/Tutorial.png',
+                        child: Card(
+                          // with Material
+                          child: Image.asset(
+                            'assets/images/Tutorial.png',
                           ),
                           elevation: 18.0,
                           clipBehavior: Clip.antiAlias,
@@ -61,7 +62,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    onTap: (){
+                    onTap: () {
                       Navigator.pushNamed(context, LoginPage.id);
                     },
                   ),
@@ -80,10 +81,10 @@ class HomeScreen extends StatelessWidget {
                       child: Container(
                         height: 200,
                         width: 200,
-                        child: Card(// with Material
-                          child:
-                          Image.asset(
-                            'images/LogoEchoes.png',
+                        child: Card(
+                          // with Material
+                          child: Image.asset(
+                            'assets/images/LogoEchoes.png',
                           ),
                           elevation: 18.0,
                           clipBehavior: Clip.antiAlias,
@@ -91,7 +92,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    onTap: (){},
+                    onTap: () {},
                   ),
                 ],
               ),

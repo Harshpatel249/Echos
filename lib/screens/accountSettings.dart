@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sign_language_tutor/rewidgets/navBar.dart';
+
 import '../screens/changePassword.dart';
-import '../services/personalInformation.dart';
 import '../screens/userProfile.dart';
+import '../services/personalInformation.dart';
 
 class AccountSettings extends StatelessWidget {
   @override
@@ -42,7 +43,9 @@ class AccountSettings extends StatelessWidget {
           ),
           centerTitle: true,
         ),
-        bottomNavigationBar: NavBar(id: UserProfile.id,),
+        bottomNavigationBar: NavBar(
+          id: UserProfile.id,
+        ),
         body: Column(
           children: <Widget>[
             SizedBox(
@@ -55,7 +58,7 @@ class AccountSettings extends StatelessWidget {
                 child: CircleAvatar(
                   radius: 50,
                   backgroundImage: AssetImage(
-                    'images/ECHOS2.png',
+                    'assets/images/ECHOS2.png',
                   ),
                 ),
               ),
@@ -88,13 +91,13 @@ class AccountSettings extends StatelessWidget {
               height: 20,
             ),
             LongCard2(
-                colour: Color(0xFF075FF3),
-                title: 'Reset All Progress',
-                iconn: Icons.restore,
-                press: () {
-                  showDialog<void>(
-                      context: context, builder: (context) => dialog);
-                },
+              colour: Color(0xFF075FF3),
+              title: 'Reset All Progress',
+              iconn: Icons.restore,
+              press: () {
+                showDialog<void>(
+                    context: context, builder: (context) => dialog);
+              },
             ),
           ],
         ),
