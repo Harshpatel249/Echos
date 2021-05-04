@@ -15,32 +15,31 @@ class ReadingElement extends StatelessWidget {
         children: [
           Container(
             alignment: Alignment.bottomCenter,
-            color: Colors.red,
+            color: Color(0xFFF2F5F8),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.only(left: 8, bottom: 8.0),
+                  padding: const EdgeInsets.only(left: 8),
                   child: Text(
                     title,
                     textAlign: TextAlign.left,
                     style: TextStyle(
-                        fontSize: 100,
-                        backgroundColor: Colors.blue,
-                        color: Colors.green,
-                        decoration: TextDecoration.underline,
-                        decorationColor: Colors.yellow),
+                      fontSize: 75,
+                      decoration: TextDecoration.underline,
+                    ),
                   ),
                 ),
-                SizedBox(
-                  width: 150,
+                Spacer(
+                  flex: 1,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 50, bottom: 8),
+                  padding: const EdgeInsets.only(
+                      top: 20, bottom: 8, left: 8, right: 8),
                   child: Container(
                     // padding: EdgeInsets.only(top: 200),
-                    height: 250,
-                    width: 250,
+                    height: 200,
+                    width: 200,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage(imgSrc),
@@ -54,13 +53,13 @@ class ReadingElement extends StatelessWidget {
             ),
           ),
           Container(
-              color: Colors.pink,
+              color: Color(0xFFF2F5F8),
               alignment: Alignment.centerLeft,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   steps,
-                  style: TextStyle(fontSize: 25),
+                  style: TextStyle(fontSize: 20),
                 ),
               )),
           Divider(
