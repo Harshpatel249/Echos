@@ -4,6 +4,7 @@ import './questions.dart';
 import 'score_screen.dart';
 
 class QuizScreen extends StatefulWidget {
+  static String id = 'quiz_screen';
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -72,8 +73,13 @@ class _QuizScreenState extends State<QuizScreen> {
                   }).toList()
                 ],
               )
-            : ScorePage(numCorrect, questions.length,
-                (numCorrect * 100) / questions.length),
+            : Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => ScorePage(
+                        numCorrect,
+                        questions.length,
+                        (numCorrect * 100) / questions.length))),
       ),
     );
   }

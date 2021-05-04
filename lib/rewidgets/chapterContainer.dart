@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:expandable/expandable.dart';
-
 import 'package:sign_language_tutor/models/channel_model.dart';
 import 'package:sign_language_tutor/models/video_model.dart';
 import 'package:sign_language_tutor/screens/quiz/quiz_screen.dart';
@@ -121,12 +120,9 @@ class _ChapterContainerState extends State<ChapterContainer> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: GestureDetector(
-                    onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => ReadingMaterialScreen(),
-                      ),
-                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, ReadingMaterialScreen.id);
+                    },
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
@@ -143,12 +139,9 @@ class _ChapterContainerState extends State<ChapterContainer> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: GestureDetector(
-                    onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => QuizScreen(),
-                      ),
-                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, QuizScreen.id);
+                    },
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:sign_language_tutor/screens/reading_material/reading_element.dart';
 
 class ReadingMaterialScreen extends StatelessWidget {
+  static String id = 'reading_material';
   final elements = const [
     {
       'title': 'Aa',
