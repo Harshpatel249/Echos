@@ -23,9 +23,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  firebase_core: "^0.7.0"
-  firebase_auth: "^0.20.1"
-  cloud_firestore: "^0.16.0+1"
+  firebase_core: "^1.0.3"
+  firebase_auth: "^1.0.2"
+  cloud_firestore: "^1.0.4"
   uuid: 3.0.4
 
 
@@ -35,6 +35,10 @@ dependencies:
   like_button: ^2.0.2
   expandable: ^5.0.1
   font_awesome_flutter: ^9.0.0
+
+  http: ^0.13.1
+  youtube_player_flutter: ^8.0.0
+  syncfusion_flutter_gauges: ^18.2.44
 
 
 dev_dependencies:
@@ -57,6 +61,21 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - images/
+    - assets/images/first.jpg
+    - assets/images/second.jpg
+    - assets/images/third.jpg
+
+  fonts:
+  - family: Poppins
+    fonts:
+      - asset: assets/fonts/Poppins/Poppins-Bold.ttf
+        weight: 700
+      - asset: assets/fonts/Poppins/Poppins-ExtraBold.ttf
+        weight: 800
+      - asset: assets/fonts/Poppins/Poppins-Light.ttf
+        weight: 300
+      - asset: assets/fonts/Poppins/Poppins-Regular.ttf
+        weight: 400
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
