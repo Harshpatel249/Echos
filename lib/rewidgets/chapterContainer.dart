@@ -1,7 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:expandable/expandable.dart';
 
-class ChapterContainer extends StatelessWidget {
+import 'package:sign_language_tutor/models/channel_model.dart';
+import 'package:sign_language_tutor/models/video_model.dart';
+import 'package:sign_language_tutor/screens/quiz/quiz_screen.dart';
+import 'package:sign_language_tutor/screens/reading_material/reading_material_screen.dart';
+import 'package:sign_language_tutor/screens/video/build_video.dart';
+import 'package:sign_language_tutor/screens/video/video_screen.dart';
+import 'package:sign_language_tutor/services/api_service.dart';
+
+class ChapterContainer extends StatefulWidget {
+  @override
+  _ChapterContainerState createState() => _ChapterContainerState();
+}
+
+class _ChapterContainerState extends State<ChapterContainer> {
+  Channel _channel;
+  bool _isLoading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _initChannel();
+  }
+
+  _initChannel() async {
+    Channel channel = await APIService.instance
+        .fetchChannel(channelId: 'UCH6_JCK8U503LgaDRLFllAQ');
+    setState(() {
+      _channel = channel;
+    });
+  }
+
+  _createVideo() {
+    Video video = _channel.videos[0];
+    return BuildVideo(video);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -73,34 +108,25 @@ class ChapterContainer extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: GestureDetector(
-                    onTap: () {
-                      print('Clicked on video');
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        color: Colors.black45,
-                        border: Border.all(color: Colors.lightGreenAccent),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Text(
-                          'Video',
-                          style: TextStyle(
-                            color: Colors.lightGreenAccent,
+                  child: _channel != null
+                      ? _createVideo()
+                      : Center(
+                          child: CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                              Theme.of(context).primaryColor, // Red
+                            ),
                           ),
                         ),
-                      ),
-                    ),
-                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: GestureDetector(
-                    onTap: () {
-                      print('Clicked on Reading');
-                    },
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => ReadingMaterialScreen(),
+                      ),
+                    ),
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
@@ -117,9 +143,12 @@ class ChapterContainer extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: GestureDetector(
-                    onTap: () {
-                      print('Clicked on Quiz');
-                    },
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => QuizScreen(),
+                      ),
+                    ),
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),

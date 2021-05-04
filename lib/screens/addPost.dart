@@ -1,7 +1,49 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sign_language_tutor/screens/signupPage.dart';
+import 'package:uuid/uuid.dart';
 
-class AddPost extends StatelessWidget {
+class AddPost extends StatefulWidget {
+  @override
+  _AddPostState createState() => _AddPostState();
+}
+
+class _AddPostState extends State<AddPost> {
+  String _title;
+  String _postContent;
+  String postId = Uuid().v4();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+//---------------------Add post backend----------------------//
+  addPost() {
+    print('makePost is called');
+    print(SignupPage.currentUser.id);
+//    if (_formKey.currentState.validate()) {
+    //     _formKey.currentState.save();
+    //upload post
+    print(SignupPage.currentUser.id);
+    SignupPage.postsRef
+        .doc(SignupPage.currentUser.id)
+        .collection("userPosts")
+        .doc(postId)
+        .set({
+      "postId": postId,
+      "ownerId": SignupPage.currentUser.id,
+      "username": SignupPage.currentUser.username,
+      "title": _title,
+      "content": _postContent,
+      "timestamp": SignupPage.timestamp,
+      "likes": {},
+    });
+    // }
+  }
+
+//----------------------------------------------------------//
+  final titleController = TextEditingController();
+  bool titleEmpty = false;
+
+  final contentController = TextEditingController();
+  bool contentEmpty = false;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -40,6 +82,10 @@ class AddPost extends StatelessWidget {
                     style: TextStyle(fontSize: 16, color: Colors.white),
                   ),
                   TextField(
+                    controller: titleController,
+                    decoration: InputDecoration(
+                      errorText: titleEmpty ? 'Cannot be empty' : null,
+                    ),
                     textAlign: TextAlign.center,
                     maxLength: 50,
                     cursorColor: Colors.white,
@@ -56,6 +102,10 @@ class AddPost extends StatelessWidget {
                     style: TextStyle(fontSize: 16, color: Colors.white),
                   ),
                   TextField(
+                    controller: contentController,
+                    decoration: InputDecoration(
+                      errorText: contentEmpty ? 'Cannot be empty' : null,
+                    ),
                     textAlign: TextAlign.center,
                     maxLength: 300,
                     cursorColor: Colors.white,
@@ -73,7 +123,20 @@ class AddPost extends StatelessWidget {
                       style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
                     onPressed: () {
-                      //Add function
+                      setState(() {
+                        titleController.text.isEmpty
+                            ? titleEmpty = true
+                            : titleEmpty = false;
+                        contentController.text.isEmpty
+                            ? contentEmpty = true
+                            : contentEmpty = false;
+                      });
+                      if (!titleEmpty && !contentEmpty) {
+                        _title = titleController.text;
+                        _postContent = contentController.text;
+                        addPost();
+                        Navigator.pop(context);
+                      }
                     },
                     style: TextButton.styleFrom(
                       backgroundColor: Colors.cyan,
