@@ -96,12 +96,15 @@ class _QuizScreenState extends State<QuizScreen> {
         margin: EdgeInsets.only(top: 20, bottom: 20),
         child: ElevatedButton(
           style: ButtonStyle(
-              foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-              backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
-              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25.0),
-                      side: BorderSide(color: Color(0xFF707070), width: 1)))),
+            foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+            backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(25.0),
+                side: BorderSide(color: Color(0xFF707070), width: 1),
+              ),
+            ),
+          ),
           child: Text(
             optionText,
             style: TextStyle(

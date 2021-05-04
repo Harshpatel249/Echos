@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sign_language_tutor/screens/chapterList.dart';
 import 'package:sign_language_tutor/screens/difficultyPage.dart';
+import 'package:sign_language_tutor/screens/testScreen.dart';
 
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'package:sign_language_tutor/main.dart';
@@ -43,10 +44,11 @@ class _ScorePageState extends State<ScorePage> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          height: 120,
-          width: 120,
+          height: 350,
+          width: 350,
           child: SfRadialGauge(axes: <RadialAxis>[
             RadialAxis(
                 minimum: 0,
@@ -72,30 +74,53 @@ class _ScorePageState extends State<ScorePage> {
                 ],
                 annotations: <GaugeAnnotation>[
                   GaugeAnnotation(
-                      positionFactor: 0,
-                      widget: Text(marksPercentage.toStringAsFixed(0) + '%'))
+                    positionFactor: 0,
+                    widget: Text(
+                      marksPercentage.toStringAsFixed(0) + '%',
+                      style: TextStyle(
+                          fontSize: 50,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w400),
+                    ),
+                  )
                 ])
           ]),
         ),
         Center(
           child: Text('Score: $marks/$totalQuestions',
               style: TextStyle(
+                fontSize: 30,
                 fontWeight: FontWeight.bold,
               )),
         ),
         Center(
-          child: TextButton(
-            style: ButtonStyle(
-              foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-              backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+          child: Padding(
+            padding: const EdgeInsets.only(top: 40.0, left: 16.0, right: 16.0),
+            child: Container(
+              width: double.infinity,
+              child: TextButton(
+                style: ButtonStyle(
+                  foregroundColor:
+                      MaterialStateProperty.all<Color>(Colors.white),
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.blue),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25.0),
+                      side: BorderSide(color: Color(0xFF707070), width: 1),
+                    ),
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text('Finish',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25,
+                    )),
+              ),
             ),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: Text('GO again Chapter list',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                )),
           ),
         ),
       ],
