@@ -123,14 +123,6 @@ class _ScorePageState extends State<ScorePage> {
                     )),
               ),
             ),
-            onPressed: () {
-              Navigator.pushNamedAndRemoveUntil(
-                  context, DifficultyPage.id, (route) => false);
-            },
-            child: Text('GO again Chapter list',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                )),
           ),
         ),
       ],
