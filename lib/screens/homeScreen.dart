@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'aslDetection.dart';
 import '../rewidgets/navBar.dart';
 import 'loginPage.dart';
 
@@ -93,7 +93,9 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, ASLDetection.id);
+                },
               ),
             ),
           ],
