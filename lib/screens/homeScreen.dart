@@ -30,8 +30,9 @@ class HomeScreen extends StatelessWidget {
         body: Column(
           children: [
             Expanded(
-              child: ListView(
-                scrollDirection: Axis.vertical,
+              child: Column(
+                //scrollDirection: Axis.vertical,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   SizedBox(
                     height: 30,
