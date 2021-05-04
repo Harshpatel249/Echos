@@ -26,7 +26,7 @@ class _ChapterContainerState extends State<ChapterContainer> {
 
   _initChannel() async {
     Channel channel = await APIService.instance
-        .fetchChannel(channelId: 'UCH6_JCK8U503LgaDRLFllAQ');
+        .fetchChannel(channelId: 'UC1wUo-29zS7m_Jp-U_xYcFQ');
     setState(() {
       _channel = channel;
     });
@@ -108,15 +108,22 @@ class _ChapterContainerState extends State<ChapterContainer> {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: _channel != null
-                      ? _createVideo()
-                      : Center(
-                          child: CircularProgressIndicator(
-                            valueColor: AlwaysStoppedAnimation<Color>(
-                              Theme.of(context).primaryColor, // Red
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      color: Colors.black45,
+                      border: Border.all(color: Colors.white),
+                    ),
+                    child: _channel != null
+                        ? _createVideo()
+                        : Center(
+                            child: CircularProgressIndicator(
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                Theme.of(context).primaryColor, // Red
+                              ),
                             ),
                           ),
-                        ),
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -135,7 +142,10 @@ class _ChapterContainerState extends State<ChapterContainer> {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(10),
-                        child: Text('Reading Material'),
+                        child: Text(
+                          'Reading Material',
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
                     ),
                   ),
@@ -157,7 +167,10 @@ class _ChapterContainerState extends State<ChapterContainer> {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(10),
-                        child: Text('Quiz'),
+                        child: Text(
+                          'Quiz',
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
                     ),
                   ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
+import '../../rewidgets/navBar.dart';
 import 'package:sign_language_tutor/screens/reading_material/reading_element.dart';
+import '../difficultyPage.dart';
 
 class ReadingMaterialScreen extends StatelessWidget {
   final elements = const [
@@ -28,8 +29,13 @@ class ReadingMaterialScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: const Text('Reading Material Page'),
-          backgroundColor: Colors.blueAccent),
+        title: Text(
+          'Reading Material',
+          style: TextStyle(color: Colors.black),
+        ),
+        centerTitle: true,
+      ),
+      bottomNavigationBar: NavBar(id: DifficultyPage.id),
       body: ListView.builder(
         itemCount: elements.length,
         itemBuilder: (context, index) {

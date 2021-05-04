@@ -17,11 +17,12 @@ class BuildVideo extends StatelessWidget {
         ),
       ),
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
+        margin: EdgeInsets.symmetric(horizontal: 1.0, vertical: 1.0),
         padding: EdgeInsets.all(10.0),
         height: 140.0,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Colors.black45,
+          borderRadius: BorderRadius.circular(5),
           boxShadow: [
             BoxShadow(
               color: Colors.black12,
@@ -41,7 +42,7 @@ class BuildVideo extends StatelessWidget {
               child: Text(
                 video.title,
                 style: TextStyle(
-                  color: Colors.black,
+                  color: Colors.white,
                   fontSize: 18.0,
                 ),
               ),
