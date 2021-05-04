@@ -28,74 +28,72 @@ class HomeScreen extends StatelessWidget {
           id: HomeScreen.id,
         ),
         body: Column(
+          //scrollDirection: Axis.vertical,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            SizedBox(
+              height: 30,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                'Tutorials',
+                style: TextStyle(
+                  fontSize: 20,
+                ),
+              ),
+            ),
             Expanded(
-              child: Column(
-                //scrollDirection: Axis.vertical,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  SizedBox(
-                    height: 30,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      'Tutorials',
-                      style: TextStyle(
-                        fontSize: 20,
+              child: InkWell(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    height: 200,
+                    width: 200,
+                    child: Card(
+                      // with Material
+                      child: Image.asset(
+                        'assets/images/Tutorial.png',
                       ),
+                      elevation: 18.0,
+                      clipBehavior: Clip.antiAlias,
+                      color: Color(0xFFd3b4b3),
                     ),
                   ),
-                  InkWell(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        height: 200,
-                        width: 200,
-                        child: Card(
-                          // with Material
-                          child: Image.asset(
-                            'assets/images/Tutorial.png',
-                          ),
-                          elevation: 18.0,
-                          clipBehavior: Clip.antiAlias,
-                          color: Color(0xFFd3b4b3),
-                        ),
+                ),
+                onTap: () {
+                  Navigator.pushNamed(context, LoginPage.id);
+                },
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                'Translate',
+                style: TextStyle(
+                  fontSize: 20,
+                ),
+              ),
+            ),
+            Expanded(
+              child: InkWell(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    height: 200,
+                    width: 200,
+                    child: Card(
+                      // with Material
+                      child: Image.asset(
+                        'assets/images/LogoEchoes.png',
                       ),
-                    ),
-                    onTap: () {
-                      Navigator.pushNamed(context, LoginPage.id);
-                    },
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      'Translate',
-                      style: TextStyle(
-                        fontSize: 20,
-                      ),
+                      elevation: 18.0,
+                      clipBehavior: Clip.antiAlias,
+                      color: Color(0xFFf7f3e9),
                     ),
                   ),
-                  InkWell(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        height: 200,
-                        width: 200,
-                        child: Card(
-                          // with Material
-                          child: Image.asset(
-                            'assets/images/LogoEchoes.png',
-                          ),
-                          elevation: 18.0,
-                          clipBehavior: Clip.antiAlias,
-                          color: Color(0xFFf7f3e9),
-                        ),
-                      ),
-                    ),
-                    onTap: () {},
-                  ),
-                ],
+                ),
+                onTap: () {},
               ),
             ),
           ],
