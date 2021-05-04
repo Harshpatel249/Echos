@@ -2,7 +2,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sign_language_tutor/screens/difficultyPage.dart';
-
 import 'screens/aslDetection.dart';
 import 'screens/chapterList.dart';
 import 'screens/communityPage.dart';
@@ -13,6 +12,7 @@ import 'screens/signupPage.dart';
 import 'screens/testScreen.dart';
 import 'screens/userProfile.dart';
 import 'screens/viewPost.dart';
+import 'screens/reading_material/reading_material_screen.dart';
 import 'screens/quiz/quiz_screen.dart';
 
 void main() async {
@@ -63,6 +63,7 @@ class MyApp extends StatelessWidget {
         SignupPage.id: (context) => SignupPage(),
         UserProfile.id: (context) => UserProfile(),
         ASLDetection.id: (context) => ASLDetection(),
+        ReadingMaterialScreen.id: (context) => ReadingMaterialScreen(),
         QuizScreen.id: (context) => QuizScreen(),
       },
     );

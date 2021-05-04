@@ -4,6 +4,7 @@ import 'package:sign_language_tutor/screens/reading_material/reading_element.dar
 import '../difficultyPage.dart';
 
 class ReadingMaterialScreen extends StatelessWidget {
+  static String id = 'reading_material';
   final elements = const [
     {
       'title': 'Aa',

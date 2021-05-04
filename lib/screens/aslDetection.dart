@@ -7,6 +7,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
+import '../rewidgets/navBar.dart';
 
 class ASLDetection extends StatefulWidget {
   static String id = 'detection_page';
@@ -40,7 +41,7 @@ class _ASLDetectionState extends State<ASLDetection>
 
     //Subscribe to TFLite's Classify events
     TFLiteHelper.tfLiteResultsController.stream.listen(
-            (value) {
+        (value) {
           value.forEach((element) {
             _colorAnimController.animateTo(element.confidence,
                 curve: Curves.bounceIn, duration: Duration(milliseconds: 500));
@@ -67,10 +68,12 @@ class _ASLDetectionState extends State<ASLDetection>
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Home',
+          'Translator',
           style: TextStyle(color: Colors.black),
         ),
+        centerTitle: true,
       ),
+      bottomNavigationBar: NavBar(id: ASLDetection.id),
       body: FutureBuilder<void>(
         future: CameraHelper.initializeControllerFuture,
         builder: (context, snapshot) {
@@ -116,55 +119,55 @@ class _ASLDetectionState extends State<ASLDetection>
           color: Colors.white,
           child: outputs != null && outputs.isNotEmpty
               ? ListView.builder(
-              itemCount: outputs.length,
-              shrinkWrap: true,
-              padding: const EdgeInsets.all(20.0),
-              itemBuilder: (BuildContext context, int index) {
-                return Column(
-                  children: <Widget>[
-                    Text(
-                      outputs[index].label,
-                      style: TextStyle(
-                        color: _colorTween.value,
-                        fontSize: 20.0,
-                      ),
-                    ),
-                    AnimatedBuilder(
-                        animation: _colorAnimController,
-                        builder: (context, child) => LinearPercentIndicator(
-                          width: width * 0.88,
-                          lineHeight: 14.0,
-                          percent: outputs[index].confidence,
-                          progressColor: _colorTween.value,
-                        )),
-                    Text(
-                      "${(outputs[index].confidence * 100.0).toStringAsFixed(2)} %",
-                      style: TextStyle(
-                        color: _colorTween.value,
-                        fontSize: 16.0,
-                      ),
-                    ),
-                    Center(
-                      child: FlatButton(
-                        onPressed: () {
-                          speak("${outputs[index].label}");
-                        },
-                        child: Icon(
-                          Icons.play_arrow,
-                          size: 60,
-                          color: Color(0xff375079),
+                  itemCount: outputs.length,
+                  shrinkWrap: true,
+                  padding: const EdgeInsets.all(20.0),
+                  itemBuilder: (BuildContext context, int index) {
+                    return Column(
+                      children: <Widget>[
+                        Text(
+                          outputs[index].label,
+                          style: TextStyle(
+                            color: _colorTween.value,
+                            fontSize: 20.0,
+                          ),
                         ),
-                      ),
-                    ),
-                  ],
-                );
-              })
+                        AnimatedBuilder(
+                            animation: _colorAnimController,
+                            builder: (context, child) => LinearPercentIndicator(
+                                  width: width * 0.88,
+                                  lineHeight: 14.0,
+                                  percent: outputs[index].confidence,
+                                  progressColor: _colorTween.value,
+                                )),
+                        Text(
+                          "${(outputs[index].confidence * 100.0).toStringAsFixed(2)} %",
+                          style: TextStyle(
+                            color: _colorTween.value,
+                            fontSize: 16.0,
+                          ),
+                        ),
+                        Center(
+                          child: FlatButton(
+                            onPressed: () {
+                              speak("${outputs[index].label}");
+                            },
+                            child: Icon(
+                              Icons.play_arrow,
+                              size: 60,
+                              color: Color(0xff375079),
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
+                  })
               : Center(
-              child: Text("Waiting for model to detect..",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20.0,
-                  ))),
+                  child: Text("Waiting for model to detect..",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20.0,
+                      ))),
         ),
       ),
     );

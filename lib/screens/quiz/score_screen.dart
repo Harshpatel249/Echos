@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:sign_language_tutor/screens/chapterList.dart';
 import 'package:sign_language_tutor/screens/difficultyPage.dart';
 import 'package:sign_language_tutor/screens/testScreen.dart';
-
+import '../chapterList.dart';
+import '../difficultyPage.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'package:sign_language_tutor/main.dart';
 import 'dart:async';
 
 class ScorePage extends StatefulWidget {
+  static String id = 'score_screen';
   final int marks;
   final int totalQuestions;
   final double marksPercentage;
@@ -121,6 +123,14 @@ class _ScorePageState extends State<ScorePage> {
                     )),
               ),
             ),
+            onPressed: () {
+              Navigator.pushNamedAndRemoveUntil(
+                  context, DifficultyPage.id, (route) => false);
+            },
+            child: Text('GO again Chapter list',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                )),
           ),
         ),
       ],
