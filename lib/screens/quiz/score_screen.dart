@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sign_language_tutor/screens/chapterList.dart';
+import 'package:sign_language_tutor/screens/difficultyPage.dart';
 
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'package:sign_language_tutor/main.dart';
@@ -89,8 +90,7 @@ class _ScorePageState extends State<ScorePage> {
               backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
             ),
             onPressed: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => ChapterList()));
+              Navigator.pop(context);
             },
             child: Text('GO again Chapter list',
                 style: TextStyle(

@@ -153,12 +153,9 @@ class _ChapterContainerState extends State<ChapterContainer> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: GestureDetector(
-                    onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => QuizScreen(),
-                      ),
-                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, QuizScreen.id);
+                    },
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),

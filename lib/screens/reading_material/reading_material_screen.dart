@@ -35,7 +35,6 @@ class ReadingMaterialScreen extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      bottomNavigationBar: NavBar(id: DifficultyPage.id),
       body: ListView.builder(
         itemCount: elements.length,
         itemBuilder: (context, index) {

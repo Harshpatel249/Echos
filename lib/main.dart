@@ -13,6 +13,7 @@ import 'screens/signupPage.dart';
 import 'screens/testScreen.dart';
 import 'screens/userProfile.dart';
 import 'screens/viewPost.dart';
+import 'screens/quiz/quiz_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -62,6 +63,7 @@ class MyApp extends StatelessWidget {
         SignupPage.id: (context) => SignupPage(),
         UserProfile.id: (context) => UserProfile(),
         ASLDetection.id: (context) => ASLDetection(),
+        QuizScreen.id: (context) => QuizScreen(),
       },
     );
   }

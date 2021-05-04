@@ -21,7 +21,7 @@ class Question extends StatelessWidget {
 
       //margin to give required formatting.
       //This will force image of any dimensions to cover the same space on the screen rather than covering different space and ruining the design.
-      margin: EdgeInsets.only(left: 35, right: 35, top: 40, bottom: 40),
+      margin: EdgeInsets.only(left: 35, right: 35, top: 40, bottom: 60),
       child: ClipRRect(
         //image radius
         borderRadius: BorderRadius.circular(10.0),

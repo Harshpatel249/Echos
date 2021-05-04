@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-
+import '../difficultyPage.dart';
 import './questions.dart';
 import 'score_screen.dart';
+import '../../rewidgets/navBar.dart';
 
 class QuizScreen extends StatefulWidget {
+  static String id = "quiz_screen";
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -41,35 +43,42 @@ class _QuizScreenState extends State<QuizScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        backgroundColor: Color(0xFFF2F5F8),
+    return SafeArea(
+      child: Scaffold(
         appBar: AppBar(
-          title: Text('My first app'),
+          title: Text(
+            'Quiz',
+            style: TextStyle(color: Colors.black),
+          ),
+          centerTitle: true,
         ),
         body: _queInd < questions.length
-            ? Column(
+            ? ListView(
                 children: [
-                  Container(
-                    margin: EdgeInsets.only(left: 35),
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      'Q. Identify the sign',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w400, // light
-                        fontSize: 24,
+                  Column(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(left: 35),
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          'Q. Identify the sign',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w400, // light
+                            fontSize: 24,
+                          ),
+                        ),
                       ),
-                    ),
+                      Question(
+                        questions[_queInd]['imageSrc'],
+                      ),
+                      ...(questions[_queInd]['options'] as List<String>)
+                          .map((option) {
+                        return Builder(
+                          builder: (context) => optionButton(option, context),
+                        );
+                      }).toList()
+                    ],
                   ),
-                  Question(
-                    questions[_queInd]['imageSrc'],
-                  ),
-                  ...(questions[_queInd]['options'] as List<String>)
-                      .map((option) {
-                    return Builder(
-                      builder: (context) => optionButton(option, context),
-                    );
-                  }).toList()
                 ],
               )
             : ScorePage(numCorrect, questions.length,
@@ -84,7 +93,7 @@ class _QuizScreenState extends State<QuizScreen> {
     return Container(
         width: 321,
         height: 50,
-        margin: EdgeInsets.only(top: 40),
+        margin: EdgeInsets.only(top: 20, bottom: 20),
         child: ElevatedButton(
           style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
