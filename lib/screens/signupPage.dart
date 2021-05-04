@@ -1,18 +1,29 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:sign_language_tutor/models/userModel.dart';
 
 import 'loginPage.dart';
 
 class SignupPage extends StatefulWidget {
   static String id = 'signup_page';
+  static UserModel currentUser;
+  static DateTime timestamp = DateTime.now();
+  static final postsRef = FirebaseFirestore.instance.collection('posts');
+  // UserModel getUserModelInstance() {
+  //   return this.currentUser;
+  // }
   @override
-  _SignupPageState createState() => _SignupPageState();
+  SignupPageState createState() => SignupPageState();
 }
 
-class _SignupPageState extends State<SignupPage> {
+class SignupPageState extends State<SignupPage> {
   /////////////////////////////////////////////////////////////////////////////
   //          Sign up functions
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  final usersRef = FirebaseFirestore.instance.collection('users');
+
+  SignupPageState();
 
   checkAuthentication() async {
     _auth.authStateChanges().listen((user) {
@@ -28,6 +39,28 @@ class _SignupPageState extends State<SignupPage> {
     try {
       UserCredential user = await _auth.createUserWithEmailAndPassword(
           email: this.email, password: this.Password);
+      usersRef.doc(_auth.currentUser.uid).set({
+        // We want to make this created data accessible whithin out app regardless of whether users just signed or not
+        "id": _auth.currentUser.uid,
+        "name": fname,
+        "email": email,
+        "username": userName,
+        "password": Password,
+        "joining_date": SignupPage.timestamp,
+      });
+      print(
+          "--------------------------- inside the sign up page---------------------");
+      DocumentSnapshot doc = await usersRef.doc(_auth.currentUser.uid).get();
+      if (doc.exists) {
+        print('Document fetched');
+      } else {
+        print('Error in fetching doc');
+      }
+      // print(doc['joining_date'][0]);
+      SignupPage.currentUser = UserModel.fromDocument(doc);
+
+      print(SignupPage.currentUser.name);
+      //print(SignupPage.currentUser.timestamp);
       if (user != null) {
         await _auth.currentUser.updateProfile(displayName: fname);
       }
@@ -52,6 +85,10 @@ class _SignupPageState extends State<SignupPage> {
               ]);
         });
   }
+
+  // UserModel getUserModelInstance() {
+  //   return this.currentUser;
+  // }
 
   @override
   void initState() {
