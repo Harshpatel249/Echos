@@ -42,11 +42,14 @@ class LongCard extends StatelessWidget {
               SizedBox(
                 height: 20.0,
               ),
-              Text(
-                title,
-                style: TextStyle(
-                  fontSize: 30.0,
-                  color: Colors.white,
+              FittedBox(
+                fit: BoxFit.fitWidth,
+                child: Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: 25.0,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ],
