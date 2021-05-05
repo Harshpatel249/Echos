@@ -14,7 +14,7 @@ class CommunityPage extends StatelessWidget {
 
   buildPosts() {
     return StreamBuilder<QuerySnapshot>(
-      stream: postsRef.snapshots(),
+      stream: postsRef.orderBy('timestamp', descending: true).snapshots(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
           return circularProgress();

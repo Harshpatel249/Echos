@@ -52,7 +52,11 @@ class _ViewPostState extends State<ViewPost> {
 
   buildComments() {
     return StreamBuilder<QuerySnapshot>(
-      stream: commentsRef.doc(postId).collection('comments').snapshots(),
+      stream: commentsRef
+          .doc(postId)
+          .collection('comments')
+          .orderBy('timestamp', descending: true)
+          .snapshots(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
           print('snapshot empty############################');

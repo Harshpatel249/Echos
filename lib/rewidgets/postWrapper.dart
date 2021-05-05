@@ -114,10 +114,14 @@ class PostWrapper extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            PostWrapper.isViewPost ? commentOwner : username,
-            style: TextStyle(
-              fontSize: 12,
+          Padding(
+            padding: const EdgeInsets.only(left: 2.0),
+            child: Text(
+              PostWrapper.isViewPost ? commentOwner : username,
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
+              ),
             ),
           ),
           SizedBox(
@@ -143,7 +147,7 @@ class PostWrapper extends StatelessWidget {
                       : Text(
                           title,
                           style: TextStyle(
-                            fontSize: 24,
+                            fontSize: 22,
                             color: Colors.white,
                             fontWeight: FontWeight.w700,
                           ),
@@ -208,7 +212,26 @@ class PostWrapper extends StatelessWidget {
                     //         onTap: onLikeButtonTapped,
                     //         likeCount: 69,
                     //       ),
-
+                    Padding(
+                      padding: const EdgeInsets.only(top: 4.0, left: 4),
+                      child: Container(
+                        child: getLikeCount() > 1
+                            ? Text(
+                                "${getLikeCount()} likes",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              )
+                            : Text(
+                                "${getLikeCount()} like",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                      ),
+                    ),
                     Spacer(flex: 1),
                     Padding(
                       padding: const EdgeInsets.only(top: 4, right: 7),
@@ -252,21 +275,6 @@ class PostWrapper extends StatelessWidget {
                     ),
                   ],
                 ),
-          Row(
-            children: <Widget>[
-              Container(
-                child: PostWrapper.isViewPost
-                    ? Text(' ')
-                    : Text(
-                        "${getLikeCount()} likes",
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-              )
-            ],
-          )
         ],
       ),
     );
