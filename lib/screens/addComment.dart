@@ -1,6 +1,48 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:sign_language_tutor/screens/loginPage.dart';
 
-class AddComment extends StatelessWidget {
+final commentsRef = FirebaseFirestore.instance.collection('comments');
+
+class AddComment extends StatefulWidget {
+  String postId;
+  String currentUserId;
+
+  AddComment({
+    this.postId,
+    this.currentUserId,
+  });
+  @override
+  _AddCommentState createState() => _AddCommentState(
+        postId: this.postId,
+        currentUserId: this.currentUserId,
+      );
+}
+
+class _AddCommentState extends State<AddComment> {
+  String _comment;
+  final commentController = TextEditingController();
+  bool commentEmpty = false;
+
+  String postId;
+  String username = LoginPage.currentUser.username;
+  String currentUserId;
+
+  _AddCommentState({
+    this.postId,
+    this.currentUserId,
+  });
+
+  addComment() {
+    commentsRef.doc(postId).collection('comments').add({
+      "commentOwner": username,
+      "comment": _comment,
+      "timestamp": DateTime.now(),
+      "userId": currentUserId,
+    });
+    commentController.clear();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -8,7 +50,9 @@ class AddComment extends StatelessWidget {
       child: ListView(
         children: [
           Container(
-            color: Color(0xFF757575),
+            decoration: BoxDecoration(
+              color: Color(0xFF757575),
+            ),
             child: Container(
               padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
@@ -33,6 +77,10 @@ class AddComment extends StatelessWidget {
                     ),
                   ),
                   TextField(
+                    controller: commentController,
+                    decoration: InputDecoration(
+                      errorText: commentEmpty ? 'Cannot be empty' : null,
+                    ),
                     textAlign: TextAlign.center,
                     autofocus: true,
                     maxLength: 300,
@@ -51,6 +99,16 @@ class AddComment extends StatelessWidget {
                       style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
                     onPressed: () {
+                      setState(() {
+                        commentController.text.isEmpty
+                            ? commentEmpty = true
+                            : commentEmpty = false;
+                        if (!commentEmpty) {
+                          _comment = commentController.text;
+                          addComment();
+                          Navigator.pop(context);
+                        }
+                      });
                       //Add function
                     },
                     style: TextButton.styleFrom(

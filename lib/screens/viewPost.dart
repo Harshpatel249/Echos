@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:sign_language_tutor/rewidgets/postWrapper.dart';
 import 'package:sign_language_tutor/rewidgets/progress.dart';
@@ -6,7 +7,6 @@ import 'package:sign_language_tutor/screens/communityPage.dart';
 
 import '../rewidgets/navBar.dart';
 import '../rewidgets/postWrapper.dart';
-import 'addCommentidgets/navBar.dart';
 
 class ViewPost extends StatefulWidget {
   static String id = 'view_post';
