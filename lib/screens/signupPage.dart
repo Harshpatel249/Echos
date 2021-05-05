@@ -13,8 +13,11 @@ class SignupPage extends StatefulWidget {
   // UserModel getUserModelInstance() {
   //   return this.currentUser;
   // }
+  String routeTo;
+  SignupPage({this.routeTo});
+
   @override
-  SignupPageState createState() => SignupPageState();
+  SignupPageState createState() => SignupPageState(routeTo: this.routeTo);
 }
 
 class SignupPageState extends State<SignupPage> {
@@ -22,14 +25,18 @@ class SignupPageState extends State<SignupPage> {
   //          Sign up functions
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final usersRef = FirebaseFirestore.instance.collection('users');
-
-  SignupPageState();
+  String routeTo;
+  SignupPageState({this.routeTo});
 
   checkAuthentication() async {
     _auth.authStateChanges().listen((user) {
       if (user != null) {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => LoginPage()));
+            context,
+            MaterialPageRoute(
+                builder: (context) => LoginPage(
+                      routeTo: this.routeTo,
+                    )));
       }
     });
   }
@@ -48,22 +55,22 @@ class SignupPageState extends State<SignupPage> {
         "password": Password,
         "joining_date": SignupPage.timestamp,
       });
-      print(
-          "--------------------------- inside the sign up page---------------------");
-      DocumentSnapshot doc = await usersRef.doc(_auth.currentUser.uid).get();
-      if (doc.exists) {
-        print('Document fetched');
-      } else {
-        print('Error in fetching doc');
-      }
-      // print(doc['joining_date'][0]);
-      SignupPage.currentUser = UserModel.fromDocument(doc);
-
-      print(SignupPage.currentUser.name);
-      //print(SignupPage.currentUser.timestamp);
-      if (user != null) {
-        await _auth.currentUser.updateProfile(displayName: fname);
-      }
+      // print(
+      //     "--------------------------- inside the sign up page---------------------");
+      // DocumentSnapshot doc = await usersRef.doc(_auth.currentUser.uid).get();
+      // if (doc.exists) {
+      //   print('Document fetched');
+      // } else {
+      //   print('Error in fetching doc');
+      // }
+      // // print(doc['joining_date'][0]);
+      // SignupPage.currentUser = UserModel.fromDocument(doc);
+      //
+      // print(SignupPage.currentUser.name);
+      // //print(SignupPage.currentUser.timestamp);
+      // if (user != null) {
+      //   await _auth.currentUser.updateProfile(displayName: fname);
+      // }
     } catch (e) {
       showError(e.errormessage);
     }

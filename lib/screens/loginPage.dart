@@ -1,16 +1,24 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:sign_language_tutor/models/userModel.dart';
 
 import 'difficultyPage.dart';
 import 'signupPage.dart';
 
 class LoginPage extends StatefulWidget {
+  LoginPage({@required this.routeTo});
+  String routeTo;
   static String id = 'login_page';
+  static UserModel currentUser;
+  static final postsRef = FirebaseFirestore.instance.collection('posts');
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _LoginPageState createState() => _LoginPageState(routeTo: this.routeTo);
 }
 
 class _LoginPageState extends State<LoginPage> {
+  _LoginPageState({this.routeTo});
+  String routeTo;
   @override
   initState() {
     super.initState();
@@ -22,16 +30,29 @@ class _LoginPageState extends State<LoginPage> {
   /////////////         Login Methods                      //////
   ///////////////////////////////////////////////////////////////////////
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  final usersRef = FirebaseFirestore.instance.collection('users');
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   User user;
+
   checkAuthentication() async {
-    _auth.authStateChanges().listen((user) {
+    _auth.authStateChanges().listen((user) async {
       if (user != null) {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => DifficultyPage(),
-            ));
+        //DocumentSnapshot doc = await usersRef.doc(_auth.currentUser.uid).get();
+        // if (doc.exists) {
+        //   print('-------------------Login Page-------------');
+        //   print('Document Fetched in Login Page ');
+        //   LoginPage.currentUser = UserModel.fromDocument(doc);
+        //   print('---------------instance of the login page -------------');
+        //   print(LoginPage.currentUser.id);
+        //
+        //   print('login successful');
+        //   print('redirecting user to difficultyPage');
+        //   // await _auth.currentUser
+        //   //     .updateProfile(displayName: LoginPage.currentUser.name);
+        //
+        // }
+        Navigator.pushNamedAndRemoveUntil(
+            context, this.routeTo, (route) => false);
       }
     });
   }
@@ -41,7 +62,24 @@ class _LoginPageState extends State<LoginPage> {
     try {
       await _auth.signInWithEmailAndPassword(
           email: this.email, password: this.Password);
-      print('log in successful');
+
+      print(
+          "--------------------------- inside the Login up page---------------------");
+      // DocumentSnapshot doc = await usersRef.doc(_auth.currentUser.uid).get();
+      // if (doc.exists) {
+      //   print('Document fetched');
+      // } else {
+      //   print('Error in fetching doc');
+      // }
+      // // print(doc['joining_date'][0]);
+      // LoginPage.currentUser = UserModel.fromDocument(doc);
+      //
+      // print(LoginPage.currentUser.name);
+      // //print(SignupPage.currentUser.timestamp);
+      if (user != null) {
+        // await _auth.currentUser
+        //     .updateProfile(displayName: LoginPage.currentUser.name);
+      }
     } catch (e) {
       print('shit went sideways');
       showError(e.errormessage);

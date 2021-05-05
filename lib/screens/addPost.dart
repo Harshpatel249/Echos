@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sign_language_tutor/screens/signupPage.dart';
+import 'package:sign_language_tutor/rewidgets/navBar.dart';
 import 'package:uuid/uuid.dart';
 
 class AddPost extends StatefulWidget {
@@ -16,22 +16,17 @@ class _AddPostState extends State<AddPost> {
 //---------------------Add post backend----------------------//
   addPost() {
     print('makePost is called');
-    print(SignupPage.currentUser.id);
+    print(NavBar.currentUser.id);
 //    if (_formKey.currentState.validate()) {
     //     _formKey.currentState.save();
     //upload post
-    print(SignupPage.currentUser.id);
-    SignupPage.postsRef
-        .doc(SignupPage.currentUser.id)
-        .collection("userPosts")
-        .doc(postId)
-        .set({
+    NavBar.postsRef.doc(postId).set({
       "postId": postId,
-      "ownerId": SignupPage.currentUser.id,
-      "username": SignupPage.currentUser.username,
+      "ownerId": NavBar.currentUser.id,
+      "username": NavBar.currentUser.username,
       "title": _title,
       "content": _postContent,
-      "timestamp": SignupPage.timestamp,
+      "timestamp": DateTime.now(),
       "likes": {},
     });
     // }
