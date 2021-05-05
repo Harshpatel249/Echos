@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sign_language_tutor/models/userModel.dart';
-
+import '../rewidgets/progress.dart';
 import 'difficultyPage.dart';
 import 'signupPage.dart';
 
@@ -40,16 +40,14 @@ class _LoginPageState extends State<LoginPage> {
           LoginPage.currentUser = UserModel.fromDocument(doc);
           print('---------------instance of the login page -------------');
           print(LoginPage.currentUser.id);
+
+          print('login successful');
+          print('redirecting user to difficultyPage');
+          // await _auth.currentUser
+          //     .updateProfile(displayName: LoginPage.currentUser.name);
+          Navigator.pushNamedAndRemoveUntil(
+              context, DifficultyPage.id, (route) => false);
         }
-        print('login successful');
-        print('redirecting user to difficultyPage');
-        // await _auth.currentUser
-        //     .updateProfile(displayName: LoginPage.currentUser.name);
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => DifficultyPage(),
-            ));
       }
     });
   }
