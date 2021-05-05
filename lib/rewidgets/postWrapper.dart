@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:sign_language_tutor/screens/loginPage.dart';
+import 'package:sign_language_tutor/rewidgets/navBar.dart';
 import 'package:sign_language_tutor/screens/viewPost.dart';
 
 final postsRef = FirebaseFirestore.instance.collection('posts');
@@ -81,17 +81,17 @@ class PostWrapper extends StatelessWidget {
 
   handleLikePost() {
     this.likeCount = this.getLikeCount();
-    bool _isLiked = likes[LoginPage.currentUser.id] == true;
+    bool _isLiked = likes[NavBar.currentUser.id] == true;
     if (_isLiked) {
-      postsRef.doc(postId).update({'likes.${LoginPage.currentUser.id}': false});
+      postsRef.doc(postId).update({'likes.${NavBar.currentUser.id}': false});
       likeCount -= 1;
       isLiked = false;
-      likes[LoginPage.currentUser.id] = false;
+      likes[NavBar.currentUser.id] = false;
     } else if (!_isLiked) {
-      postsRef.doc(postId).update({'likes.${LoginPage.currentUser.id}': true});
+      postsRef.doc(postId).update({'likes.${NavBar.currentUser.id}': true});
       likeCount += 1;
       isLiked = true;
-      likes[LoginPage.currentUser.id] = true;
+      likes[NavBar.currentUser.id] = true;
     }
   }
 
@@ -101,11 +101,11 @@ class PostWrapper extends StatelessWidget {
         '-------------------inside the  build of postWrapper----------------------- ');
     print("$commentOwner + : $comment");
     // isViewPost = false;
-    print(LoginPage.currentUser.id);
+    print(NavBar.currentUser.id);
     //print(likes[LoginPage.currentUser.id]);
     if (!isViewPost) {
       print('not a viewpost');
-      isLiked = (likes[LoginPage.currentUser.id] == true);
+      isLiked = (likes[NavBar.currentUser.id] == true);
     }
     // isLiked = (likes[LoginPage.currentUser.id] == true);
     // print("$title + $content + $username");

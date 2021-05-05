@@ -48,22 +48,22 @@ class SignupPageState extends State<SignupPage> {
         "password": Password,
         "joining_date": SignupPage.timestamp,
       });
-      print(
-          "--------------------------- inside the sign up page---------------------");
-      DocumentSnapshot doc = await usersRef.doc(_auth.currentUser.uid).get();
-      if (doc.exists) {
-        print('Document fetched');
-      } else {
-        print('Error in fetching doc');
-      }
-      // print(doc['joining_date'][0]);
-      SignupPage.currentUser = UserModel.fromDocument(doc);
-
-      print(SignupPage.currentUser.name);
-      //print(SignupPage.currentUser.timestamp);
-      if (user != null) {
-        await _auth.currentUser.updateProfile(displayName: fname);
-      }
+      // print(
+      //     "--------------------------- inside the sign up page---------------------");
+      // DocumentSnapshot doc = await usersRef.doc(_auth.currentUser.uid).get();
+      // if (doc.exists) {
+      //   print('Document fetched');
+      // } else {
+      //   print('Error in fetching doc');
+      // }
+      // // print(doc['joining_date'][0]);
+      // SignupPage.currentUser = UserModel.fromDocument(doc);
+      //
+      // print(SignupPage.currentUser.name);
+      // //print(SignupPage.currentUser.timestamp);
+      // if (user != null) {
+      //   await _auth.currentUser.updateProfile(displayName: fname);
+      // }
     } catch (e) {
       showError(e.errormessage);
     }

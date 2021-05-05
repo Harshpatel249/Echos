@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:sign_language_tutor/screens/loginPage.dart';
+import 'package:sign_language_tutor/rewidgets/navBar.dart';
 
 final commentsRef = FirebaseFirestore.instance.collection('comments');
 
@@ -25,7 +25,7 @@ class _AddCommentState extends State<AddComment> {
   bool commentEmpty = false;
 
   String postId;
-  String username = LoginPage.currentUser.username;
+  String username = NavBar.currentUser.username;
   String currentUserId;
 
   _AddCommentState({

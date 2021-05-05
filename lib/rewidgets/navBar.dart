@@ -1,20 +1,21 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:sign_language_tutor/models/userModel.dart';
+import 'package:sign_language_tutor/screens/userProfile.dart';
 
 import '../screens/aslDetection.dart';
 import '../screens/communityPage.dart';
 import '../screens/difficultyPage.dart';
 import '../screens/homeScreen.dart';
-import '../screens/userProfile.dart';
 import '../screens/loginPage.dart';
-import 'package:sign_language_tutor/models/userModel.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class NavBar extends StatefulWidget {
   NavBar({@required this.id});
   String id;
   static UserModel currentUser;
+  static final postsRef = FirebaseFirestore.instance.collection('posts');
   @override
   _NavBarState createState() => _NavBarState(id: this.id);
 }
