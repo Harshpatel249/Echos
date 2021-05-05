@@ -110,7 +110,7 @@ class PostWrapper extends StatelessWidget {
     // isLiked = (likes[LoginPage.currentUser.id] == true);
     // print("$title + $content + $username");
     return Padding(
-      padding: EdgeInsets.all(10.0),
+      padding: EdgeInsets.all(8.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -135,22 +135,32 @@ class PostWrapper extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Text(
-                    PostWrapper.isViewPost ? ' ' : title,
-                    style: TextStyle(
-                      fontSize: 24,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                    width: 150,
-                    child: Divider(
-                      thickness: 1,
-                      color: Colors.white,
-                    ),
-                  ),
+                  PostWrapper.isViewPost
+                      ? SizedBox(
+                          height: 0,
+                          width: 0,
+                        )
+                      : Text(
+                          title,
+                          style: TextStyle(
+                            fontSize: 24,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                  PostWrapper.isViewPost
+                      ? SizedBox(
+                          height: 0,
+                          width: 0,
+                        )
+                      : SizedBox(
+                          height: 10,
+                          width: 150,
+                          child: Divider(
+                            thickness: 1,
+                            color: Colors.white,
+                          ),
+                        ),
                   Text(
                     PostWrapper.isViewPost ? comment : content,
                     style: TextStyle(
@@ -162,78 +172,86 @@ class PostWrapper extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
-            height: 3,
-          ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                width: 5,
-                height: 0,
-              ),
-              GestureDetector(
-                onTap: handleLikePost,
-                child: PostWrapper.isViewPost
-                    ? Text(' ')
-                    : Icon(
-                        isLiked ? Icons.favorite : Icons.favorite_border,
-                        size: 28.0,
-                        color: isLiked ? Colors.red : Colors.blueGrey,
-                      ),
-              ),
-              // isComment
-              //     ? Text('')
-              //     : LikeButton(
-              //         onTap: onLikeButtonTapped,
-              //         likeCount: 69,
-              //       ),
-              SizedBox(
-                width: 100,
-              ),
-              Spacer(flex: 1),
-              Padding(
-                padding: const EdgeInsets.only(top: 4, right: 7),
-                child: PostWrapper.isViewPost
-                    ? Text(' ')
-                    : GestureDetector(
-                        onTap: () {
-                          PostWrapper.isViewPost = true;
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ViewPost(
-                                      postId: postId,
-                                      currentUserId: ownerId,
-                                      username: username,
-                                      title: title,
-                                      content: content)));
-                        },
-                        child: Text(
-                          'Comments',
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ),
-                // child: isViewPost
-                //     ? null
-                //     : GestureDetector(
-                //         onTap: () {
-                //           Navigator.pushNamed(context, ViewPost.id);
-                //         },
-                //         child: Text(
-                //           'Comments',
-                //           style: TextStyle(
-                //             fontSize: 14,
-                //             fontWeight: FontWeight.w700,
-                //           ),
-                //         ),
-                //       ),
-              ),
-            ],
-          ),
+          PostWrapper.isViewPost
+              ? SizedBox(
+                  height: 0,
+                  width: 0,
+                )
+              : SizedBox(
+                  height: 3,
+                ),
+          PostWrapper.isViewPost
+              ? SizedBox(
+                  height: 0,
+                  width: 0,
+                )
+              : Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      width: 5,
+                      height: 0,
+                    ),
+                    GestureDetector(
+                      onTap: handleLikePost,
+                      child: PostWrapper.isViewPost
+                          ? Text(' ')
+                          : Icon(
+                              isLiked ? Icons.favorite : Icons.favorite_border,
+                              size: 28.0,
+                              color: isLiked ? Colors.red : Colors.blueGrey,
+                            ),
+                    ),
+                    // isComment
+                    //     ? Text('')
+                    //     : LikeButton(
+                    //         onTap: onLikeButtonTapped,
+                    //         likeCount: 69,
+                    //       ),
+
+                    Spacer(flex: 1),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 4, right: 7),
+                      child: PostWrapper.isViewPost
+                          ? Text(' ')
+                          : GestureDetector(
+                              onTap: () {
+                                PostWrapper.isViewPost = true;
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => ViewPost(
+                                            postId: postId,
+                                            currentUserId: ownerId,
+                                            username: username,
+                                            title: title,
+                                            content: content)));
+                              },
+                              child: Text(
+                                'Comments',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ),
+                      // child: isViewPost
+                      //     ? null
+                      //     : GestureDetector(
+                      //         onTap: () {
+                      //           Navigator.pushNamed(context, ViewPost.id);
+                      //         },
+                      //         child: Text(
+                      //           'Comments',
+                      //           style: TextStyle(
+                      //             fontSize: 14,
+                      //             fontWeight: FontWeight.w700,
+                      //           ),
+                      //         ),
+                      //       ),
+                    ),
+                  ],
+                ),
           Row(
             children: <Widget>[
               Container(

@@ -70,23 +70,10 @@ class _ViewPostState extends State<ViewPost> {
     );
   }
 
-  // final PostWrapper p = PostWrapper(
-  //     'Laura Hugh',
-  //     'Lorem lodum',
-  //     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-  //     true,
-  //     true);
-  // final PostWrapper p1 = PostWrapper(
-  //     'Laura Hugh',
-  //     'Lorem lodum',
-  //     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-  //     true,
-  //     false);
-
   @override
   Widget build(BuildContext context) {
-    print(
-        '##################$title + $content + $username############# in the build of viewpost');
+    // print(
+    //     '##################$title + $content + $username############# in the build of viewpost');
     return SafeArea(
       child: Container(
         decoration: BoxDecoration(
@@ -139,60 +126,70 @@ class _ViewPostState extends State<ViewPost> {
               SizedBox(
                 height: 5,
               ),
-              Material(
-                borderRadius: BorderRadius.circular(6.0),
-                elevation: 5.0,
-                color: Color(0xFF3B97FE),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    vertical: 10,
-                    horizontal: 20,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Text(
-                        title,
-                        style: TextStyle(
-                          fontSize: 24,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w700,
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Material(
+                  borderRadius: BorderRadius.circular(6.0),
+                  elevation: 5.0,
+                  color: Color(0xFF3B97FE),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      vertical: 10,
+                      horizontal: 20,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Text(
+                          title,
+                          style: TextStyle(
+                            fontSize: 24,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                        width: 150,
-                        child: Divider(
-                          thickness: 1,
-                          color: Colors.white,
+                        SizedBox(
+                          height: 10,
+                          width: 150,
+                          child: Divider(
+                            thickness: 1,
+                            color: Colors.white,
+                          ),
                         ),
-                      ),
-                      Text(
-                        content,
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.black,
+                        Text(
+                          content,
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
               SizedBox(
                 height: 10,
               ),
-
-              // p1,
-              // Padding(
-              //   padding: const EdgeInsets.only(left: 10),
-              //   child: Text(
-              //     'Comments',
-              //     textAlign: TextAlign.start,
-              //     style: TextStyle(
-              //       fontSize: 16,
-              //     ),
-              //   ),
-              // ),
+              Padding(
+                padding: const EdgeInsets.only(left: 8),
+                child: Text(
+                  'Comments',
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Divider(
+                  height: 4,
+                  thickness: 2,
+                  color: Colors.black,
+                ),
+              ),
               Expanded(
                 child: buildComments(),
               ),

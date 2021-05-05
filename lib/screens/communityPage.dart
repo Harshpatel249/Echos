@@ -62,12 +62,6 @@ class CommunityPage extends StatelessWidget {
         // FloatingActionButtonLocation.centerDocked,
         body: Column(
           children: [
-            SizedBox(
-              height: 10,
-            ),
-            SizedBox(
-              height: 5,
-            ),
             Expanded(
               child: buildPosts(),
               // child: ListView(
@@ -82,37 +76,3 @@ class CommunityPage extends StatelessWidget {
     );
   }
 }
-
-// class Post extends StatelessWidget {
-//   final String postId;
-//   final String ownerId;
-//   final String username;
-//   final String title;
-//   final String content;
-//   final dynamic likes;
-//
-//   Post({
-//     this.postId,
-//     this.ownerId,
-//     this.title,
-//     this.username,
-//     this.content,
-//     this.likes,
-//   });
-//   factory Post.fromDocument(DocumentSnapshot doc) {
-//     return Post(
-//       postId: doc['postId'],
-//       ownerId: doc['ownerId'],
-//       username: doc['username'],
-//       title: doc['title'],
-//       content: doc['content'],
-//       likes: doc['likes'],
-//     );
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     // TODO: implement build
-//     return Text('Post');
-//   }
-// }

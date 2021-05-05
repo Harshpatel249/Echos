@@ -140,7 +140,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: CircleAvatar(
                       radius: 50,
                       backgroundImage: AssetImage(
-                        'images/ECHOS2.png',
+                        'assets/images/ECHOS2.png',
                       ),
                     ),
                   ),
