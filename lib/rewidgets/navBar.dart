@@ -103,7 +103,12 @@ class _NavBarState extends State<NavBar> {
                   loggedIn
                       ? Navigator.pushNamedAndRemoveUntil(
                           context, DifficultyPage.id, (route) => false)
-                      : Navigator.pushNamed(context, LoginPage.id);
+                      : Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LoginPage(
+                                    routeTo: DifficultyPage.id,
+                                  )));
                 }),
           ),
           Padding(
@@ -135,7 +140,12 @@ class _NavBarState extends State<NavBar> {
                   loggedIn
                       ? Navigator.pushNamedAndRemoveUntil(
                           context, CommunityPage.id, (route) => false)
-                      : Navigator.pushNamed(context, LoginPage.id);
+                      : Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LoginPage(
+                                    routeTo: CommunityPage.id,
+                                  )));
                 }),
           ),
           Padding(
@@ -152,7 +162,12 @@ class _NavBarState extends State<NavBar> {
                   loggedIn
                       ? Navigator.pushNamedAndRemoveUntil(
                           context, UserProfile.id, (route) => false)
-                      : Navigator.pushNamed(context, LoginPage.id);
+                      : Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LoginPage(
+                                    routeTo: UserProfile.id,
+                                  )));
                 }),
           ),
         ],

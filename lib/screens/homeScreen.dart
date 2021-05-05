@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'aslDetection.dart';
 import '../rewidgets/navBar.dart';
 import 'loginPage.dart';
+import 'difficultyPage.dart';
 
 class HomeScreen extends StatelessWidget {
   static String id = 'home_page';
@@ -62,7 +63,12 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 onTap: () {
-                  Navigator.pushNamed(context, LoginPage.id);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => LoginPage(
+                                routeTo: DifficultyPage.id,
+                              )));
                 },
               ),
             ),

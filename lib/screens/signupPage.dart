@@ -13,8 +13,11 @@ class SignupPage extends StatefulWidget {
   // UserModel getUserModelInstance() {
   //   return this.currentUser;
   // }
+  String routeTo;
+  SignupPage({this.routeTo});
+
   @override
-  SignupPageState createState() => SignupPageState();
+  SignupPageState createState() => SignupPageState(routeTo: this.routeTo);
 }
 
 class SignupPageState extends State<SignupPage> {
@@ -22,14 +25,18 @@ class SignupPageState extends State<SignupPage> {
   //          Sign up functions
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final usersRef = FirebaseFirestore.instance.collection('users');
-
-  SignupPageState();
+  String routeTo;
+  SignupPageState({this.routeTo});
 
   checkAuthentication() async {
     _auth.authStateChanges().listen((user) {
       if (user != null) {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => LoginPage()));
+            context,
+            MaterialPageRoute(
+                builder: (context) => LoginPage(
+                      routeTo: this.routeTo,
+                    )));
       }
     });
   }

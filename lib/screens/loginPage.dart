@@ -7,14 +7,18 @@ import 'difficultyPage.dart';
 import 'signupPage.dart';
 
 class LoginPage extends StatefulWidget {
+  LoginPage({@required this.routeTo});
+  String routeTo;
   static String id = 'login_page';
   static UserModel currentUser;
   static final postsRef = FirebaseFirestore.instance.collection('posts');
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _LoginPageState createState() => _LoginPageState(routeTo: this.routeTo);
 }
 
 class _LoginPageState extends State<LoginPage> {
+  _LoginPageState({this.routeTo});
+  String routeTo;
   @override
   initState() {
     super.initState();
@@ -48,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
         //
         // }
         Navigator.pushNamedAndRemoveUntil(
-            context, DifficultyPage.id, (route) => false);
+            context, this.routeTo, (route) => false);
       }
     });
   }

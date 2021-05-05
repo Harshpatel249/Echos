@@ -34,7 +34,8 @@ class UserProfile extends StatelessWidget {
           onPressed: () {
             FirebaseAuth.instance.signOut();
             print('logout called');
-            Navigator.pushNamed(context, HomeScreen.id);
+            Navigator.pushNamedAndRemoveUntil(
+                context, HomeScreen.id, (route) => false);
             print('continue pressed');
           },
           child: Text('CONTINUE'),
