@@ -1,14 +1,34 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'addPost.dart';
+import 'package:sign_language_tutor/rewidgets/progress.dart';
+
 import '../rewidgets/navBar.dart';
 import '../rewidgets/postWrapper.dart';
+import 'addPost.dart';
 
 class CommunityPage extends StatelessWidget {
   static String id = 'community_page';
-  final CollectionReference postRef =
-      FirebaseFirestore.instance.collection('users');
+  //final GetCommunityPosts g1 = GetCommunityPosts();
+  final postsRef = FirebaseFirestore.instance.collection('posts');
+  final usersRef = FirebaseFirestore.instance.collection('users');
+
+  buildPosts() {
+    return StreamBuilder<QuerySnapshot>(
+      stream: postsRef.snapshots(),
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) {
+          return circularProgress();
+        }
+        List<PostWrapper> posts = [];
+        snapshot.data.docs.forEach((doc) {
+          posts.add(PostWrapper.fromDocument(doc, false));
+        });
+        return ListView(
+          children: posts,
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +58,8 @@ class CommunityPage extends StatelessWidget {
                 context: context, builder: (context) => AddPost());
           },
         ),
+        // floatingActionButtonLocation:
+        // FloatingActionButtonLocation.centerDocked,
         body: Column(
           children: [
             SizedBox(
@@ -47,37 +69,11 @@ class CommunityPage extends StatelessWidget {
               height: 5,
             ),
             Expanded(
-              child: ListView(
-                scrollDirection: Axis.vertical,
-                children: <Widget>[
-                  StreamBuilder<QuerySnapshot>(
-                    stream: postRef.snapshots(),
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        final posts = snapshot.data.docs;
-                        List<PostWrapper> postWidgets = [];
-                        for (var post in posts) {
-                          // final postTitle = post.data('title');
-                          // final postContent = post.data[]
-                          print(post.data()['email']);
-                          PostWrapper p = PostWrapper(
-                              post.data()['email'],
-                              post.data()['email'],
-                              post.data()['email'],
-                              false,
-                              false);
-                          postWidgets.add(p);
-                        }
-                        return Column(
-                          children: postWidgets,
-                        );
-                      } else {
-                        return Text('empty');
-                      }
-                    },
-                  )
-                ],
-              ),
+              child: buildPosts(),
+              // child: ListView(
+              //   scrollDirection: Axis.vertical,
+              //   children: g1.getPosts(),
+              // ),
             ),
           ],
         ),
@@ -86,3 +82,37 @@ class CommunityPage extends StatelessWidget {
     );
   }
 }
+
+// class Post extends StatelessWidget {
+//   final String postId;
+//   final String ownerId;
+//   final String username;
+//   final String title;
+//   final String content;
+//   final dynamic likes;
+//
+//   Post({
+//     this.postId,
+//     this.ownerId,
+//     this.title,
+//     this.username,
+//     this.content,
+//     this.likes,
+//   });
+//   factory Post.fromDocument(DocumentSnapshot doc) {
+//     return Post(
+//       postId: doc['postId'],
+//       ownerId: doc['ownerId'],
+//       username: doc['username'],
+//       title: doc['title'],
+//       content: doc['content'],
+//       likes: doc['likes'],
+//     );
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     // TODO: implement build
+//     return Text('Post');
+//   }
+// }
