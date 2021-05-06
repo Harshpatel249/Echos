@@ -1,21 +1,26 @@
 import 'package:flutter/material.dart';
-import '../difficultyPage.dart';
+
 import './questions.dart';
 import 'score_screen.dart';
-import '../../rewidgets/navBar.dart';
 
 class QuizScreen extends StatefulWidget {
   static String id = 'quiz_screen';
+  // List<String> quesns = [];
+  List<dynamic> questions;
+  QuizScreen({this.questions});
 
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return _QuizScreenState();
+    return _QuizScreenState(questions: this.questions);
   }
 }
 
 class _QuizScreenState extends State<QuizScreen> {
-  final questions = const [
+  List<dynamic> questions;
+  _QuizScreenState({this.questions});
+
+  final ques = const [
     {
       'imageSrc': 'assets/images/first.jpg',
       'options': ['Black', 'Red', 'Blue', 'Yellow'],
@@ -42,8 +47,52 @@ class _QuizScreenState extends State<QuizScreen> {
     print('_queInd: $_queInd');
   }
 
+  convertDynamicToStringList() {
+    // widget.quesns = new List<dynamic>.from(questions);
+    print(ques.runtimeType);
+    print(ques[0]['imageSrc']);
+    print(ques[0]['imageSrc'].runtimeType);
+    print(ques[0]['options']);
+    print(ques[0]['options'].runtimeType);
+    print(ques[0]['answer']);
+    print(ques[0]['answer'].runtimeType);
+    print('##########################');
+    print(questions.runtimeType);
+    print(questions[0]['imageSrc'].runtimeType);
+    print(questions[0]['imageSrc']);
+    print(questions[0]['options'].runtimeType);
+    print(questions[0]['options']);
+    print(questions[0]['answer'].runtimeType);
+    print(questions[0]['answer']);
+    print(questions);
+  }
+
+  @override
+  initState() {
+    // TODO: implement initState
+    super.initState();
+    // convertDynamicToStringList();
+  }
+
   @override
   Widget build(BuildContext context) {
+    print(ques.runtimeType);
+    print(ques[0]['imageSrc']);
+    print(ques[0]['imageSrc'].runtimeType);
+    print(ques[0]['options']);
+    print(ques[0]['options'].runtimeType);
+    print(ques[0]['title']);
+    print(ques[0]['title'].runtimeType);
+    print('##########################');
+    print(questions.runtimeType);
+    print(questions[0]['imageSrc'].runtimeType);
+    print(questions[0]['imageSrc']);
+    print(questions[0]['options'].runtimeType);
+    print(questions[0]['options']);
+    print(questions[0]['title'].runtimeType);
+    print(questions[0]['title']);
+    print(questions);
+    // print(widget.quesns[0])
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -72,7 +121,7 @@ class _QuizScreenState extends State<QuizScreen> {
                       Question(
                         questions[_queInd]['imageSrc'],
                       ),
-                      ...(questions[_queInd]['options'] as List<String>)
+                      ...(questions[_queInd]['options'] as List<dynamic>)
                           .map((option) {
                         return Builder(
                           builder: (context) => optionButton(option, context),
@@ -82,13 +131,8 @@ class _QuizScreenState extends State<QuizScreen> {
                   ),
                 ],
               )
-            : Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => ScorePage(
-                        numCorrect,
-                        questions.length,
-                        (numCorrect * 100) / questions.length))),
+            : ScorePage(numCorrect, questions.length,
+                (numCorrect * 100) / questions.length),
       ),
     );
   }
