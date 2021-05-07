@@ -15,25 +15,15 @@ class ChapterList extends StatelessWidget {
   QuerySnapshot chaptersQuiz;
   QuerySnapshot readingCollection;
 
-  // Future<List<ChapterContainer>> getChapter() async {
-  //   QuerySnapshot snapshot =
-  //       await ;
-  //   // List<Future<ChapterContainer>> chapters =
-  //
-  //   return snapshot.docs.map((doc) async {
-  //     return (ChapterContainer(
-  //       chaptersQuiz: await chaptersRef.doc(doc.id).collection('quiz').get(),
-  //       readingCollection:
-  //           await chaptersRef.doc(doc.id).collection('reading').get(),
-  //       doc: doc,
-  //     ));
-  //     // chapters.add(ChapterContainer.fromDocument(chaptersQuiz));
-  //   }).toList();
-  //   print('##########################');
-  //   // print(chapters);
+  // sortDocument() async {
+  //   Query snap =
+  //       FirebaseFirestore.instance.collection('chapters').orderBy('chapNum');
   // }
 
   buildChapters() {
+    print('==============================================================');
+    print(difficulty);
+
     return FutureBuilder<QuerySnapshot>(
       future: chaptersRef.where("difficulty", isEqualTo: difficulty).get(),
       builder: (context, snapshot) {
@@ -42,6 +32,7 @@ class ChapterList extends StatelessWidget {
           return circularProgress();
         }
         List<ChapterContainer> chapters = [];
+        // snapshot.data.docs.sort();
         snapshot.data.docs.forEach((doc) {
           chapters.add(ChapterContainer.fromDocument(doc, chaptersRef));
         });

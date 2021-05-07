@@ -20,13 +20,12 @@ class ReadingElement extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.only(left: 8),
+                  padding: const EdgeInsets.only(left: 10),
                   child: Text(
                     title,
                     textAlign: TextAlign.left,
                     style: TextStyle(
                       fontSize: 75,
-                      decoration: TextDecoration.underline,
                     ),
                   ),
                 ),
@@ -35,14 +34,14 @@ class ReadingElement extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(
-                      top: 20, bottom: 8, left: 8, right: 8),
+                      top: 20, bottom: 8, left: 10, right: 10),
                   child: Container(
                     // padding: EdgeInsets.only(top: 200),
                     height: 200,
                     width: 200,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage(imgSrc),
+                        image: NetworkImage(imgSrc),
                         fit: BoxFit.fill,
                       ),
                       borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -56,14 +55,14 @@ class ReadingElement extends StatelessWidget {
               color: Color(0xFFF2F5F8),
               alignment: Alignment.centerLeft,
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(10.0),
                 child: Text(
                   steps,
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 15),
                 ),
               )),
           Divider(
-            color: Colors.orange,
+            color: Colors.blue,
             height: 20,
             thickness: 5,
             indent: 20,

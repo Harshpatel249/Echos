@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
@@ -8,11 +9,20 @@ class ScorePage extends StatefulWidget {
   final int marks;
   final int totalQuestions;
   final double marksPercentage;
-  ScorePage(this.marks, this.totalQuestions, this.marksPercentage);
+  DocumentSnapshot doc;
+  CollectionReference chaptersRef;
+  ScorePage(this.marks, this.totalQuestions, this.marksPercentage, this.doc,
+      this.chaptersRef);
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return _ScorePageState(marks, totalQuestions, marksPercentage);
+    return _ScorePageState(
+      marks: marks,
+      totalQuestions: totalQuestions,
+      marksPercentage: marksPercentage,
+      doc: doc,
+      chaptersRef: chaptersRef,
+    );
   }
 }
 
@@ -23,8 +33,15 @@ class _ScorePageState extends State<ScorePage> {
   Timer _timer;
   double progressValue = 0;
   double secondaryProgressValue = 0;
+  DocumentSnapshot doc;
+  CollectionReference chaptersRef;
   // ignore: sort_constructors_first
-  _ScorePageState(this.marks, this.totalQuestions, this.marksPercentage) {
+  _ScorePageState(
+      {this.marks,
+      this.totalQuestions,
+      this.marksPercentage,
+      this.doc,
+      this.chaptersRef}) {
     _timer = Timer.periodic(const Duration(milliseconds: 10), (Timer _timer) {
       setState(() {
         // secondaryProgressValue = secondaryProgressValue + 2;

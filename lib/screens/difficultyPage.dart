@@ -114,11 +114,18 @@ class _DifficultyPageState extends State<DifficultyPage> {
                   this.difficulty = 'medium';
                   print('Intermediate difficulty');
                   Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ChapterList(
-                                difficulty: this.difficulty,
-                              )));
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        print(
+                            '***********************************************************');
+                        print(this.difficulty);
+                        return ChapterList(
+                          difficulty: this.difficulty,
+                        );
+                      },
+                    ),
+                  );
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
@@ -142,11 +149,18 @@ class _DifficultyPageState extends State<DifficultyPage> {
                   this.difficulty = 'hard';
                   print('Expert difficulty');
                   Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ChapterList(
-                                difficulty: this.difficulty,
-                              )));
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        print(
+                            '***********************************************************');
+                        print(this.difficulty);
+                        return ChapterList(
+                          difficulty: this.difficulty,
+                        );
+                      },
+                    ),
+                  );
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
