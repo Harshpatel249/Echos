@@ -160,8 +160,7 @@ class _NavBarState extends State<NavBar> {
                 ),
                 onPressed: () {
                   loggedIn
-                      ? Navigator.pushNamedAndRemoveUntil(
-                          context, UserProfile.id, (route) => false)
+                      ? Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => UserProfile(auth: _auth)), (route) => false)
                       : Navigator.push(
                           context,
                           MaterialPageRoute(
