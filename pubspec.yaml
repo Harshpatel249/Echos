@@ -68,6 +68,9 @@ flutter:
     - assets/tflite/
 
   fonts:
+  - family: Ubuntu
+    fonts:
+      - asset: assets/fonts/Ubuntu-Regular.ttf
   - family: Poppins
     fonts:
       - asset: assets/fonts/Poppins/Poppins-Bold.ttf
