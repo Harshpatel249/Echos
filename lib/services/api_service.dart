@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:http/http.dart' as http;
 import 'package:sign_language_tutor/models/channel_model.dart';
 import 'package:sign_language_tutor/models/video_model.dart';
@@ -48,7 +49,7 @@ class APIService {
     Map<String, String> parameters = {
       'part': 'snippet',
       'playlistId': playlistId,
-      'maxResults': '8',
+      'maxResults': '20',
       'pageToken': _nextPageToken,
       'key': API_KEY,
     };

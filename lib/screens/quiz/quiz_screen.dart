@@ -1,33 +1,50 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import '../difficultyPage.dart';
+
 import './questions.dart';
 import 'score_screen.dart';
-import '../../rewidgets/navBar.dart';
 
 class QuizScreen extends StatefulWidget {
   static String id = 'quiz_screen';
+  // List<String> quesns = [];
+  List<dynamic> questions;
+  DocumentSnapshot doc;
+  CollectionReference chaptersRef;
+  QuizScreen({
+    this.questions,
+    this.doc,
+    this.chaptersRef,
+  });
 
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return _QuizScreenState();
+    return _QuizScreenState(
+      questions: this.questions,
+      doc: this.doc,
+      chaptersRef: this.chaptersRef,
+    );
   }
 }
 
 class _QuizScreenState extends State<QuizScreen> {
-  final questions = const [
+  List<dynamic> questions;
+  DocumentSnapshot doc;
+  CollectionReference chaptersRef;
+  _QuizScreenState({this.questions, this.doc, this.chaptersRef});
+  final ques = const [
     {
-      'imageSrc': 'assets/images/first.jpg',
+      'imageSrc': 'assets/images/My_Video1.gif',
       'options': ['Black', 'Red', 'Blue', 'Yellow'],
       'answer': 'Red'
     },
     {
-      'imageSrc': 'assets/images/second.jpg',
+      'imageSrc': 'assets/images/hard.gif',
       'options': ['Dog', 'Cat', 'Cow'],
       'answer': 'Dog'
     },
     {
-      'imageSrc': 'assets/images/third.jpg',
+      'imageSrc': 'assets/images/hard2.gif',
       'options': ['Sandwich', 'Pizza', 'Chat', 'Paneer Sabji'],
       'answer': 'Chat'
     },
@@ -46,49 +63,50 @@ class _QuizScreenState extends State<QuizScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Color(0xFFF2F5F8),
         appBar: AppBar(
-          title: Text(
-            'Quiz',
-            style: TextStyle(color: Colors.black),
-          ),
-          centerTitle: true,
+          title: Text('My first app'),
         ),
         body: _queInd < questions.length
-            ? ListView(
+            ? Column(
                 children: [
-                  Column(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(left: 35),
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          'Q. Identify the sign',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w400, // light
-                            fontSize: 24,
-                          ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 40, top: 12.0),
+                    child: Container(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Q. Identify the sign',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w400, // light
+                          fontSize: 24,
                         ),
                       ),
-                      Question(
-                        questions[_queInd]['imageSrc'],
-                      ),
-                      ...(questions[_queInd]['options'] as List<String>)
-                          .map((option) {
-                        return Builder(
-                          builder: (context) => optionButton(option, context),
-                        );
-                      }).toList()
-                    ],
+                    ),
                   ),
+                  Question(
+                    questions[_queInd]['imageSrc'],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 60.0, bottom: 60),
+                    child: Column(
+                      children: [
+                        ...(questions[_queInd]['options'] as List<dynamic>)
+                            .map((option) {
+                          return Builder(
+                            builder: (context) => optionButton(option, context),
+                          );
+                        }).toList()
+                      ],
+                    ),
+                  )
                 ],
               )
-            : Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => ScorePage(
-                        numCorrect,
-                        questions.length,
-                        (numCorrect * 100) / questions.length))),
+            : ScorePage(
+                numCorrect,
+                questions.length,
+                ((numCorrect * 100) / questions.length),
+                this.doc,
+                this.chaptersRef),
       ),
     );
   }
@@ -99,18 +117,15 @@ class _QuizScreenState extends State<QuizScreen> {
     return Container(
         width: 321,
         height: 50,
-        margin: EdgeInsets.only(top: 20, bottom: 20),
+        margin: EdgeInsets.only(top: 40),
         child: ElevatedButton(
           style: ButtonStyle(
-            foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-            backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(25.0),
-                side: BorderSide(color: Color(0xFF707070), width: 1),
-              ),
-            ),
-          ),
+              foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+              backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25.0),
+                      side: BorderSide(color: Color(0xFF707070), width: 1)))),
           child: Text(
             optionText,
             style: TextStyle(

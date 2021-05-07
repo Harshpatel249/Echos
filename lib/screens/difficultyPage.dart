@@ -16,6 +16,7 @@ class _DifficultyPageState extends State<DifficultyPage> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   User user;
   bool isLoggedIn = false;
+  String difficulty;
   checkAuthentication() async {
     _auth.authStateChanges().listen((user) {
       if (user == null) {
@@ -82,8 +83,14 @@ class _DifficultyPageState extends State<DifficultyPage> {
             Expanded(
               child: GestureDetector(
                 onTap: () {
+                  this.difficulty = 'easy';
                   print('Easy difficulty');
-                  Navigator.pushNamed(context, ChapterList.id);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ChapterList(
+                                difficulty: this.difficulty,
+                              )));
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
@@ -104,8 +111,21 @@ class _DifficultyPageState extends State<DifficultyPage> {
             Expanded(
               child: GestureDetector(
                 onTap: () {
+                  this.difficulty = 'medium';
                   print('Intermediate difficulty');
-                  Navigator.pushNamed(context, ChapterList.id);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        print(
+                            '***********************************************************');
+                        print(this.difficulty);
+                        return ChapterList(
+                          difficulty: this.difficulty,
+                        );
+                      },
+                    ),
+                  );
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
@@ -126,8 +146,21 @@ class _DifficultyPageState extends State<DifficultyPage> {
             Expanded(
               child: GestureDetector(
                 onTap: () {
+                  this.difficulty = 'hard';
                   print('Expert difficulty');
-                  Navigator.pushNamed(context, ChapterList.id);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        print(
+                            '***********************************************************');
+                        print(this.difficulty);
+                        return ChapterList(
+                          difficulty: this.difficulty,
+                        );
+                      },
+                    ),
+                  );
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),

@@ -1,23 +1,28 @@
-import 'package:flutter/material.dart';
-import 'package:sign_language_tutor/screens/chapterList.dart';
-import 'package:sign_language_tutor/screens/difficultyPage.dart';
-import 'package:sign_language_tutor/screens/testScreen.dart';
-import '../chapterList.dart';
-import '../difficultyPage.dart';
-import 'package:syncfusion_flutter_gauges/gauges.dart';
-import 'package:sign_language_tutor/main.dart';
 import 'dart:async';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 class ScorePage extends StatefulWidget {
   static String id = 'score_screen';
   final int marks;
   final int totalQuestions;
   final double marksPercentage;
-  ScorePage(this.marks, this.totalQuestions, this.marksPercentage);
+  DocumentSnapshot doc;
+  CollectionReference chaptersRef;
+  ScorePage(this.marks, this.totalQuestions, this.marksPercentage, this.doc,
+      this.chaptersRef);
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return _ScorePageState(marks, totalQuestions, marksPercentage);
+    return _ScorePageState(
+      marks: marks,
+      totalQuestions: totalQuestions,
+      marksPercentage: marksPercentage,
+      doc: doc,
+      chaptersRef: chaptersRef,
+    );
   }
 }
 
@@ -28,8 +33,15 @@ class _ScorePageState extends State<ScorePage> {
   Timer _timer;
   double progressValue = 0;
   double secondaryProgressValue = 0;
+  DocumentSnapshot doc;
+  CollectionReference chaptersRef;
   // ignore: sort_constructors_first
-  _ScorePageState(this.marks, this.totalQuestions, this.marksPercentage) {
+  _ScorePageState(
+      {this.marks,
+      this.totalQuestions,
+      this.marksPercentage,
+      this.doc,
+      this.chaptersRef}) {
     _timer = Timer.periodic(const Duration(milliseconds: 10), (Timer _timer) {
       setState(() {
         // secondaryProgressValue = secondaryProgressValue + 2;
@@ -45,6 +57,7 @@ class _ScorePageState extends State<ScorePage> {
   }
   @override
   Widget build(BuildContext context) {
+    // return Text('hello ');
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
