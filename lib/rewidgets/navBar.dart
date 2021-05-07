@@ -93,7 +93,8 @@ class _NavBarState extends State<NavBar> {
             padding: const EdgeInsets.all(8.0),
             child: IconButton(
                 icon: Icon(
-                  FontAwesomeIcons.americanSignLanguageInterpreting,
+                  Icons.menu_book,
+                  //FontAwesomeIcons.americanSignLanguageInterpreting,
                   size: 35,
                   color: this.id == DifficultyPage.id
                       ? Colors.white
