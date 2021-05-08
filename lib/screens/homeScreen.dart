@@ -91,7 +91,7 @@ class HomeScreen extends StatelessWidget {
                     child: Card(
                       // with Material
                       child: Image.asset(
-                        'assets/images/LogoEchoes.png',
+                        'assets/images/Translate.png',
                       ),
                       elevation: 18.0,
                       clipBehavior: Clip.antiAlias,
