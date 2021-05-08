@@ -72,6 +72,7 @@ class _UserStatisticsState extends State<UserStatistics> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           title: Text(
             'Statistics',
