@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sign_language_tutor/models/userModel.dart';
+import 'package:sign_language_tutor/screens/userProfile.dart';
 
-import 'difficultyPage.dart';
 import 'signupPage.dart';
 
 class LoginPage extends StatefulWidget {
@@ -51,8 +51,16 @@ class _LoginPageState extends State<LoginPage> {
         //   //     .updateProfile(displayName: LoginPage.currentUser.name);
         //
         // }
-        Navigator.pushNamedAndRemoveUntil(
-            context, this.routeTo, (route) => false);
+        this.routeTo == UserProfile.id
+            ? Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => UserProfile(
+                          auth: this._auth,
+                        )),
+                (route) => false)
+            : Navigator.pushNamedAndRemoveUntil(
+                context, this.routeTo, (route) => false);
       }
     });
   }
