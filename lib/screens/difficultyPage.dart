@@ -91,7 +91,8 @@ class _DifficultyPageState extends State<DifficultyPage> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       image: DecorationImage(
-                          image: AssetImage('assets/images/easy.gif'),
+                          image: NetworkImage(
+                              'https://media1.tenor.com/images/12432b94d86a8b480d0d51a768e63988/tenor.gif?itemid=21471184'),
                           fit: BoxFit.fill),
                     ),
                   ),
@@ -113,7 +114,8 @@ class _DifficultyPageState extends State<DifficultyPage> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       image: DecorationImage(
-                          image: AssetImage('assets/images/easy.png'),
+                          image: NetworkImage(
+                              'https://media1.tenor.com/images/88a16a6b62c98b6021ca3fbe579ed1fe/tenor.gif?itemid=21471185'),
                           fit: BoxFit.fill),
                     ),
                   ),
@@ -135,7 +137,8 @@ class _DifficultyPageState extends State<DifficultyPage> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       image: DecorationImage(
-                          image: AssetImage('assets/images/easy.png'),
+                          image: NetworkImage(
+                              'https://media1.tenor.com/images/d8b3c1411c6b34d838aa612f5fd4814d/tenor.gif?itemid=21468221'),
                           fit: BoxFit.fill),
                     ),
                   ),

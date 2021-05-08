@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sign_language_tutor/rewidgets/navBar.dart';
-
 import '../screens/changePassword.dart';
 import '../screens/userProfile.dart';
 import '../services/personalInformation.dart';
@@ -27,7 +26,12 @@ class AccountSettings extends StatelessWidget {
     );
     final SimpleDialog ChangePass = SimpleDialog(
       title: Text('Change Password'),
-      children: [ChangePassword()],
+      children: [
+        SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: ChangePassword(),
+        ),
+      ],
     );
     final SimpleDialog PersonalInfo = SimpleDialog(
         title: Center(child: Text('Personal Information')),
@@ -36,6 +40,7 @@ class AccountSettings extends StatelessWidget {
         ]);
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           title: Text(
             'Account Settings',
