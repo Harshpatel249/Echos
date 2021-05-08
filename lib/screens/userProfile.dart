@@ -13,7 +13,8 @@ import 'homeScreen.dart';
 
 class UserProfile extends StatelessWidget {
   static String id = 'user_profile';
-
+  final FirebaseAuth auth;
+  UserProfile({this.auth});
   final username = NavBar.currentUser.username;
   final name = NavBar.currentUser.name;
   final email = NavBar.currentUser.email;
@@ -105,7 +106,8 @@ class UserProfile extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute<void>(
-                            builder: (BuildContext context) => EditProfile(auth:this.auth),
+                            builder: (BuildContext context) =>
+                                EditProfile(auth: this.auth),
                             fullscreenDialog: true,
                           ),
                         );
