@@ -93,7 +93,8 @@ class _NavBarState extends State<NavBar> {
             padding: const EdgeInsets.all(8.0),
             child: IconButton(
                 icon: Icon(
-                  FontAwesomeIcons.americanSignLanguageInterpreting,
+                  Icons.menu_book,
+                  //FontAwesomeIcons.americanSignLanguageInterpreting,
                   size: 35,
                   color: this.id == DifficultyPage.id
                       ? Colors.white
@@ -160,8 +161,7 @@ class _NavBarState extends State<NavBar> {
                 ),
                 onPressed: () {
                   loggedIn
-                      ? Navigator.pushNamedAndRemoveUntil(
-                          context, UserProfile.id, (route) => false)
+                      ? Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => UserProfile(auth: _auth)), (route) => false)
                       : Navigator.push(
                           context,
                           MaterialPageRoute(

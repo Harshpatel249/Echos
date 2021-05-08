@@ -13,9 +13,11 @@ import 'homeScreen.dart';
 
 class UserProfile extends StatelessWidget {
   static String id = 'user_profile';
+
   final username = NavBar.currentUser.username;
   final name = NavBar.currentUser.name;
   final email = NavBar.currentUser.email;
+
   final joined = 'xx/xx/xxxx';
 
   @override
@@ -42,6 +44,7 @@ class UserProfile extends StatelessWidget {
       ],
     );
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text(
           username,
@@ -102,7 +105,7 @@ class UserProfile extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute<void>(
-                            builder: (BuildContext context) => EditProfile(),
+                            builder: (BuildContext context) => EditProfile(auth:this.auth),
                             fullscreenDialog: true,
                           ),
                         );
