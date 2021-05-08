@@ -13,12 +13,11 @@ import 'homeScreen.dart';
 
 class UserProfile extends StatelessWidget {
   static String id = 'user_profile';
-  final username = 'sdfasdf'; //SignupPage.currentUser.id;
-  final name = 'dadf'; //SignupPage.currentUser.name;
-  final email = 'same@gmai.com'; //SignupPage.currentUser.email;
+  final username = NavBar.currentUser.username;
+  final name = NavBar.currentUser.name;
+  final email = NavBar.currentUser.email;
   final joined = 'xx/xx/xxxx';
-  // final joined =
-  //     '${SignupPage.currentUser.timestamp.day} / ${SignupPage.currentUser.timestamp.month} / ${SignupPage.currentUser.timestamp.year}';
+
   @override
   Widget build(BuildContext context) {
     final AlertDialog logout = AlertDialog(
@@ -45,7 +44,7 @@ class UserProfile extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Zank100',
+          username,
           style: TextStyle(color: Colors.black),
         ),
         centerTitle: true,
@@ -59,7 +58,7 @@ class UserProfile extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8),
             child: Text(
-              'Sanket Shah',
+              name,
               style: TextStyle(
                 fontSize: 30,
               ),

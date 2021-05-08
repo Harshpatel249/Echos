@@ -12,30 +12,33 @@ import 'package:sign_language_tutor/services/api_service.dart';
 class ChapterContainer extends StatefulWidget {
   DocumentSnapshot doc;
   CollectionReference chaptersRef;
-
+  int chapNum;
   ChapterContainer({
     this.doc,
     this.chaptersRef,
+    this.chapNum,
   });
 
   factory ChapterContainer.fromDocument(
       DocumentSnapshot doc, CollectionReference chaptersRef) {
     print(
         '########################## inside the .fromDocument ################');
-    chaptersRef.get().then((QuerySnapshot querySnapshot) {
-      querySnapshot.docs.forEach((doc) {
-        print(doc['difficulty']);
-      });
-    });
+    // chaptersRef.get().then((QuerySnapshot querySnapshot) {
+    //   querySnapshot.docs.forEach((doc) {
+    //     print(doc['difficulty']);
+    //   });
+    // });
 
     return ChapterContainer(
       doc: doc,
       chaptersRef: chaptersRef,
+      chapNum: doc['chapNum'],
     );
   }
 
   @override
-  ChapterContainerState createState() => ChapterContainerState();
+  ChapterContainerState createState() =>
+      ChapterContainerState(chapNum: this.chapNum);
 }
 
 class ChapterContainerState extends State<ChapterContainer> {
@@ -51,6 +54,9 @@ class ChapterContainerState extends State<ChapterContainer> {
   bool videoDone = false;
   bool readingDone = false;
   bool quizDone = false;
+  int chapNum;
+
+  ChapterContainerState({this.chapNum});
 
   getSubCollections() async {
     chaptersQuiz =
@@ -58,26 +64,25 @@ class ChapterContainerState extends State<ChapterContainer> {
     chaptersQuiz.docs.forEach((doc) {
       questions.add(doc.data());
     });
+
     readingCollection = await widget.chaptersRef
         .doc(widget.doc.id)
         .collection('reading')
         .orderBy('title')
         .get();
+
     readingCollection.docs.forEach((doc) {
       reading.add(doc.data());
-      print(doc.data());
     });
-    print('###################$reading');
+
     videoIndex = widget.doc['videoIndex'];
-    print('videos index is here#########################');
-    print(videoIndex);
+    widget.chaptersRef.doc(NavBar.currentUser.id);
   }
 
   Future<bool> checkIfDocExists(String docId) async {
     try {
       var collectionRef =
           widget.chaptersRef.doc(widget.doc.id).collection('users');
-      //
       var doc = await collectionRef.doc(docId).get();
       return doc.exists;
     } catch (e) {
@@ -90,18 +95,13 @@ class ChapterContainerState extends State<ChapterContainer> {
         .doc(widget.doc.id)
         .collection('users')
         .doc(NavBar.currentUser.id)
-        .update({'status.${str}': status});
+        .update({'status.$str': status});
   }
 
   addUserToChaptersCollection() async {
-    print(
-        '##################### inside the adduser method ################### \n ${DateTime.now()}');
-    // print(NavBar.currentUser.id);
     bool exists = await checkIfDocExists(NavBar.currentUser.id);
 
     if (!exists) {
-      print(
-          '################################ document does not exists ##########################################');
       widget.chaptersRef
           .doc(widget.doc.id)
           .collection('users')
@@ -113,8 +113,6 @@ class ChapterContainerState extends State<ChapterContainer> {
           "quizDone": false,
         }
       });
-      print(
-          '########################### adding users to database    ###############################');
       DocumentSnapshot snapshot = await widget.chaptersRef
           .doc(widget.doc.id)
           .collection('users')
@@ -127,35 +125,19 @@ class ChapterContainerState extends State<ChapterContainer> {
   }
 
   getStatus() async {
-    print(
-        '########################################### in get Status ##################################### \n ${DateTime.now()}');
-    print(DateTime.now());
     var doc = await widget.chaptersRef
         .doc(widget.doc.id)
         .collection('users')
         .doc(NavBar.currentUser.id)
         .get();
     status = doc['status'];
-
+    print(
+        '===================================== inside the get status method ====================================');
     print(status);
-    // print(status)
-    print(status['videoDone']);
     setState(() {
       videoDone = status['videoDone'];
       readingDone = status['readingDone'];
       quizDone = status['quizDone'];
-    });
-  }
-
-  updateState(String done) {
-    setState(() {
-      if (done == 'videoDone') {
-        videoDone = true;
-      } else if (done == 'readingDone') {
-        readingDone = true;
-      } else {
-        quizDone = true;
-      }
     });
   }
 
@@ -187,7 +169,7 @@ class ChapterContainerState extends State<ChapterContainer> {
     print(
         '--------------------------------------------build method of chapterContainer is called----------------------------');
     // print(videoIndex.runtimeType);
-    print(videoDone);
+    // print(videoDone);
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Material(

@@ -20,7 +20,7 @@ class BuildVideo extends StatelessWidget {
         .doc(doc.id)
         .collection('users')
         .doc(NavBar.currentUser.id)
-        .update({'status.${str}': status});
+        .update({'status.$str': status});
   }
 
   @override

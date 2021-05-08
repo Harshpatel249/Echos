@@ -25,6 +25,7 @@ class SignupPageState extends State<SignupPage> {
   //          Sign up functions
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final usersRef = FirebaseFirestore.instance.collection('users');
+
   String routeTo;
   SignupPageState({this.routeTo});
 
@@ -54,6 +55,7 @@ class SignupPageState extends State<SignupPage> {
         "username": userName,
         "password": Password,
         "joining_date": SignupPage.timestamp,
+        "lastChapId": "No Attempts",
       });
       // print(
       //     "--------------------------- inside the sign up page---------------------");

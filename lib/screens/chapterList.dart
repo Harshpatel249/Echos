@@ -15,11 +15,6 @@ class ChapterList extends StatelessWidget {
   QuerySnapshot chaptersQuiz;
   QuerySnapshot readingCollection;
 
-  // sortDocument() async {
-  //   Query snap =
-  //       FirebaseFirestore.instance.collection('chapters').orderBy('chapNum');
-  // }
-
   buildChapters() {
     print('==============================================================');
     print(difficulty);
@@ -36,52 +31,21 @@ class ChapterList extends StatelessWidget {
         snapshot.data.docs.forEach((doc) {
           chapters.add(ChapterContainer.fromDocument(doc, chaptersRef));
         });
-
+        // print('########################');
+        chapters.sort((a, b) {
+          return a.chapNum.compareTo(b.chapNum);
+        });
+        // print(chapters);
         return ListView(
           children: chapters,
         );
       },
     );
-    // final QuerySnapshot chapterSnapShot =
-    //     await chaptersRef.where("difficulty", isEqualTo: difficulty).get();
-    // chapterSnapShot.docs.forEach((doc) async {
-    //   chaptersQuiz = await chaptersRef.doc(doc.id).collection('quiz').get();
-    // });
-    // chaptersQuiz.docs.forEach((doc) {
-    //   print(doc.data());
-    // });
-
-    // return FutureBuilder<QuerySnapshot>(
-    //   future: chaptersRef.doc(difficulty).collection('chapters').get(),
-    //   builder: (context, snapshot) {
-    //     if (!snapshot.hasData) {
-    //       print('snapshot empty');
-    //       return circularProgress();
-    //     }
-    //     snapshot.data.docs.forEach((doc) {
-    //       print();
-    //     });
-    //     List<ChapterContainer> chapters = [];
-    //     snapshot.data.docs.forEach((doc) {
-    //       chapters.add(ChapterContainer.fromDocument(doc));
-    //     });
-    //     return ListView(
-    //       children: chapters,
-    //     );
-    //   },
-    // );
   }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      // child: Container(
-      //   decoration: BoxDecoration(
-      //     gradient: LinearGradient(
-      //         begin: Alignment.bottomLeft,
-      //         end: Alignment.topRight,
-      //         colors: [Colors.black, Colors.blue]),
-      //   ),
       child: Scaffold(
         appBar: AppBar(
           title: Text(
@@ -95,14 +59,6 @@ class ChapterList extends StatelessWidget {
           children: [
             Expanded(
               child: buildChapters(),
-              // ListView(
-              //   children: [
-              //     Padding(
-              //       padding: const EdgeInsets.all(8.0),
-              //       child: ChapterContainer(),
-              //     ),
-              //   ],
-              // ),
             ),
           ],
         ),

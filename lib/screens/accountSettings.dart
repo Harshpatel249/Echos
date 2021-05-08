@@ -1,9 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:sign_language_tutor/rewidgets/navBar.dart';
 
 import '../screens/changePassword.dart';
 import '../screens/userProfile.dart';
-import '../services/personalInformation.dart';
+import 'personalInformation.dart';
 
 class AccountSettings extends StatelessWidget {
   @override
@@ -20,7 +21,49 @@ class AccountSettings extends StatelessWidget {
           child: Text('CANCEL'),
         ),
         TextButton(
-          onPressed: () => Navigator.pop(context),
+          onPressed: () async {
+            final chaptersRef =
+                await FirebaseFirestore.instance.collection('chapters').get();
+
+            chaptersRef.docs.forEach((chapDoc) async {
+              final chapUsersRef = await FirebaseFirestore.instance
+                  .collection('chapters')
+                  .doc(chapDoc.id)
+                  .collection('users')
+                  .get();
+
+              chapUsersRef.docs.forEach((userDoc) {
+                FirebaseFirestore.instance
+                    .collection('chapters')
+                    .doc(chapDoc.id)
+                    .collection('users')
+                    .doc(NavBar.currentUser.id)
+                    .delete();
+              });
+            });
+            final usersRef =
+                await FirebaseFirestore.instance.collection('users').get();
+            usersRef.docs.forEach((doc) async {
+              FirebaseFirestore.instance
+                  .collection('users')
+                  .doc(NavBar.currentUser.id)
+                  .collection('quizzes')
+                  .get()
+                  .then((snapshot) {
+                for (DocumentSnapshot ds in snapshot.docs) {
+                  ds.reference.delete();
+                }
+              });
+            });
+            FirebaseFirestore.instance
+                .collection('users')
+                .doc(NavBar.currentUser.id)
+                .update({
+              "lastChapId": 'No Attempts',
+            });
+
+            Navigator.pop(context);
+          },
           child: Text('CONTINUE'),
         ),
       ],

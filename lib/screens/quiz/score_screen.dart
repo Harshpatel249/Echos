@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:sign_language_tutor/rewidgets/navBar.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 class ScorePage extends StatefulWidget {
@@ -20,8 +21,6 @@ class ScorePage extends StatefulWidget {
       marks: marks,
       totalQuestions: totalQuestions,
       marksPercentage: marksPercentage,
-      doc: doc,
-      chaptersRef: chaptersRef,
     );
   }
 }
@@ -33,15 +32,18 @@ class _ScorePageState extends State<ScorePage> {
   Timer _timer;
   double progressValue = 0;
   double secondaryProgressValue = 0;
-  DocumentSnapshot doc;
-  CollectionReference chaptersRef;
+  final usersRef = FirebaseFirestore.instance.collection('users');
+
+  // DocumentSnapshot doc;
+  // CollectionReference chaptersRef;
   // ignore: sort_constructors_first
-  _ScorePageState(
-      {this.marks,
-      this.totalQuestions,
-      this.marksPercentage,
-      this.doc,
-      this.chaptersRef}) {
+  _ScorePageState({
+    this.marks,
+    this.totalQuestions,
+    this.marksPercentage,
+    // this.doc,
+    // this.chaptersRef,
+  }) {
     _timer = Timer.periodic(const Duration(milliseconds: 10), (Timer _timer) {
       setState(() {
         // secondaryProgressValue = secondaryProgressValue + 2;
@@ -55,6 +57,10 @@ class _ScorePageState extends State<ScorePage> {
       });
     });
   }
+  String getLastChapter() {
+    return 'Chapter ${widget.doc['chapNum']} (${widget.doc['difficulty']})';
+  }
+
   @override
   Widget build(BuildContext context) {
     // return Text('hello ');
@@ -127,6 +133,20 @@ class _ScorePageState extends State<ScorePage> {
                   ),
                 ),
                 onPressed: () {
+                  FirebaseFirestore.instance
+                      .collection('users')
+                      .doc(NavBar.currentUser.id)
+                      .update({
+                    "lastChapId": getLastChapter(),
+                  });
+
+                  usersRef
+                      .doc(NavBar.currentUser.id)
+                      .collection('quizzes')
+                      .doc(widget.doc.id)
+                      .set({
+                    "score": marksPercentage,
+                  });
                   Navigator.pop(context);
                 },
                 child: Text('Finish',
