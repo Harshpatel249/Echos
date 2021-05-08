@@ -2,9 +2,15 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:sign_language_tutor/rewidgets/navBar.dart';
 
-class PersonalInformation extends StatelessWidget {
-  final usersRef = FirebaseFirestore.instance.collection('users');
+class PersonalInformation extends StatefulWidget {
   static String id = 'user_profile';
+  @override
+  _PersonalInformationState createState() => _PersonalInformationState();
+}
+
+class _PersonalInformationState extends State<PersonalInformation> {
+  final usersRef = FirebaseFirestore.instance.collection('users');
+
   final username = NavBar.currentUser.username;
   final name = NavBar.currentUser.name;
   final email = NavBar.currentUser.email;
@@ -20,18 +26,22 @@ class PersonalInformation extends StatelessWidget {
       Timestamp timestamp = documentSnapshot['joining_date'];
       DateTime d = timestamp.toDate();
       joined = '${d.day}/${d.month}/${d.year}';
-      fetched = true;
+      setState(() {
+        fetched = true;
+      });
       print(joined);
     });
   }
 
   @override
-  Widget build(BuildContext context) {
-    print(
-        '------------------------------------- inside the build function before calling get JoinedData() ---------------------------------------');
+  void initState() {
+    // TODO: implement initState
+    super.initState();
     getJoinedDate();
-    print(
-        '------------------------------------- inside the build function after calling get JoinedData() ---------------------------------------');
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
         Row(
