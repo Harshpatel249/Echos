@@ -65,40 +65,51 @@ class _QuizScreenState extends State<QuizScreen> {
       child: Scaffold(
         backgroundColor: Color(0xFFF2F5F8),
         appBar: AppBar(
-          title: Text('My first app'),
+          title: Text(
+            'Quiz',
+            style: TextStyle(
+              color: Colors.black,
+            ),
+          ),
+          centerTitle: true,
         ),
         body: _queInd < questions.length
-            ? Column(
+            ? ListView(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 40, top: 12.0),
-                    child: Container(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        'Q. Identify the sign',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w400, // light
-                          fontSize: 24,
+                  Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 40, top: 12.0),
+                        child: Container(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            'Q. Identify the sign',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w400, // light
+                              fontSize: 24,
+                            ),
+                          ),
                         ),
                       ),
-                    ),
+                      Question(
+                        questions[_queInd]['imageSrc'],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 40.0, bottom: 60),
+                        child: Column(
+                          children: [
+                            ...(questions[_queInd]['options'] as List<dynamic>)
+                                .map((option) {
+                              return Builder(
+                                builder: (context) =>
+                                    optionButton(option, context),
+                              );
+                            }).toList()
+                          ],
+                        ),
+                      )
+                    ],
                   ),
-                  Question(
-                    questions[_queInd]['imageSrc'],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 60.0, bottom: 60),
-                    child: Column(
-                      children: [
-                        ...(questions[_queInd]['options'] as List<dynamic>)
-                            .map((option) {
-                          return Builder(
-                            builder: (context) => optionButton(option, context),
-                          );
-                        }).toList()
-                      ],
-                    ),
-                  )
                 ],
               )
             : ScorePage(
