@@ -45,6 +45,7 @@ class UserProfile extends StatelessWidget {
       ],
     );
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text(
           'Zank100',
